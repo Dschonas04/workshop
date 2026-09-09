@@ -1,0 +1,8 @@
+# Was beim Anwenden entsteht. Der Zustand gehört nicht in den Verlauf:
+# er enthält Werte, die beim nächsten Lauf ohnehin neu entstehen, und in
+# einem echten Projekt auch Geheimnisse.
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+ausgabe/

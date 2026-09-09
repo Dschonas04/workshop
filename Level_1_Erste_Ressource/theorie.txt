@@ -1,0 +1,70 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 1: Die erste Ressource
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Du verstehst den Kreis aus init, plan, apply und
+  destroy -- und was der Zustand ist.
+
+  Der Kurs benutzt nur die Anbieter local und random. Es entsteht
+  nichts in einer Cloud, es kostet nichts, und alles landet im
+  Unterordner ausgabe/.
+
+
+  Die vier Befehle
+  ─────────────
+  tofu init       Anbieter holen. Einmal je Verzeichnis.
+  tofu plan       Was WÜRDE geschehen. Ändert nichts.
+  tofu apply      Es geschehen lassen.
+  tofu destroy    Alles wieder abräumen.
+
+  (Mit Terraform heißen die Befehle genauso.)
+
+
+  Eine Ressource
+  ─────────────
+      resource "local_file" "notiz" {
+        filename = "${path.module}/ausgabe/notiz.txt"
+        content  = "Hallo\n"
+      }
+
+  resource <typ> <name>. Der Typ gehört dem Anbieter, den Namen
+  vergibst du. Angesprochen wird sie später als local_file.notiz.
+
+
+  Anbieter festlegen
+  ─────────────
+      terraform {
+        required_providers {
+          local = {
+            source  = "hashicorp/local"
+            version = "~> 2.5"
+          }
+        }
+      }
+
+  ~> 2.5 heißt: 2.5 und neuer, aber nicht 3.0. Ohne Angabe holt
+  tofu die neueste -- und dein Kollege eine andere.
+
+
+  Der Zustand
+  ─────────────
+  Nach dem ersten apply liegt terraform.tfstate im Verzeichnis. Darin
+  steht, was Terraform angelegt hat und wie es aussah.
+
+  Das ist der Kern des Werkzeugs: es vergleicht drei Dinge --
+  deinen Code, den Zustand und die Wirklichkeit -- und plant die
+  Differenz.
+
+  Löschst du die Datei ausgabe/notiz.txt von Hand und rufst plan auf,
+  will Terraform sie wieder anlegen. Löschst du die Ressource aus dem
+  Code, will es die Datei entfernen.
+
+  Den Zustand nie von Hand bearbeiten und nie in ein öffentliches
+  Repository legen: in echten Projekten stehen dort Passwörter.
+
+
+  Deklarativ, nicht Schritt für Schritt
+  ─────────────
+  Die Reihenfolge im Code ist egal. Terraform baut aus den Bezügen
+  einen Abhängigkeitsgraphen und arbeitet ihn ab -- was voneinander
+  unabhängig ist, geschieht gleichzeitig.
