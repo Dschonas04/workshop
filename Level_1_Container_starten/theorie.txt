@@ -1,0 +1,76 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 1: Container starten und verstehen
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Du weißt, was ein Bild ist, was ein Container ist, und
+  warum der Unterschied wichtig ist.
+
+
+  Bild und Container
+  ─────────────
+  Bild (image)      ein unveränderliches Paket: Dateisystem plus
+                    Startbefehl. Wie eine Programmdatei.
+  Container         ein laufender Ablauf aus so einem Bild, mit
+                    einer eigenen, beschreibbaren Schicht obendrauf.
+
+  Aus einem Bild können hundert Container laufen. Was ein Container
+  in seine Schicht schreibt, ist beim Löschen weg.
+
+
+  Die wichtigsten Befehle
+  ─────────────
+  docker run alpine echo hallo        holen, starten, ausführen
+  docker run -it alpine sh            innen eine Sitzung öffnen
+  docker run -d --name web nginx      im Hintergrund, benannt
+  docker ps                           was läuft
+  docker ps -a                        auch, was beendet ist
+  docker logs web                     Ausgabe ansehen
+  docker exec -it web sh              in einen laufenden hinein
+  docker stop web / docker rm web     anhalten / entfernen
+  docker images                       welche Bilder liegen da
+  docker rmi alpine                   Bild entfernen
+
+  Mit Podman heißt jeder dieser Befehle genauso.
+
+
+  Ein Container ist kein kleiner Rechner
+  ─────────────
+  Er läuft, solange sein Hauptablauf läuft. Endet der, endet der
+  Container. Deshalb:
+
+      docker run alpine sleep 5       läuft fünf Sekunden
+      docker run -d alpine            ist sofort wieder weg
+
+  Es gibt keinen Dienststarter darin, kein init, kein Anmelden.
+  Ein Container, ein Ablauf.
+
+
+  Nützliche Schalter
+  ─────────────
+  --rm            nach dem Ende gleich aufräumen
+  --name x        Name statt Zufallskennung
+  -e A=B          Umgebungsvariable
+  -p 8080:80      Port des Wirts : Port im Container
+  -v pfad:/ziel   etwas hineinreichen
+  -it             interaktiv mit Terminal
+  -d              im Hintergrund
+
+  --rm ist beim Üben fast immer richtig. Ohne ihn sammeln sich
+  beendete Container an, bis docker ps -a unlesbar wird.
+
+
+  Marken
+  ─────────────
+      alpine            heißt in Wahrheit alpine:latest
+      alpine:3.20       eine bestimmte Fassung
+
+  latest ist keine Zusicherung, sondern nur ein Name. Wer ihn in
+  einer Auslieferung benutzt, bekommt irgendwann ein anderes Bild,
+  ohne etwas geändert zu haben.
+
+
+  Aufräumen
+  ─────────────
+  docker container prune      beendete Container weg
+  docker image prune          Bilder ohne Marke weg
+  docker system df            was belegt den Platz

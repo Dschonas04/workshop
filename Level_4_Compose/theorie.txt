@@ -1,0 +1,104 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 4: Compose
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Du beschreibst mehrere Container in einer Datei, statt
+  sie mit sechs run-Befehlen zusammenzuhalten.
+
+
+  Eine compose.yaml
+  ─────────────
+      services:
+        web:
+          image: nginx:1.27-alpine
+          ports:
+            - "8080:80"
+          depends_on:
+            - api
+
+        api:
+          build: ./api
+          environment:
+            DB_HOST: db
+          volumes:
+            - ./api:/app
+
+        db:
+          image: postgres:16-alpine
+          environment:
+            POSTGRES_PASSWORD: geheim
+          volumes:
+            - dbdaten:/var/lib/postgresql/data
+
+      volumes:
+        dbdaten:
+
+  Der Dateiname compose.yaml ist der heutige, docker-compose.yml
+  funktioniert weiter.
+
+
+  Die Befehle
+  ─────────────
+  docker compose up -d          alles starten
+  docker compose up --build     vorher neu bauen
+  docker compose ps             was läuft
+  docker compose logs -f web    Ausgabe verfolgen
+  docker compose exec web sh    hinein
+  docker compose down           anhalten und entfernen
+  docker compose down -v        samt Volumes -- Daten weg
+
+  Mit Podman: podman-compose, oder podman compose in neueren
+  Fassungen.
+
+
+  Was Compose von selbst tut
+  ─────────────
+  * Es legt ein eigenes Netz an. Alle Dienste erreichen sich über
+    ihren Dienstnamen: die api verbindet sich zu "db", nicht zu
+    einer IP.
+  * Es benennt Container nach Projekt und Dienst.
+  * Es merkt sich Volumes zwischen den Läufen.
+
+
+  depends_on sagt weniger, als man denkt
+  ─────────────
+  Es steuert nur die REIHENFOLGE des Startens, nicht die
+  Bereitschaft. Die Datenbank läuft, nimmt aber noch keine
+  Verbindungen an -- die api stirbt beim ersten Versuch.
+
+  Deshalb mit Zustandsprüfung:
+
+      db:
+        healthcheck:
+          test: ["CMD-SHELL", "pg_isready -U postgres"]
+          interval: 5s
+          retries: 5
+
+      api:
+        depends_on:
+          db:
+            condition: service_healthy
+
+  Oder die Anwendung wiederholt den Verbindungsversuch selbst --
+  was ohnehin die robustere Lösung ist, denn die Datenbank kann
+  auch später einmal wegbrechen.
+
+
+  Umgebung
+  ─────────────
+      environment:
+        NAME: wert
+      env_file:
+        - .env
+
+  Werte aus einer .env-Datei stehen auch in ${...} in der
+  compose.yaml zur Verfügung.
+
+
+  Profile
+  ─────────────
+      services:
+        werkzeug:
+          profiles: ["debug"]
+
+  Läuft nur bei docker compose --profile debug up.

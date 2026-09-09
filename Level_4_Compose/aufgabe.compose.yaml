@@ -1,0 +1,35 @@
+# ================================================================
+#  Level 4: Compose -- AUFGABE
+#  Ersetze jedes ___. Prüfen mit:  ./pruefen.sh 4
+# ================================================================
+services:
+
+  # ── AUFGABE 4.1 ────────────────────────────────────────────
+  # Der Dienst "api" wird aus dem Ordner ./api gebaut.
+  api:
+    ___: ./api
+    # ── AUFGABE 4.2 ──────────────────────────────────────────
+    # Setze die Umgebungsvariable GRUSS auf "moin".
+    ___:
+      GRUSS: moin
+    # ── AUFGABE 4.3 ──────────────────────────────────────────
+    # Hänge das Volume "gemeinsam" nach /gemeinsam ein.
+    ___:
+      - gemeinsam:/gemeinsam
+
+  # ── AUFGABE 4.4 ────────────────────────────────────────────
+  # Der Dienst "pruefer" benutzt alpine:3.20, hängt dasselbe
+  # Volume ein und darf erst NACH der api starten.
+  pruefer:
+    image: alpine:3.20
+    ___:
+      - api
+    volumes:
+      - gemeinsam:/gemeinsam
+    command: >
+      sh -c "sleep 3; cat /gemeinsam/api.log"
+
+# ── AUFGABE 4.5 ──────────────────────────────────────────────
+# Erkläre das Volume "gemeinsam".
+___:
+  gemeinsam:

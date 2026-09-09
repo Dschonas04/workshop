@@ -1,0 +1,37 @@
+════════════════════════════════════════════════════════════════
+  ABSCHLUSS: Ein Bild, ein Volume, ein Aufbau
+════════════════════════════════════════════════════════════════
+
+  Bringe zusammen, was in den fünf Leveln vorkam.
+
+  Teil 1 -- aufgabe.Dockerfile
+  ─────────────
+  Baue aus dem Ordner zaehler/ ein Bild:
+    * Grundlage alpine:3.20 mit fester Fassung
+    * Arbeitsverzeichnis /app
+    * zaehl.sh hineinkopieren und ausführbar machen
+    * Umgebungsvariable DIENST mit dem Wert "zaehler"
+    * Startbefehl in Klammerform
+
+  Das Skript zaehlt bei jedem Start um eins hoch. Den Stand legt es
+  unter /daten ab -- also muss dort etwas eingehängt sein, das den
+  Container überlebt.
+
+  Teil 2 -- aufgabe.compose.yaml
+  ─────────────
+  Beschreibe zwei Dienste:
+
+    zaehler   wird aus dem Dockerfile oben gebaut
+              (build mit context: . und dockerfile: aufgabe.Dockerfile)
+              hängt das Volume "stand" nach /daten
+    leser     alpine:3.20, hängt dasselbe Volume ein, startet erst
+              nach dem zaehler und gibt nach zwei Sekunden den
+              Inhalt von /daten/stand aus
+
+  Dazu die Erklärung des Volumes "stand".
+
+  Erwartetes Verhalten: nach dem ersten Lauf steht in /daten/stand
+  eine 1, der leser gibt sie aus. Beim zweiten Lauf ohne "down -v"
+  steht dort eine 2.
+
+  Prüfen mit:  ./pruefen.sh

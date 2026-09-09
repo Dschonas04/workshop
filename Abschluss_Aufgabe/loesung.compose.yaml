@@ -1,0 +1,19 @@
+services:
+  zaehler:
+    build:
+      context: ./zaehler
+      dockerfile: ../loesung.Dockerfile
+    volumes:
+      - stand:/daten
+
+  leser:
+    image: alpine:3.20
+    depends_on:
+      - zaehler
+    volumes:
+      - stand:/daten
+    command: >
+      sh -c "sleep 2; cat /daten/stand"
+
+volumes:
+  stand:

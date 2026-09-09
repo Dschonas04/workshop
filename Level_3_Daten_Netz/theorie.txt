@@ -1,0 +1,77 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 3: Daten, Netz und Umgebung
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Du bringst Daten aus einem Container heraus, lässt
+  zwei Container miteinander reden und reichst Werte hinein.
+
+
+  Warum Daten ein Thema sind
+  ─────────────
+  Die Schreibschicht eines Containers stirbt mit ihm. Wer eine
+  Datenbank ohne Volume startet, verliert alles beim ersten
+  docker rm -- und das kommt beim Aktualisieren des Bildes vor.
+
+
+  Volume
+  ─────────────
+      docker volume create daten
+      docker run -v daten:/var/lib/x bild
+
+  Docker verwaltet den Platz. Das ist die richtige Wahl für alles,
+  was der Container selbst schreibt.
+
+
+  Bind Mount
+  ─────────────
+      docker run -v /home/ich/projekt:/app bild
+      docker run -v "$PWD":/app bild
+
+  Ein Verzeichnis des Wirts wird hineingereicht. Richtig für den
+  Quelltext während der Entwicklung, falsch für Nutzdaten in der
+  Auslieferung.
+
+  Bei Podman zusätzlich :Z beachten, wenn SELinux läuft:
+
+      podman run -v "$PWD":/app:Z bild
+
+
+  Nur lesen
+  ─────────────
+      -v /etc/kram:/etc/kram:ro
+
+  Kostet nichts und verhindert, dass ein Container in etwas
+  schreibt, was er nur lesen sollte.
+
+
+  Netzwerke
+  ─────────────
+      docker network create kursnetz
+      docker run -d --name db --network kursnetz postgres
+      docker run --rm --network kursnetz alpine ping -c1 db
+
+  Im selben Netz erreichen sich Container ÜBER IHREN NAMEN. Es gibt
+  einen eingebauten Namensdienst.
+
+  Im Vorgabenetz (bridge) geht das NICHT. Deshalb ist ein eigenes
+  Netz je Anwendung der Normalfall -- Compose legt eines an, ohne
+  dass man etwas tut.
+
+
+  Ports
+  ─────────────
+      -p 8080:80        Wirt 8080 → Container 80
+      -p 127.0.0.1:8080:80   nur örtlich erreichbar
+
+  Ohne -p ist ein Container von außen nicht zu erreichen, egal was
+  darin lauscht. Innerhalb eines Netzes braucht es kein -p.
+
+
+  Umgebung
+  ─────────────
+      -e NAME=wert
+      --env-file .env
+
+  Geheimnisse gehören nicht in ein Bild und nicht in die
+  Kommandozeile (dort stehen sie in der Prozessliste). Für
+  Ausgelieferungen: Docker Secrets oder eine Datei mit Rechten.
