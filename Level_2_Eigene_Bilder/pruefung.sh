@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -u
-ordner="$1"; modus="$2"
-datei="$ordner/${modus}.Dockerfile"
+ordner="$1"; modus="$2"; grund="$3"
+datei="${grund}.Dockerfile"
 marke="kurs-level2:pruefung"
 
 bau="$($W build -f "$datei" -t "$marke" "$ordner/bau" 2>&1)"

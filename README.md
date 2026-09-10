@@ -8,12 +8,15 @@ ist. Dass beides fast gleich zu bedienen ist, gehört zum Lernstoff.
 
 ## Aufbau
 
-| Datei                    | Zweck                                       |
-| ------------------------ | ------------------------------------------- |
-| `theorie.txt`            | Konzepte lesen und verstehen                |
-| `beispiel.sh`            | Lauffähiges Beispiel (Level 1)              |
-| `aufgabe.*`              | Selbst lösen, Lücken mit `___` ausfüllen    |
-| `loesung.*`              | Musterlösung, erst nach dem eigenen Versuch |
+| Datei                    | Zweck                                     |
+| ------------------------ | ----------------------------------------- |
+| `theorie.txt`            | Konzepte lesen und verstehen              |
+| `beispiel.sh`            | Lauffähiges Beispiel (Level 1)            |
+| `Aufgabenstellung.txt`   | was zu tun ist, in Worten                 |
+| `uebung.*`               | deine Lösung -- eine leere Datei zum Anfangen |
+
+Die Musterlösungen liegen gesammelt in [`Loesungen/`](Loesungen/), nicht
+neben der Aufgabe.
 
 Je nach Level ist die Aufgabe ein Shell-Skript, ein Dockerfile oder eine
 compose.yaml -- so, wie die Sache es verlangt.

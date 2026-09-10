@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -u
-ordner="$1"; modus="$2"
+ordner="$1"; modus="$2"; grund="$3"
 $W rm -f kurs-5 >/dev/null 2>&1
-ausgabe="$(bash "$ordner/${modus}.sh" 2>/dev/null)"
+ausgabe="$(bash "${grund}.sh" 2>/dev/null)"
 
 pruefe "5.1 Werkzeug erkannt"        "$(sed -n 1p <<<"$ausgabe")" "$W"
 pruefe "5.2 innen läuft root"        "$(sed -n 2p <<<"$ausgabe")" "root"

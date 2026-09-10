@@ -4,7 +4,7 @@
 
   Bringe zusammen, was in den fünf Leveln vorkam.
 
-  Teil 1 -- aufgabe.Dockerfile
+  Teil 1 -- uebung.Dockerfile
   ─────────────
   Baue aus dem Ordner zaehler/ ein Bild:
     * Grundlage alpine:3.20 mit fester Fassung
@@ -17,7 +17,7 @@
   unter /daten ab -- also muss dort etwas eingehängt sein, das den
   Container überlebt.
 
-  Teil 2 -- aufgabe.compose.yaml
+  Teil 2 -- uebung.compose.yaml
   ─────────────
   Beschreibe zwei Dienste:
 

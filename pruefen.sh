@@ -50,7 +50,12 @@ for ordner in Level_*/ Abschluss_Aufgabe/; do
   printf '\n%s%s%s\n' "$FETT" "${ordner%/}" "$AUS"
   # Das Prüfskript bekommt den Ordner und den Modus und sucht sich
   # seine Dateien selbst -- die heißen je nach Level anders.
-  source "$ordner/pruefung.sh" "${ordner%/}" "$modus"
+  if [ "$modus" = loesung ]; then
+    grund="Loesungen/${ordner%/}"
+  else
+    grund="${ordner}uebung"
+  fi
+  source "$ordner/pruefung.sh" "${ordner%/}" "$modus" "$grund"
 done
 
 printf '\n%s%d von %d Aufgaben stimmen.%s\n' "$FETT" "$gut" "$gesamt" "$AUS"

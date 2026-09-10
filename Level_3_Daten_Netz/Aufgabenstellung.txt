@@ -1,0 +1,28 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 3: Daten Netz -- AUFGABENSTELLUNG
+════════════════════════════════════════════════════════════════
+
+  Schreibe deine Lösung in uebung.sh.
+
+  Prüfen mit:  ./pruefen.sh 3
+  Musterlösung danach:  Loesungen/Level_3_Daten_Netz.sh
+
+  AUFGABE 3.1
+  ──────────────────────────────────
+  Reiche das Verzeichnis $ARBEIT als /daten in den Container und
+  schreibe darin die Datei notiz.txt mit dem Inhalt "aus dem Container".
+
+  AUFGABE 3.2
+  ──────────────────────────────────
+  Reiche dasselbe Verzeichnis NUR LESEND hinein und versuche zu
+  schreiben. Der Befehl muss scheitern; gib dann "schreibgeschuetzt" aus.
+
+  AUFGABE 3.3
+  ──────────────────────────────────
+  Lege ein Volume namens kurs-daten an, schreibe hinein, entferne
+  den Container und lies mit einem NEUEN Container wieder aus.
+
+  AUFGABE 3.4
+  ──────────────────────────────────
+  Lege ein Netz kursnetz an, starte darin einen Container "ziel"
+  im Hintergrund und erreiche ihn aus einem zweiten ÜBER SEINEN NAMEN.

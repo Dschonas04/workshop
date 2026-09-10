@@ -1,0 +1,43 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 2: Eigene Bilder -- AUFGABENSTELLUNG
+════════════════════════════════════════════════════════════════
+
+  Schreibe dein Dockerfile in uebung.Dockerfile.
+
+  Gebaut wird mit dem Ordner bau/ als Kontext. Darin liegt
+  start.sh -- das Skript gibt aus, wer es ist und als wem es läuft.
+
+  Prüfen mit:  ./pruefen.sh 2
+  Musterlösung danach:  Loesungen/Level_2_Eigene_Bilder.Dockerfile
+
+  AUFGABE 2.1
+  ──────────────────────────────────
+  Grundlage ist alpine:3.20 -- mit fester Fassung,
+  nicht latest.
+
+  AUFGABE 2.2
+  ──────────────────────────────────
+  Arbeitsverzeichnis /app.
+
+  AUFGABE 2.3
+  ──────────────────────────────────
+  Lege einen Nutzer "dienst" an und wechsle zu ihm,
+  damit im Container nicht root läuft.
+
+  AUFGABE 2.4
+  ──────────────────────────────────
+  Kopiere start.sh aus dem Kontext nach /app.
+
+  AUFGABE 2.5
+  ──────────────────────────────────
+  Setze die Umgebungsvariable NAME auf "kursbild".
+  Jetzt der Wechsel zum Nutzer (siehe 2.3).
+
+  AUFGABE 2.6
+  ──────────────────────────────────
+  Startbefehl in Klammerform, damit keine Shell
+  dazwischensteht.
+
+  Der Prüfer baut das Bild, startet es und sieht sich die Ausgabe
+  an: Name aus der Umgebungsvariablen, Kennung nicht root,
+  Arbeitsverzeichnis /app.

@@ -1,7 +1,7 @@
 services:
 
   api:
-    build: ./api
+    build: ../Level_4_Compose/api
     environment:
       GRUSS: moin
     volumes:

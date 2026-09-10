@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 set -u
-ordner="$1"; modus="$2"
+ordner="$1"; modus="$2"; grund="$3"
 COMPOSE="$(compose_finden "$W")"
 if [ -z "$COMPOSE" ]; then
   pruefe "4.0 Compose vorhanden" "fehlt" "docker compose oder podman-compose"
   return 0 2>/dev/null || exit 0
 fi
 
-datei="$ordner/${modus}.compose.yaml"
+datei="${grund}.compose.yaml"
 projekt="kurs4"
 $COMPOSE -f "$datei" -p "$projekt" down -v >/dev/null 2>&1
 

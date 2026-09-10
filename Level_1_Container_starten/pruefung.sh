@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -u
-ordner="$1"; modus="$2"
-skript="$ordner/${modus}.sh"
+ordner="$1"; modus="$2"; grund="$3"
+skript="${grund}.sh"
 $W rm -f kurs-1 >/dev/null 2>&1
 ausgabe="$(bash "$skript" 2>/dev/null)"
 
