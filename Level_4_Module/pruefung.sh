@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 set -u
-quelle="$1"; hier="$(cd "$(dirname "$quelle")" && pwd)"
+quelle="$1"; hier="$(cd Level_4_Module && pwd)"
 arbeit="$(mktemp -d)"; cp "$quelle" "$arbeit/main.tf"
 mkdir -p "$arbeit/modul"
-if [[ "$(basename "$quelle")" == loesung.tf ]]; then
-  cp -r "$hier/loesung_modul/dienst" "$arbeit/modul/"
+if [[ "$quelle" == Loesungen/* ]]; then
+  cp -r Loesungen/Level_4_Module_modul/dienst "$arbeit/modul/"
 else
   cp -r "$hier/modul/dienst" "$arbeit/modul/"
 fi

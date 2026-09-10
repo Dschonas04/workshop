@@ -1,0 +1,31 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 1: Erste Ressource -- AUFGABENSTELLUNG
+════════════════════════════════════════════════════════════════
+
+  Schreibe deinen Aufbau in uebung.tf. Du fängst mit dem leeren
+  Gerüst an -- es gibt nichts auszufüllen, nur zu bauen.
+
+  Der Prüfer kopiert deine Datei in ein frisches Verzeichnis und
+  ruft dort init und apply auf. Dein Kursordner bleibt sauber.
+
+  Prüfen mit:  ./pruefen.sh 1
+  Musterlösung danach:  Loesungen/Level_1_Erste_Ressource.tf
+
+  AUFGABE 1.1
+  ──────────────────────────────────
+  Lege die Datei ausgabe/hallo.txt an, Inhalt genau:
+  Hallo Terraform
+  mit Zeilenumbruch am Ende.
+
+  AUFGABE 1.2
+  ──────────────────────────────────
+  Lege eine zweite Datei ausgabe/verweis.txt an, deren Inhalt der
+  Dateiname der ersten Ressource ist, gefolgt von einem Umbruch.
+  Nutze dafür den Bezug auf die erste Ressource, keinen festen Text.
+
+  AUFGABE 1.3
+  ──────────────────────────────────
+  Gib den Inhalt der ersten Datei als Ausgabewert "gruss" heraus.
+
+  Nach dem apply läuft ein plan -detailed-exitcode: der muss
+  nichts mehr vorhaben, sonst ist der Aufbau nicht stabil.

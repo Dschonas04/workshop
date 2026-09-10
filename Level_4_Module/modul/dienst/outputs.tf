@@ -1,5 +1,1 @@
-# ── AUFGABE 4.2 ────────────────────────────────────────────────
-# Gib den Pfad der erzeugten Datei nach außen.
-output "pfad" {
-  value = ___
-}
+# Was das Modul nach außen gibt. Siehe ../../Aufgabenstellung.txt.

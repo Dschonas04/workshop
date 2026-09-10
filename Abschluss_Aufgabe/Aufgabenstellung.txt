@@ -2,7 +2,7 @@
   ABSCHLUSS: Eine kleine Auslieferung beschreiben
 ════════════════════════════════════════════════════════════════
 
-  Schreibe in aufgabe.tf einen Aufbau, der alles aus den vier
+  Schreibe deinen Aufbau in uebung.tf, der alles aus den vier
   Leveln zusammenbringt. Es entsteht nichts außer Dateien unter
   ausgabe/.
 

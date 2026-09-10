@@ -9,12 +9,15 @@ Wegwerf-Verzeichnis.
 
 ## Aufbau
 
-| Datei             | Zweck                                        |
-| ----------------- | -------------------------------------------- |
-| `theorie.txt`     | Konzepte lesen und verstehen                 |
-| `beispiel.tf.txt` | Beispiel zum Anschauen und Kopieren          |
-| `aufgabe.tf`      | Selbst lösen, Lücken mit `___` ausfüllen     |
-| `loesung.tf`      | Musterlösung, erst nach dem eigenen Versuch  |
+| Datei                  | Zweck                                    |
+| ---------------------- | ---------------------------------------- |
+| `theorie.txt`          | Konzepte lesen und verstehen             |
+| `beispiel.tf.txt`      | Beispiel zum Anschauen und Kopieren      |
+| `Aufgabenstellung.txt` | was zu tun ist, in Worten                |
+| `uebung.tf`            | dein Aufbau -- ein leeres Gerüst zum Anfangen |
+
+Die Musterlösungen liegen gesammelt in [`Loesungen/`](Loesungen/), nicht
+neben der Aufgabe.
 
 Der Prüfer kopiert deine `aufgabe.tf` in ein frisches Verzeichnis, ruft
 `init` und `apply` auf und sieht sich an, was dabei herauskam. Dein
@@ -32,7 +35,7 @@ keinen kaputten Zustand.
 Von Hand ausprobieren:
 
 ```bash
-mkdir -p /tmp/tf && cp Level_1_Erste_Ressource/aufgabe.tf /tmp/tf/main.tf
+mkdir -p /tmp/tf && cp Level_1_Erste_Ressource/uebung.tf /tmp/tf/main.tf
 cd /tmp/tf && tofu init && tofu apply
 ```
 
