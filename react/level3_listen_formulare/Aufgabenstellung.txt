@@ -1,0 +1,38 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 3: listen formulare -- AUFGABENSTELLUNG
+════════════════════════════════════════════════════════════════
+
+  Schreibe deine Komponenten in uebung.jsx. Die Exporte stehen
+  schon da -- die Tests importieren sie so. Der Inhalt ist deins.
+
+  Die Tests in uebung.test.jsx sind die Aufgabe. Ändere sie nicht:
+  sobald sie grün sind, stimmt deine Lösung.
+
+  Die Tests suchen über Rolle und Beschriftung. Ohne <label>
+  mit htmlFor findet getByLabelText dein Feld nicht -- und ein
+  Screenreader auch nicht.
+
+  Prüfen mit:  ./pruefen.sh 3
+  Musterlösung danach:  Loesungen/level3/
+
+  AUFGABE 3.1
+  ──────────────────────────────────
+  NeuerEintrag zeigt ein Formular mit einem beschrifteten Feld
+  ("Aufgabe") und einem Knopf "hinzufügen".
+  Beim Absenden ruft es onHinzufuegen mit dem getrimmten Text auf
+  und leert das Feld. Leere Eingaben werden nicht gemeldet.
+  Die Seite darf sich nicht neu laden.
+
+  AUFGABE 3.2
+  ──────────────────────────────────
+  Aufgabenliste verwaltet die Liste. Jeder Eintrag ist
+  { id, text, erledigt }.
+  Sie zeigt:
+  - das Formular von oben
+  - eine <ul> mit einem <li> je Eintrag
+  - je Eintrag eine Checkbox (beschriftet mit dem Text), die
+  erledigt umschaltet
+  - je Eintrag einen Knopf "löschen"
+  - ein Element mit data-testid="offen", das die Zahl der noch
+  offenen Einträge zeigt, etwa "2 offen"
+  Erledigte Einträge bekommen am <li> die Klasse "erledigt".

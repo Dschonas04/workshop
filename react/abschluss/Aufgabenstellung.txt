@@ -1,0 +1,35 @@
+════════════════════════════════════════════════════════════════
+  ABSCHLUSS: Notizen
+════════════════════════════════════════════════════════════════
+
+  Baue in uebung.jsx eine kleine Notizverwaltung. Alles aus den
+  vier Leveln kommt darin vor.
+
+  Verlangt ist eine Komponente Notizen({ laden }):
+
+  1. Beim Einhängen ruft sie laden() auf. Das ist eine Funktion,
+     die ein Promise auf ein Array von { id, titel, wichtig }
+     zurückgibt.
+       - während des Wartens: "lädt…"
+       - bei einem Fehler: "Fehler: <text>"
+
+  2. Danach zeigt sie:
+       - ein Formular mit dem beschrifteten Feld "Titel" und dem
+         Knopf "anlegen". Leere Titel werden nicht angelegt, das
+         Feld leert sich nach dem Anlegen.
+       - eine <ul> mit einem <li> je Notiz
+       - je Notiz eine Checkbox, beschriftet mit dem Titel, die
+         "wichtig" umschaltet
+       - je Notiz einen Knopf "löschen"
+       - ein Element mit data-testid="anzahl", das
+         "<gesamt> Notizen, <wichtige> wichtig" zeigt
+
+  3. Wichtige Notizen bekommen am <li> die Klasse "wichtig".
+
+  4. Ein Knopf "nur wichtige" blendet die übrigen aus; noch einmal
+     gedrückt zeigt er wieder alle. Seine Beschriftung wechselt
+     dabei zu "alle zeigen".
+
+  5. Neue Notizen kommen ans Ende und sind nicht wichtig.
+
+  Prüfen mit:  ./pruefen.sh abschluss

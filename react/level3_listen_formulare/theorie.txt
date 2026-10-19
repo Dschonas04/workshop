@@ -1,0 +1,80 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 3: Listen und Formulare
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Du verwaltest eine Liste im Zustand und baust ein
+  Formular, das prüft, bevor es etwas hinzufügt.
+
+
+  Liste im Zustand ändern
+  ─────────────
+  Immer eine NEUE Liste erzeugen:
+
+      hinzufügen  setListe([...liste, neu])
+      entfernen   setListe(liste.filter((e) => e.id !== id))
+      ändern      setListe(liste.map((e) =>
+                    e.id === id ? { ...e, erledigt: true } : e))
+
+  push, splice und Zuweisungen an e.feld ändern die alte Liste.
+  React sieht dieselbe Referenz und zeichnet nicht neu.
+
+
+  key
+  ─────────────
+      {liste.map((e) => <Zeile key={e.id} ... />)}
+
+  Der Index als key geht so lange gut, bis sich die Reihenfolge
+  ändert. Dann wandert der Zustand einer Zeile zur falschen.
+
+  Eigene Kennungen: crypto.randomUUID() oder ein Zähler.
+
+
+  Formulare
+  ─────────────
+      function Neu({ onHinzufuegen }) {
+        const [text, setText] = useState('');
+
+        function absenden(e) {
+          e.preventDefault();
+          const sauber = text.trim();
+          if (!sauber) return;
+          onHinzufuegen(sauber);
+          setText('');
+        }
+
+        return (
+          <form onSubmit={absenden}>
+            <input value={text} onChange={(e) => setText(e.target.value)} />
+            <button type="submit">hinzufügen</button>
+          </form>
+        );
+      }
+
+  Das Formular kennt die Liste nicht. Es meldet nach oben, was
+  jemand eingegeben hat -- der Elternteil entscheidet, was damit
+  geschieht.
+
+
+  Rückmeldung nach oben
+  ─────────────
+  Props gehen nach unten, Ereignisse nach oben. Eine Funktion als
+  Prop ist der Weg zurück:
+
+      <Neu onHinzufuegen={(text) => setListe([...liste, {...}])} />
+
+
+  Filtern und Zählen
+  ─────────────
+      const offen = liste.filter((e) => !e.erledigt);
+
+  Kein zweiter Zustand, sondern beim Zeichnen berechnet.
+
+
+  Zugänglichkeit, nebenbei
+  ─────────────
+      <label htmlFor="titel">Titel</label>
+      <input id="titel" ... />
+
+  Damit findet nicht nur ein Screenreader das Feld, sondern auch
+  ein Test über getByLabelText -- die Prüfung dieses Levels tut
+  genau das.

@@ -1,0 +1,40 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 4: effekte hooks -- AUFGABENSTELLUNG
+════════════════════════════════════════════════════════════════
+
+  Schreibe deine Komponenten in uebung.jsx. Die Exporte stehen
+  schon da -- die Tests importieren sie so. Der Inhalt ist deins.
+
+  Die Tests in uebung.test.jsx sind die Aufgabe. Ändere sie nicht:
+  sobald sie grün sind, stimmt deine Lösung.
+
+  Ein Test prüft nach dem Aushängen die Zahl der laufenden
+  Zeitgeber. Wer clearInterval vergisst, wird rot.
+
+  Prüfen mit:  ./pruefen.sh 4
+  Musterlösung danach:  Loesungen/level4/
+
+  AUFGABE 4.1
+  ──────────────────────────────────
+  useSchalter ist ein eigener Hook. Er gibt [an, umschalten]
+  zurück. umschalten dreht den Wert um.
+
+  AUFGABE 4.2
+  ──────────────────────────────────
+  Titel setzt document.title auf `${anzahl} offen`, immer wenn
+  sich anzahl ändert -- und nur dann.
+
+  AUFGABE 4.3
+  ──────────────────────────────────
+  Uhr zählt jede 50 ms um eins hoch und zeigt den Stand.
+  Beim Aushängen muss der Zeitgeber aufhören -- sonst läuft er
+  weiter und schreibt in eine Komponente, die es nicht mehr gibt.
+
+  AUFGABE 4.4
+  ──────────────────────────────────
+  Laden ruft beim Einhängen die Funktion hole() auf und zeigt:
+  - während des Wartens: "lädt…"
+  - danach: den gelieferten Text
+  - bei einem Fehler: "Fehler: <text>"
+  Eine Antwort, die nach dem Aushängen eintrifft, darf keinen
+  Zustand mehr setzen.

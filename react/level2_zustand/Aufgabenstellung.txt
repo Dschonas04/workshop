@@ -1,0 +1,41 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 2: zustand -- AUFGABENSTELLUNG
+════════════════════════════════════════════════════════════════
+
+  Schreibe deine Komponenten in uebung.jsx. Die Exporte stehen
+  schon da -- die Tests importieren sie so. Der Inhalt ist deins.
+
+  Die Tests in uebung.test.jsx sind die Aufgabe. Ändere sie nicht:
+  sobald sie grün sind, stimmt deine Lösung.
+
+  Prüfen mit:  ./pruefen.sh 2
+  Musterlösung danach:  Loesungen/level2/
+
+  AUFGABE 2.1
+  ──────────────────────────────────
+  Zaehler zeigt den Stand in einem <output> und hat zwei Knöpfe:
+  "mehr" erhöht um eins, "weniger" verringert um eins.
+  Der Anfangswert kommt aus der Prop start (Vorgabe 0).
+
+  AUFGABE 2.2
+  ──────────────────────────────────
+  DoppelKlick hat einen Knopf "zweimal", der den Stand um ZWEI
+  erhöht -- mit zwei getrennten Aufrufen der Setzfunktion.
+  Achtung: setStand(stand + 1) zweimal ergibt nur +1.
+
+  AUFGABE 2.3
+  ──────────────────────────────────
+  Eingabe ist ein kontrolliertes Textfeld. Darunter steht in einem
+  <p> die Länge des Textes: "5 Zeichen".
+
+  AUFGABE 2.4
+  ──────────────────────────────────
+  Schalter zeigt einen Knopf, dessen Beschriftung zwischen "an" und
+  "aus" wechselt. Er beginnt bei "aus".
+
+  AUFGABE 2.5
+  ──────────────────────────────────
+  Warenkorb bekommt artikel als Prop: [{ id, name, preis }].
+  Er zeigt jeden Artikel und darunter die Summe in einem Element
+  mit data-testid="summe", zwei Nachkommastellen und " €".
+  Die Summe ist KEIN eigener Zustand.

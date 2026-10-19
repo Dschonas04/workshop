@@ -1,0 +1,75 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 2: Zustand und Ereignisse
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Deine Komponente merkt sich etwas und reagiert auf
+  Klicks -- ohne dass du das DOM anfasst.
+
+
+  useState
+  ─────────────
+      const [anzahl, setAnzahl] = useState(0);
+
+  Gibt den aktuellen Wert und eine Funktion zum Setzen zurück.
+  Setzen heißt: React zeichnet die Komponente neu.
+
+      <button onClick={() => setAnzahl(anzahl + 1)}>mehr</button>
+
+
+  Zustand ist unveränderlich
+  ─────────────
+  Nie hineinschreiben, immer neu setzen:
+
+      liste.push(neu)                 falsch, React merkt nichts
+      setListe([...liste, neu])       richtig
+
+      person.name = 'Anna'            falsch
+      setPerson({ ...person, name: 'Anna' })    richtig
+
+  React vergleicht die Referenz. Dasselbe Objekt mit anderem Inhalt
+  sieht für React unverändert aus.
+
+
+  Setzen mit Funktion
+  ─────────────
+      setAnzahl((a) => a + 1);
+
+  Nötig, sobald der neue Wert vom alten abhängt und mehrere
+  Änderungen zusammenfallen können:
+
+      setAnzahl(anzahl + 1);
+      setAnzahl(anzahl + 1);      → am Ende +1, nicht +2
+
+      setAnzahl((a) => a + 1);
+      setAnzahl((a) => a + 1);    → +2
+
+
+  Ereignisse
+  ─────────────
+      onClick, onChange, onSubmit, onKeyDown …
+
+      <input value={text} onChange={(e) => setText(e.target.value)} />
+
+  Ein Eingabefeld mit value UND onChange ist "kontrolliert": der
+  Zustand ist die Wahrheit, das Feld zeigt ihn nur. Nur value ohne
+  onChange ergibt ein Feld, in das man nicht tippen kann.
+
+      <form onSubmit={(e) => { e.preventDefault(); ... }}>
+
+  Ohne preventDefault lädt der Browser die Seite neu.
+
+
+  Abgeleitetes NICHT in den Zustand
+  ─────────────
+      const [artikel, setArtikel] = useState([]);
+      const summe = artikel.reduce((s, a) => s + a.preis, 0);
+
+  Die Summe ist kein eigener Zustand. Wer sie speichert, muss sie
+  bei jeder Änderung nachziehen -- und vergisst es an einer Stelle.
+
+
+  Zustand gehört nach oben, wo er gebraucht wird
+  ─────────────
+  Zwei Komponenten brauchen denselben Wert? Dann liegt er beim
+  gemeinsamen Elternteil, und beide bekommen ihn als Prop. Nach
+  unten reichen ist einfach, nach oben nicht.

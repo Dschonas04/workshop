@@ -1,0 +1,79 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 4: Effekte und eigene Hooks
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Du sprichst mit der Welt außerhalb von React -- und
+  packst wiederkehrende Logik in einen eigenen Hook.
+
+
+  useEffect
+  ─────────────
+      useEffect(() => {
+        document.title = `${anzahl} offen`;
+      }, [anzahl]);
+
+  Läuft NACH dem Zeichnen. Die Liste am Ende sagt, wovon der Effekt
+  abhängt:
+
+      [anzahl]   nur wenn sich anzahl ändert
+      []         einmal beim Einhängen
+      (fehlt)    nach jedem Zeichnen -- fast immer ein Fehler
+
+  Ein Effekt ist für Dinge AUSSERHALB von React: Titel setzen,
+  Zeitgeber, Abonnements, Netzabrufe. Etwas aus dem Zustand
+  auszurechnen gehört NICHT in einen Effekt, sondern direkt in den
+  Rumpf der Komponente.
+
+
+  Aufräumen
+  ─────────────
+      useEffect(() => {
+        const id = setInterval(() => setStand((s) => s + 1), 1000);
+        return () => clearInterval(id);
+      }, []);
+
+  Die zurückgegebene Funktion läuft vor dem nächsten Durchlauf und
+  beim Aushängen. Ohne sie laufen zwei Zeitgeber, dann vier.
+
+  Im Strict Mode hängt React eine Komponente im Entwicklungsmodus
+  absichtlich zweimal ein -- genau damit fehlendes Aufräumen sofort
+  auffällt.
+
+
+  Netzabrufe und Abbruch
+  ─────────────
+      useEffect(() => {
+        let abgemeldet = false;
+        hole().then((d) => {
+          if (!abgemeldet) setDaten(d);
+        });
+        return () => { abgemeldet = true; };
+      }, []);
+
+  Ohne das setzt eine späte Antwort den Zustand einer Komponente,
+  die es nicht mehr gibt.
+
+
+  Eigene Hooks
+  ─────────────
+  Eine Funktion, deren Name mit "use" beginnt und die andere Hooks
+  benutzt:
+
+      function useSchalter(anfang = false) {
+        const [an, setAn] = useState(anfang);
+        const umschalten = () => setAn((a) => !a);
+        return [an, umschalten];
+      }
+
+  Das ist keine Technik für sich, sondern nur eine Funktion. Sie
+  teilt Logik, nicht Zustand: zwei Komponenten, die denselben Hook
+  benutzen, haben jede ihren eigenen Zustand.
+
+
+  Die Regeln für Hooks
+  ─────────────
+  1. Nur ganz oben in der Komponente aufrufen -- nicht in
+     Bedingungen, Schleifen oder Funktionen darin.
+  2. Nur aus Komponenten oder anderen Hooks.
+
+  Der Grund: React erkennt Hooks an der Reihenfolge, nicht am Namen.

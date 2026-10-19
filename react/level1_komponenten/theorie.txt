@@ -1,0 +1,75 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 1: Komponenten und Props
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Du schreibst Komponenten, die aus ihren Eingaben eine
+  Ansicht machen -- und sonst nichts.
+
+
+  Eine Komponente
+  ─────────────
+      export function Gruss({ name }) {
+        return <p>Hallo, {name}!</p>;
+      }
+
+  Eine Funktion, die JSX zurückgibt. Der Name beginnt groß, sonst
+  hält React sie für ein HTML-Element.
+
+
+  JSX
+  ─────────────
+  Sieht aus wie HTML, ist aber JavaScript:
+
+      className statt class
+      htmlFor statt for
+      {ausdruck} für alles Berechnete
+      style={{ color: 'red' }}   ein Objekt, keine Zeichenkette
+
+  Ein Ausdruck, kein Befehl: {if (...)} geht nicht. Stattdessen:
+
+      {angemeldet ? <Abmelden /> : <Anmelden />}
+      {fehler && <p className="fehler">{fehler}</p>}
+
+
+  Props
+  ─────────────
+  Alles, was von außen hereinkommt, in einem Objekt:
+
+      <Gruss name="Anna" laut />
+
+      function Gruss({ name, laut = false }) { ... }
+
+  Props sind für die Komponente unveränderlich. Wer sie ändern
+  will, ändert sie beim Erzeuger.
+
+
+  children
+  ─────────────
+      function Kasten({ titel, children }) {
+        return (
+          <section>
+            <h2>{titel}</h2>
+            {children}
+          </section>
+        );
+      }
+
+      <Kasten titel="Hinweis">
+        <p>Inhalt</p>
+      </Kasten>
+
+
+  Listen
+  ─────────────
+      {namen.map((n) => <li key={n}>{n}</li>)}
+
+  key muss stabil und eindeutig sein. Der Index ist eine schlechte
+  Wahl, sobald sich die Reihenfolge ändern kann -- React ordnet
+  dann den falschen Zustand dem falschen Eintrag zu.
+
+
+  Was eine Komponente NICHT tut
+  ─────────────
+  Sie rechnet, sie zeigt an. Sie schreibt nicht ins DOM, sie
+  verändert keine Props, und sie hat keine Nebenwirkungen beim
+  Zeichnen. Alles andere gehört in ein Ereignis oder einen Effekt.
