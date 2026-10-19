@@ -1,0 +1,41 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 2: Bedingungen -- AUFGABENSTELLUNG
+════════════════════════════════════════════════════════════════
+
+  Schreibe deine Lösung in uebung.sh. Du fängst mit einer
+  leeren Datei an -- es gibt nichts auszufüllen, nur zu bauen.
+
+  Prüfen mit:  ../pruefen.sh 2
+  Musterlösung danach:  ../Loesungen/Level_2_Bedingungen.sh
+
+  AUFGABE 2.1
+  ──────────────────────────────────
+  Prüfe, ob /etc/passwd eine Datei ist.
+  Gib "Datei da" aus, wenn ja, sonst "Datei fehlt".
+
+  AUFGABE 2.2
+  ──────────────────────────────────
+  Gib den Exit-Code des folgenden Befehls aus (nur die Zahl).
+  Der Befehl schlägt absichtlich fehl.
+
+  AUFGABE 2.3
+  ──────────────────────────────────
+  Vergleiche zwei Zahlen. Gib "groesser", "kleiner" oder "gleich" aus.
+
+  AUFGABE 2.4
+  ──────────────────────────────────
+  name ist leer. Gib "leer" aus -- mit einem Test auf Leere,
+  nicht mit einem Vergleich auf "".
+
+  AUFGABE 2.5
+  ──────────────────────────────────
+  Schreibe ein case, das für "gruen" → "fahren", für "rot" →
+  "halten" und für alles andere → "unklar" ausgibt.
+
+  AUFGABE 2.6
+  ──────────────────────────────────
+  Gib "erreichbar" aus, wenn /tmp ein Verzeichnis ist --
+  in EINER Zeile, ohne if.
+
+  Die Ausgaben müssen in dieser Reihenfolge kommen: der Prüfer
+  sieht sich die Zeilen einzeln an.

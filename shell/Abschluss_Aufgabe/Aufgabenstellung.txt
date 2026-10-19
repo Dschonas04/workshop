@@ -1,0 +1,41 @@
+════════════════════════════════════════════════════════════════
+  ABSCHLUSS: Ein Werkzeug, das jemand benutzen kann
+════════════════════════════════════════════════════════════════
+
+  Schreibe in uebung.sh ein Skript, das eine Logdatei auswertet.
+  Es soll alles zusammenbringen, was in den fünf Leveln vorkam.
+
+  Aufruf:
+
+      ./uebung.sh <logdatei>
+
+  Verhalten:
+
+  1. Ohne Argument: Meldung "Aufruf: <skriptname> <logdatei>" nach
+     stderr und Exit-Code 2.
+
+  2. Datei nicht lesbar: Meldung "Nicht lesbar: <pfad>" nach stderr
+     und Exit-Code 1.
+
+  3. Sonst ein Bericht auf stdout, genau in dieser Form:
+
+         Zeilen: 10
+         Fehler: 4
+         Haeufigste Adresse: 10.0.2.10 (4)
+         Bytes: 17480
+
+     Zeilen  = Anzahl der Zeilen
+     Fehler  = Zeilen, deren Status (vorletztes Feld) 400 oder
+               größer ist
+     Haeufigste Adresse = erstes Feld, das am häufigsten vorkommt,
+               mit der Anzahl in Klammern
+     Bytes   = Summe des letzten Feldes
+
+  4. Das Skript räumt hinter sich auf, falls es Temporäres anlegt,
+     und beendet mit 0, wenn der Bericht steht.
+
+  Zum Ausprobieren liegt die Datei aus Level 4 bereit:
+
+      ./uebung.sh ../Level_4_Textwerkzeuge/daten/zugriffe.log
+
+  Prüfen mit:  ../pruefen.sh

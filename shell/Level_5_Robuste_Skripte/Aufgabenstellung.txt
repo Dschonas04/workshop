@@ -1,0 +1,45 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 5: Robuste Skripte -- AUFGABENSTELLUNG
+════════════════════════════════════════════════════════════════
+
+  Schreibe deine Lösung in uebung.sh. Du fängst mit einer
+  leeren Datei an -- es gibt nichts auszufüllen, nur zu bauen.
+
+  Für 5.5 brauchst du das Verzeichnis aus 5.2 -- die Aufgaben
+  bauen hier aufeinander auf.
+
+  Prüfen mit:  ../pruefen.sh 5
+  Musterlösung danach:  ../Loesungen/Level_5_Robuste_Skripte.sh
+
+  AUFGABE 5.1
+  ──────────────────────────────────
+  Setze den Kopf so, dass das Skript bei Fehlern abbricht,
+  nicht gesetzte Variablen meldet und Pipes ernst nimmt.
+
+  AUFGABE 5.2
+  ──────────────────────────────────
+  Lege ein temporäres Verzeichnis an und sorge dafür, dass es
+  beim Beenden verschwindet -- auch bei einem Abbruch.
+
+  AUFGABE 5.3
+  ──────────────────────────────────
+  Schreibe eine Funktion melde, die ihre Argumente nach stderr
+  ausgibt. Der Prüfer schaut, dass auf stdout nichts landet.
+
+  AUFGABE 5.4
+  ──────────────────────────────────
+  Vervollständige die Funktion: sie soll die übergebene Zahl
+  verdoppeln und das Ergebnis ausgeben. zahl muss lokal sein.
+
+  AUFGABE 5.5
+  ──────────────────────────────────
+  Lege drei Dateien mit Leerzeichen im Namen an und zähle sie
+  mit find -- so, dass Leerzeichen nichts kaputt machen.
+  Gib nur die Anzahl aus.
+
+  AUFGABE 5.6
+  ──────────────────────────────────
+  Beende das Skript mit Exit-Code 3.
+
+  Die Ausgaben müssen in dieser Reihenfolge kommen: der Prüfer
+  sieht sich die Zeilen einzeln an.

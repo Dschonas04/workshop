@@ -1,0 +1,83 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 5: Robuste Skripte
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Dein Skript hört auf, wenn etwas schiefgeht, statt
+  munter weiterzumachen -- und räumt hinter sich auf.
+
+
+  Der Kopf
+  ─────────────
+      #!/usr/bin/env bash
+      set -euo pipefail
+
+  set -e            bei einem Fehler beenden
+  set -u            eine nicht gesetzte Variable ist ein Fehler
+  set -o pipefail   eine Pipe scheitert, wenn irgendein Glied scheitert
+
+  Ohne pipefail gilt nur das letzte Glied:
+
+      grep gibtesnicht datei | wc -l     → Exit 0, obwohl grep scheiterte
+
+  set -e hat Grenzen: in if, while, && und || wird ein Fehler
+  absichtlich nicht zum Abbruch. Das ist gewollt, sonst wäre keine
+  Prüfung mehr möglich.
+
+
+  Aufräumen mit trap
+  ─────────────
+      arbeit="$(mktemp -d)"
+      trap 'rm -rf "$arbeit"' EXIT
+
+  trap läuft auch, wenn das Skript abbricht oder jemand Strg+C
+  drückt. Ein rm am Ende des Skripts läuft in dem Fall nicht.
+
+  Signale: EXIT (immer), INT (Strg+C), TERM (kill).
+
+
+  Temporäres richtig anlegen
+  ─────────────
+      datei="$(mktemp)"
+      ordner="$(mktemp -d)"
+
+  Nicht /tmp/meinskript.tmp: zwei gleichzeitige Läufe fallen sich
+  ins Wort, und auf einem gemeinsamen Rechner kann jemand die Datei
+  vorher anlegen.
+
+
+  Funktionen
+  ─────────────
+      melde() {
+          printf '%s\n' "$*" >&2
+      }
+
+      pruefe_datei() {
+          local pfad="$1"
+          [[ -r "$pfad" ]] || { melde "nicht lesbar: $pfad"; return 1; }
+      }
+
+  local hält Variablen in der Funktion. Ohne local sind sie global,
+  und eine Schleifenvariable i überschreibt das i des Aufrufers.
+
+  return gibt einen Exit-Code zurück, kein Ergebnis. Ergebnisse gehen
+  über die Ausgabe: ergebnis="$(meine_funktion)".
+
+
+  Meldungen trennen
+  ─────────────
+      printf 'Ergebnis\n'            nach stdout, für die Weiterverarbeitung
+      printf 'Hinweis\n' >&2         nach stderr, für den Menschen
+
+  Wer das trennt, dessen Skript lässt sich in eine Pipe hängen.
+
+
+  Dateien sicher durchlaufen
+  ─────────────
+      find . -name '*.log' -print0 |
+      while IFS= read -r -d '' datei; do
+          printf '%s\n' "$datei"
+      done
+
+  -print0 und -d '' trennen mit einem Null-Byte statt einem
+  Zeilenumbruch. Nur so überlebt ein Dateiname mit Zeilenumbruch --
+  und den gibt es, spätestens wenn jemand ihn böswillig anlegt.

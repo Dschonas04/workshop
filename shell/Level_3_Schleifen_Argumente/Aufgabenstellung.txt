@@ -1,0 +1,40 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 3: Schleifen Argumente -- AUFGABENSTELLUNG
+════════════════════════════════════════════════════════════════
+
+  Schreibe deine Lösung in uebung.sh. Du fängst mit einer
+  leeren Datei an -- es gibt nichts auszufüllen, nur zu bauen.
+
+  Der Prüfer ruft dein Skript mit den Argumenten
+  "apfel" "birne kiwi" "zwetschge" auf.
+
+  Prüfen mit:  ../pruefen.sh 3
+  Musterlösung danach:  ../Loesungen/Level_3_Schleifen_Argumente.sh
+
+  AUFGABE 3.1
+  ──────────────────────────────────
+  Gib die Anzahl der Argumente aus (nur die Zahl).
+
+  AUFGABE 3.2
+  ──────────────────────────────────
+  Gib jedes Argument in einer eigenen Zeile aus, in eckigen
+  Klammern: [apfel]
+  Achtung: "birne kiwi" ist EIN Argument und muss zusammenbleiben.
+
+  AUFGABE 3.3
+  ──────────────────────────────────
+  Bilde die Summe von 1 bis 10 und gib nur die Zahl aus.
+
+  AUFGABE 3.4
+  ──────────────────────────────────
+  Lies die Datei zeilenweise und gib jede Zeile mit einer
+  vorangestellten Nummer aus: "1: erste"
+  Randleerzeichen sollen erhalten bleiben.
+
+  AUFGABE 3.5
+  ──────────────────────────────────
+  Gib von den Zahlen 1 bis 10 nur die geraden aus, jede in einer
+  Zeile. Nutze continue.
+
+  Die Ausgaben müssen in dieser Reihenfolge kommen: der Prüfer
+  sieht sich die Zeilen einzeln an.

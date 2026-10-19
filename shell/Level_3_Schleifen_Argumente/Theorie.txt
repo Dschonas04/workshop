@@ -1,0 +1,73 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 3: Schleifen und Argumente
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Du läufst über Listen und Dateien, ohne dass dir
+  Leerzeichen im Dateinamen das Skript zerlegen.
+
+
+  for über eine Liste
+  ─────────────
+      for name in Anna Bert Carl; do
+          echo "$name"
+      done
+
+      for i in {1..5}; do echo "$i"; done
+      for ((i = 0; i < 5; i++)); do echo "$i"; done
+
+
+  for über Dateien
+  ─────────────
+      for datei in /etc/*.conf; do
+          [[ -e "$datei" ]] || continue     # Muster ohne Treffer
+          echo "$datei"
+      done
+
+  Das Muster wird von der Shell aufgelöst, nicht von for. Findet es
+  nichts, steht das Muster selbst da -- daher die Zeile mit continue.
+
+  Was du NICHT tun solltest:
+
+      for datei in $(ls)      ← zerlegt an Leerzeichen, geht kaputt
+
+
+  while über Zeilen
+  ─────────────
+      while IFS= read -r zeile; do
+          echo "[$zeile]"
+      done < datei.txt
+
+  Die drei Teile haben je einen Grund:
+    IFS=      schneidet keine Leerzeichen am Rand ab
+    -r        lässt Backslashes in Ruhe
+    < datei   liest aus der Datei statt aus einer Pipe
+
+  Eine Pipe (cat datei | while ...) öffnet eine Subshell: Variablen,
+  die drin gesetzt werden, sind draußen wieder weg.
+
+
+  Argumente
+  ─────────────
+  $0        Name des Skripts
+  $1 $2     erstes, zweites Argument
+  $#        Anzahl
+  "$@"      alle, jedes einzeln in Anführungszeichen
+  "$*"      alle als ein einziger Text
+
+  "$@" ist fast immer richtig, "$*" fast nie.
+
+      for arg in "$@"; do echo "$arg"; done
+
+      if (( $# < 1 )); then
+          echo "Aufruf: $0 <datei>" >&2
+          exit 1
+      fi
+
+  Fehlermeldungen gehören nach >&2, damit sie nicht mitten in der
+  Ausgabe landen, die jemand weiterverarbeitet.
+
+
+  Abbrechen und überspringen
+  ─────────────
+  break       Schleife verlassen
+  continue    nächster Durchlauf

@@ -1,0 +1,44 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 4: Textwerkzeuge -- AUFGABENSTELLUNG
+════════════════════════════════════════════════════════════════
+
+  Schreibe deine Lösung in uebung.sh. Du fängst mit einer
+  leeren Datei an -- es gibt nichts auszufüllen, nur zu bauen.
+
+  Die Daten liegen im Ordner daten/ neben dieser Datei.
+  Gib jeweils nur das Verlangte aus, nichts sonst.
+
+  Prüfen mit:  ../pruefen.sh 4
+  Musterlösung danach:  ../Loesungen/Level_4_Textwerkzeuge.sh
+
+  AUFGABE 4.1
+  ──────────────────────────────────
+  Wie viele Zeilen enthalten den Status 404? Gib nur die Zahl aus.
+
+  AUFGABE 4.2
+  ──────────────────────────────────
+  Gib die verschiedenen Adressen aus, jede genau einmal,
+  alphabetisch sortiert.
+
+  AUFGABE 4.3
+  ──────────────────────────────────
+  Gib die Rangliste der Adressen aus: häufigste zuerst,
+  im Format von uniq -c (Anzahl, dann Adresse).
+
+  AUFGABE 4.4
+  ──────────────────────────────────
+  Summiere die letzte Spalte (übertragene Bytes) und gib nur
+  die Summe aus.
+
+  AUFGABE 4.5
+  ──────────────────────────────────
+  Gib aus der CSV die Namen aller Personen der Abteilung Technik
+  aus, eine je Zeile. Die Kopfzeile darf nicht mitkommen.
+
+  AUFGABE 4.6
+  ──────────────────────────────────
+  Ersetze in der CSV das Semikolon durch ein Komma und gib
+  nur die zweite Zeile aus (also den ersten Datensatz).
+
+  Die Ausgaben müssen in dieser Reihenfolge kommen: der Prüfer
+  sieht sich die Zeilen einzeln an.

@@ -1,0 +1,66 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 1: Ausgabe und Variablen
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Du gibst Text aus, legst Variablen an und weißt,
+  warum Anführungszeichen in der Shell keine Geschmacksfrage sind.
+
+
+  Ausgabe
+  ─────────────
+  echo "Hallo"              Text plus Zeilenumbruch
+  printf '%s\n' "Hallo"     dasselbe, aber vorhersagbar
+  printf '%s: %d\n' "Zahl" 42
+
+  echo ist bequem und in Feinheiten von Shell zu Shell verschieden
+  (etwa bei Backslashes). printf verhält sich überall gleich. In
+  Skripten, die anderen gehören, nimm printf.
+
+
+  Variablen
+  ─────────────
+  name="Max"                KEINE Leerzeichen um das =
+  echo "$name"              mit $ auslesen
+  echo "${name}s Auto"      geschweifte Klammern trennen den Namen
+
+  Es gibt keine Datentypen. Alles ist Text. 5 ist der Text "5".
+
+
+  Anführungszeichen
+  ─────────────
+  "$name"     doppelt: Variablen werden ersetzt
+  '$name'     einfach: alles bleibt wörtlich stehen
+  $name       ohne: der Wert wird in Wörter zerlegt
+
+  Das letzte ist die häufigste Fehlerquelle der Shell überhaupt:
+
+      datei="mein bericht.txt"
+      rm $datei      löscht "mein" UND "bericht.txt"
+      rm "$datei"    löscht die eine Datei
+
+  Regel: Variablen immer in doppelte Anführungszeichen, außer du
+  willst das Zerlegen ausdrücklich.
+
+
+  Kommandoersetzung
+  ─────────────
+  heute="$(date +%F)"       Ausgabe eines Befehls in eine Variable
+  anzahl="$(ls | wc -l)"
+
+  $(...) statt Backticks: es lässt sich schachteln und liest sich.
+
+
+  Rechnen
+  ─────────────
+  summe=$(( 3 + 4 ))
+  zaehler=$(( zaehler + 1 ))
+
+  Innerhalb von (( )) braucht eine Variable kein $.
+
+
+  Nützlich
+  ─────────────
+  ${name:-Gast}      Wert, oder "Gast" wenn leer/nicht gesetzt
+  ${#name}           Länge
+  ${datei%.txt}      Endung abschneiden
+  ${datei##*/}       alles bis zum letzten / weg (Dateiname)

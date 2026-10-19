@@ -1,0 +1,68 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 4: Textwerkzeuge
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Du beantwortest Fragen an eine Datei, ohne sie zu
+  öffnen -- mit vier Werkzeugen, die sich verketten lassen.
+
+  In daten/ liegen zwei Dateien zum Üben: zugriffe.log und
+  mitarbeiter.csv.
+
+
+  grep -- Zeilen finden
+  ─────────────
+  grep "404" datei              Zeilen mit 404
+  grep -c "404" datei           nur zählen
+  grep -v "404" datei           alle ANDEREN Zeilen
+  grep -i "fehler" datei        Groß/Klein egal
+  grep -o "[0-9]\+" datei       nur den Treffer, nicht die Zeile
+  grep -E "40[13]" datei        erweiterter Ausdruck
+
+
+  cut -- Spalten schneiden
+  ─────────────
+  cut -d';' -f1 datei           erstes Feld, Trenner Semikolon
+  cut -d' ' -f1,7 datei         Feld 1 und 7
+
+  cut kann nur einen einzelnen Trenner, keine Folge von Leerzeichen.
+  Dafür nimmt man awk.
+
+
+  sort und uniq -- ordnen und zählen
+  ─────────────
+  sort datei                    alphabetisch
+  sort -n datei                 numerisch
+  sort -u datei                 ohne Doppelte
+  uniq -c                       zählt, verlangt vorher sort
+  sort | uniq -c | sort -rn     die klassische Rangliste
+
+  uniq zählt nur direkt aufeinanderfolgende Zeilen. Ohne sort davor
+  bekommst du Unsinn.
+
+
+  awk -- Spalten und Rechnen
+  ─────────────
+  awk '{print $1}' datei              erstes Feld (Trenner: Leerraum)
+  awk -F';' '{print $2}' datei        Trenner Semikolon
+  awk '$9 == 404 {print $1}' datei    Bedingung je Zeile
+  awk '{summe += $3} END {print summe}' datei
+
+  $0 ist die ganze Zeile, $1 das erste Feld, NF die Anzahl der
+  Felder, NR die Zeilennummer.
+
+
+  sed -- ersetzen
+  ─────────────
+  sed 's/alt/neu/' datei        erstes Vorkommen je Zeile
+  sed 's/alt/neu/g' datei       alle
+  sed -n '3p' datei             nur Zeile 3
+  sed '1d' datei                Zeile 1 weglassen (etwa Kopfzeile)
+
+
+  Verketten
+  ─────────────
+      awk '$9 == 404 {print $1}' zugriffe.log | sort | uniq -c | sort -rn
+
+  Gelesen: nimm die Adressen der 404-Zeilen, ordne sie, zähle
+  gleiche zusammen, sortiere absteigend. Fünf Werkzeuge, eine Zeile,
+  keine Schleife.

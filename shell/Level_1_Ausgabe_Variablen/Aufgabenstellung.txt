@@ -1,0 +1,41 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 1: Ausgabe Variablen -- AUFGABENSTELLUNG
+════════════════════════════════════════════════════════════════
+
+  Schreibe deine Lösung in uebung.sh. Du fängst mit einer
+  leeren Datei an -- es gibt nichts auszufüllen, nur zu bauen.
+
+  Prüfen mit:  ../pruefen.sh 1
+  Musterlösung danach:  ../Loesungen/Level_1_Ausgabe_Variablen.sh
+
+  AUFGABE 1.1
+  ──────────────────────────────────
+  Lege eine Variable werkzeug mit dem Wert "Shell" an
+  und gib "Ich lerne Shell." aus.
+
+  AUFGABE 1.2
+  ──────────────────────────────────
+  Der Dateiname enthält ein Leerzeichen. Gib ihn so aus,
+  dass er als EINE Zeile erscheint.
+
+  AUFGABE 1.3
+  ──────────────────────────────────
+  Gib den Dateinamen ohne die Endung .txt aus.
+  Erwartet: alter bericht
+
+  AUFGABE 1.4
+  ──────────────────────────────────
+  Rechne: 7 mal 6, und gib nur die Zahl aus.
+
+  AUFGABE 1.5
+  ──────────────────────────────────
+  ort ist leer. Gib "unbekannt" aus, wenn nichts drinsteht,
+  sonst den Wert -- in EINER Zeile, ohne if.
+
+  AUFGABE 1.6
+  ──────────────────────────────────
+  Zähle, wie viele Zeilen die Datei /etc/hostname hat,
+  und gib "Zeilen: N" aus. Nutze Kommandoersetzung.
+
+  Die Ausgaben müssen in dieser Reihenfolge kommen: der Prüfer
+  sieht sich die Zeilen einzeln an.

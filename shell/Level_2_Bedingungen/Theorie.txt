@@ -1,0 +1,76 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 2: Bedingungen und Exit-Codes
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Du verstehst, dass die Shell nicht "wahr" und "falsch"
+  kennt, sondern Rückgabewerte -- und dass 0 das Gute ist.
+
+
+  Der Exit-Code
+  ─────────────
+  Jeder Befehl hinterlässt eine Zahl: 0 heißt "hat geklappt",
+  alles andere heißt "hat nicht geklappt".
+
+      grep -q root /etc/passwd
+      echo $?          → 0
+
+  $? enthält den Code des letzten Befehls. Er gilt nur bis zum
+  nächsten Befehl -- also sofort auswerten oder wegsichern.
+
+
+  if prüft keinen Wert, sondern einen Befehl
+  ─────────────
+      if grep -q root /etc/passwd; then
+          echo "gefunden"
+      fi
+
+  Das ist kein Sonderfall. Auch [ ] und [[ ]] sind Befehle, die
+  einen Exit-Code zurückgeben.
+
+
+  Vergleiche
+  ─────────────
+  Text:      [[ "$a" == "$b" ]]      gleich
+             [[ "$a" != "$b" ]]      ungleich
+             [[ -z "$a" ]]           leer
+             [[ -n "$a" ]]           nicht leer
+             [[ "$a" == b* ]]        Muster (nur in [[ ]])
+
+  Zahlen:    [[ "$a" -lt "$b" ]]     kleiner
+             -le -gt -ge -eq -ne
+             (( a < b ))             lesbarer für Zahlen
+
+  Dateien:   [[ -f "$p" ]]           Datei da
+             [[ -d "$p" ]]           Verzeichnis da
+             [[ -r "$p" ]]           lesbar
+             [[ -s "$p" ]]           da und nicht leer
+
+  [[ ]] ist die bessere Wahl: es zerlegt keine Variablen, kann
+  Muster und && ||. [ ] ist der alte Standard, den jede Shell kennt.
+
+
+  Verketten
+  ─────────────
+  befehl1 && befehl2      befehl2 nur, wenn befehl1 gut ging
+  befehl1 || befehl2      befehl2 nur, wenn befehl1 schiefging
+
+      mkdir -p /tmp/x && cd /tmp/x
+      ping -c1 host >/dev/null || echo "nicht erreichbar"
+
+
+  case für viele Fälle
+  ─────────────
+      case "$1" in
+          start)   starten ;;
+          stop)    stoppen ;;
+          *)       echo "unbekannt"; exit 1 ;;
+      esac
+
+
+  Eigener Exit-Code
+  ─────────────
+      exit 0    alles gut
+      exit 1    allgemeiner Fehler
+
+  Das ist keine Höflichkeit: davon hängt ab, ob ein Aufrufer --
+  cron, CI, ein anderes Skript -- den Fehler bemerkt.
