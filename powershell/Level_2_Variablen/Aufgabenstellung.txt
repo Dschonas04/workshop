@@ -1,0 +1,42 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 2: Variablen & Datentypen -- AUFGABENSTELLUNG
+════════════════════════════════════════════════════════════════
+
+  Schreibe deine Lösung in uebung.ps1. Du fängst mit einer
+  leeren Datei an -- es gibt nichts auszufüllen, nur zu bauen.
+
+  Prüfen mit:  pwsh ../pruefen.ps1 2
+  Musterlösung danach:  ../Loesungen/Level_2_Variablen.ps1
+
+  AUFGABE 2.1
+  ──────────────────────────────────
+  Lege $name mit "Ada" und $alter mit 36 an und gib aus:
+    Ich heiße Ada und bin 36 Jahre alt.
+  Mit String-Interpolation, nicht mit +.
+
+  AUFGABE 2.2
+  ──────────────────────────────────
+  Gib die Datentypen der beiden Variablen aus:
+    name ist: String
+    alter ist: Int32
+  Der Typname kommt aus der Variablen, nicht aus deinem Kopf.
+
+  AUFGABE 2.3
+  ──────────────────────────────────
+  Lege $istStudentin mit $false an und gib aus:
+    Ada ist 36 Jahre alt, Studentin: False
+
+  AUFGABE 2.4
+  ──────────────────────────────────
+  $a = "10" und $b = 20. Gib ($a + $b) und danach ($b + $a)
+  aus, jeweils in einer eigenen Zeile. Überlege vorher, was
+  herauskommt, und schreib die Erklärung als Kommentar dazu.
+
+  Die Ausgaben müssen in dieser Reihenfolge kommen: der Prüfer
+  sieht sich die Zeilen einzeln an.
+
+  BONUS (wird nicht geprüft)
+  ──────────────────────────────────
+  Lege deinen Geburtstag als [datetime] an und berechne, wie
+  viele Tage du schon lebst. (Get-Date) - $geburtstag ergibt
+  ein TimeSpan-Objekt.

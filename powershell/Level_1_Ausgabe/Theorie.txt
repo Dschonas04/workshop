@@ -1,0 +1,44 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 1: Ausgabe auf der Konsole
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Du verstehst den Unterschied zwischen
+  Write-Host, Write-Output und Write-Warning.
+
+  PowerShell hat verschiedene Wege, Text auszugeben.
+  Jeder hat einen anderen Zweck:
+
+
+  Write-Host
+  ─────────────
+  • Schreibt Text direkt auf die Konsole (nur zur Anzeige).
+  • Kann NICHT in der Pipeline weitergeleitet werden.
+  • Unterstützt Farben mit dem Parameter -ForegroundColor.
+  • Nutze es für: Fortschrittsanzeigen, farbige Meldungen, reine UI-Ausgaben.
+
+  Beispiel:
+    Write-Host "Hallo Welt!" -ForegroundColor Green
+
+
+  Write-Output
+  ───────────────
+  • Schreibt Daten in die Pipeline (Standardausgabe).
+  • Kann an andere Befehle weitergeleitet werden mit |
+  • Ist der Standard – wenn du einfach etwas ausgibst, passiert genau das.
+  • Nutze es für: Daten, die weiterverarbeitet werden sollen.
+
+  Beispiel:
+    Write-Output "Hallo" | Sort-Object    ← funktioniert!
+    Write-Host "Hallo" | Sort-Object      ← funktioniert NICHT!
+
+
+  Write-Warning / Write-Error / Write-Verbose
+  ───────────────────────────────────────────────
+  • Write-Warning  → Gelbe Warnung (z.B. "Datei existiert bereits")
+  • Write-Error    → Rote Fehlermeldung (z.B. "Datei nicht gefunden")
+  • Write-Verbose  → Details, nur sichtbar wenn -Verbose angegeben wird
+
+  Faustregel:
+     → Write-Output für Daten
+     → Write-Host nur für reine Bildschirm-Anzeige
+     → Write-Warning/Error für Warnungen und Fehler

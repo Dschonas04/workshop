@@ -1,0 +1,217 @@
+════════════════════════════════════════════════════════════════
+  ZUSATZ: Shell-Scripting (Bash / Linux / macOS)
+════════════════════════════════════════════════════════════════
+
+  Was ist Shell-Scripting?
+  ────────────────────────
+  Die Shell (bash, zsh) ist die Standard-Kommandozeile auf
+  Linux und macOS. Shell-Skripte (.sh) automatisieren Aufgaben
+  auf Unix-Systemen – DER Standard in der IT-Welt!
+
+  PowerShell vs. Shell:
+  ─────────────────────
+  Eigenschaft         PowerShell              Bash/Shell
+  ──────────────────  ─────────────────────── ────────────────────
+  Dateiendung         .ps1                    .sh
+  Variablen           $name                   $name (ähnlich!)
+  Zuweisung           $name = "Wert"          name="Wert" (KEIN $!)
+  Objekte             Ja (alles ist Objekt)   Nein (nur Text)
+  Pipeline            Objekt-Pipeline         Text-Pipeline
+  OS                  Windows (+ Linux/Mac)   Linux / macOS
+  Groß/Klein          Egal                    WICHTIG! (case-sensitive)
+
+
+  Grundstruktur eines Shell-Skripts
+  ───────────────────────────────────
+  #!/bin/bash              ← Shebang: Welche Shell verwenden?
+  # Das ist ein Kommentar
+
+  echo "Hallo Welt!"      ← Ausgabe (wie Write-Host)
+
+  Ausführen:
+  chmod +x skript.sh       ← Ausführbar machen (einmalig)
+  ./skript.sh              ← Starten
+
+  Oder direkt: bash skript.sh
+
+
+  Variablen
+  ────────────
+  name="Max"                ← KEIN Leerzeichen um = !
+  alter=25
+  echo "Hallo $name"       ← Variablen mit $
+  echo "Du bist $alter"
+
+  Wichtig: Kein $ bei der Zuweisung, $ beim Verwenden!
+
+  Spezielle Variablen:
+  $0          Name des Skripts
+  $1, $2...   Parameter (Argumente)
+  $#          Anzahl der Parameter
+  $?          Exit-Code des letzten Befehls
+  $HOME       Home-Verzeichnis
+  $USER       Aktueller Benutzer
+  $PWD        Aktuelles Verzeichnis
+
+
+  Benutzereingabe
+  ─────────────────
+  read -p "Dein Name: " name
+  echo "Hallo $name!"
+
+  read -s -p "Passwort: " pw    ← -s = versteckt (silent)
+
+
+  Bedingungen (if / else)
+  ─────────────────────────
+  if [ "$name" = "Max" ]; then
+      echo "Hallo Max!"
+  elif [ "$name" = "Admin" ]; then
+      echo "Hallo Admin!"
+  else
+      echo "Wer bist du?"
+  fi
+
+  Vergleiche (Strings):
+    =         Gleich
+    !=        Ungleich
+    -z        Leer (zero length)
+    -n        Nicht leer
+
+  Vergleiche (Zahlen):
+    -eq       Gleich (equal)
+    -ne       Ungleich (not equal)
+    -lt       Kleiner (less than)
+    -le       Kleiner/gleich
+    -gt       Größer (greater than)
+    -ge       Größer/gleich
+
+  Datei-Tests:
+    -f        Ist eine Datei
+    -d        Ist ein Ordner
+    -e        Existiert
+    -r        Ist lesbar
+    -w        Ist schreibbar
+    -x        Ist ausführbar
+
+  if [ -f "datei.txt" ]; then echo "Datei existiert!"; fi
+
+
+  Schleifen
+  ───────────
+  # For-Schleife (über Liste)
+  for frucht in Apfel Birne Kirsche; do
+      echo "$frucht"
+  done
+
+  # For-Schleife (Zählen)
+  for i in $(seq 1 10); do
+      echo "$i"
+  done
+
+  # Oder mit C-Style:
+  for ((i=1; i<=10; i++)); do
+      echo "$i"
+  done
+
+  # While-Schleife
+  count=0
+  while [ $count -lt 5 ]; do
+      echo "Zähler: $count"
+      count=$((count + 1))
+  done
+
+  # Über Dateien iterieren
+  for datei in *.txt; do
+      echo "Gefunden: $datei"
+  done
+
+
+  Funktionen
+  ─────────────
+  # Funktion definieren
+  begrüßung() {
+      echo "Hallo, $1!"     ← $1 = erster Parameter
+  }
+
+  # Funktion aufrufen
+  begrüßung "Welt"
+  begrüßung "Shell"
+
+  # Funktion mit Rückgabewert
+  addiere() {
+      echo $(($1 + $2))     ← Ergebnis über echo
+  }
+  ergebnis=$(addiere 5 3)   ← Ergebnis einfangen
+  echo "5 + 3 = $ergebnis"
+
+
+  Rechnen
+  ─────────
+  # Mit $(( ))
+  ergebnis=$((5 + 3))
+  echo $ergebnis             ← 8
+
+  # Oder mit let
+  let "x = 10 * 3"
+  echo $x                    ← 30
+
+
+  Dateiverwaltung
+  ─────────────────
+  Befehl       Beschreibung                  PowerShell-Pendant
+  ──────────── ───────────────────────────── ────────────────────
+  ls           Dateien auflisten             Get-ChildItem
+  cp           Datei kopieren                Copy-Item
+  mv           Verschieben/Umbenennen        Move-Item
+  rm           Datei löschen                 Remove-Item
+  mkdir        Ordner erstellen              New-Item -ItemType Dir
+  rm -rf       Ordner löschen (rekursiv)     Remove-Item -Recurse
+  cat          Datei anzeigen                Get-Content
+  touch        Leere Datei erstellen         New-Item
+  head         Erste Zeilen anzeigen         Select-Object -First
+  tail         Letzte Zeilen anzeigen        Select-Object -Last
+  wc -l        Zeilen zählen                 Measure-Object
+  find         Dateien suchen                Get-ChildItem -Recurse
+  grep         Text in Dateien suchen        Select-String
+
+
+  Text-Pipeline
+  ───────────────
+  Die Shell-Pipeline ist Text-basiert (nicht Objekt-basiert):
+
+  cat datei.txt | grep "Suche"           ← Zeilen filtern
+  cat datei.txt | sort                   ← Sortieren
+  cat datei.txt | wc -l                  ← Zeilen zählen
+  cat datei.txt | head -5                ← Erste 5 Zeilen
+  cat datei.txt | tail -3                ← Letzte 3 Zeilen
+  cat datei.txt | sort | uniq            ← Sortieren + Duplikate entfernen
+
+  Prozesse:
+  ps aux | grep "firefox"                ← Prozess suchen
+  ps aux | sort -k4 -rn | head -5       ← Top 5 nach RAM
+
+
+  Ausgabeumleitung
+  ──────────────────
+  echo "Text" > datei.txt      ← Schreiben (überschreibt)
+  echo "Mehr" >> datei.txt     ← Anhängen
+  befehl 2> fehler.log         ← Nur Fehler umleiten
+  befehl &> alles.log          ← Alles umleiten (stdout + stderr)
+  befehl > /dev/null 2>&1      ← Alles unterdrücken
+
+
+  Nützliche Befehle
+  ───────────────────
+  whoami          Aktueller Benutzer
+  hostname        Computername
+  date            Datum/Uhrzeit
+  uptime          Systemlaufzeit
+  df -h           Speicherplatz
+  du -sh *        Ordnergrößen
+  free -h         RAM-Auslastung (Linux)
+  top / htop      Prozessmonitor
+  curl / wget     HTTP-Anfragen
+  chmod           Berechtigungen ändern
+  chown           Besitzer ändern
+  ssh             Fernzugriff

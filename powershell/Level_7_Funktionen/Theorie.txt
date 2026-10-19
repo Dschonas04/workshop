@@ -1,0 +1,71 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 7: Funktionen
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Du kannst eigene Befehle (Funktionen) erstellen,
+  Parameter definieren und Werte zurückgeben.
+
+
+  Warum Funktionen?
+  ───────────────────
+  • Code nur EINMAL schreiben, ÜBERALL nutzen
+  • Macht den Code übersichtlicher und wartbarer
+  • Vermeidet Wiederholungen (DRY: Don't Repeat Yourself)
+
+
+  Aufbau einer Funktion
+  ───────────────────────
+    function Verb-Nomen {
+        param (
+            [Typ]$Parameter1,                ← Typ ist optional
+            [Typ]$Parameter2 = "Standard"    ← Standardwert
+        )
+        # Hier kommt der Code
+        return $ergebnis                     ← Rückgabewert
+    }
+
+
+  Verb-Nomen Konvention
+  ───────────────────────
+  PowerShell-Funktionen folgen dem Schema Verb-Nomen:
+    Get-Daten         → Etwas abrufen/holen
+    Set-Wert          → Etwas setzen/ändern
+    New-Benutzer      → Etwas Neues erstellen
+    Remove-Datei      → Etwas löschen
+    Test-Verbindung   → Etwas prüfen (gibt Boolean zurück)
+    Convert-Einheit   → Etwas umrechnen
+
+  Alle zugelassenen Verben: Get-Verb
+
+
+  Parameter
+  ───────────
+  Einfach:
+    param ([string]$Name)
+
+  Mit Standardwert:
+    param ([string]$Name = "Welt")
+
+  Pflicht-Parameter:
+    param (
+        [Parameter(Mandatory=$true)]
+        [string]$Name
+    )
+    → PowerShell fragt automatisch, wenn er fehlt
+
+
+  Rückgabewert (return)
+  ───────────────────────
+  • return gibt den Wert zurück UND beendet die Funktion
+  • Ohne return: PowerShell gibt automatisch alles zurück,
+    was NICHT in einer Variable gespeichert wird
+
+  Beispiel:
+    function Get-Doppelt { param([int]$Zahl)  return $Zahl * 2 }
+    $ergebnis = Get-Doppelt -Zahl 5    → $ergebnis = 10
+
+
+  Aufruf einer Funktion
+  ───────────────────────
+  RICHTIG:   Get-Summe -a 5 -b 3
+  FALSCH:    Get-Summe(5, 3)          ← Das ist NICHT wie in C# / Java!

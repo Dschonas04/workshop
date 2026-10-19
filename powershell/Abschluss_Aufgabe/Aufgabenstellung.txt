@@ -1,0 +1,72 @@
+════════════════════════════════════════════════════════════════
+  ABSCHLUSSAUFGABE: Schülerverwaltung -- AUFGABENSTELLUNG
+════════════════════════════════════════════════════════════════
+
+  Ein kleines Verwaltungsskript, das alles aus Level 1-8
+  zusammenbringt. Schreibe es in uebung.ps1.
+
+  Prüfen mit:  pwsh ../pruefen.ps1 abschluss
+  Musterlösung danach:  ../Loesungen/Abschluss_Aufgabe.ps1
+
+  TEIL 1: Funktionen (Level 7)
+  ──────────────────────────────────
+  1.1  New-Schüler -Name -Alter -Note gibt eine Hashtable mit
+       Name, Alter und Note zurück. Note ist ohne Angabe 3.
+  1.2  Get-Notentext -Note gibt für 1-6 den Text zurück:
+       Sehr gut, Gut, Befriedigend, Ausreichend, Mangelhaft,
+       Ungenügend. Mit switch.
+  1.3  Get-Durchschnitt -Liste gibt den Notendurchschnitt eines
+       Arrays von Schülern zurück.
+
+  TEIL 2: Schüler anlegen (Level 2, 5)
+  ──────────────────────────────────
+  2.1  Lege mit New-Schüler fünf Schüler in einem Array an:
+         Anna  16  Note 2        David 18  Note 5
+         Ben   17  Note 4        Eva   17  Note 3
+         Clara 16  Note 1
+
+  TEIL 3: Ausgabe (Level 1, 6)
+  ──────────────────────────────────
+  3.1  Eine Überschrift aus drei Zeilen:
+         ==============================
+           Schülerverwaltung
+         ==============================
+  3.2  Alle Schüler, einer pro Zeile:
+         Anna (16 Jahre) - Note: 2 (Gut)
+
+  TEIL 4: Auswertung (Level 4)
+  ──────────────────────────────────
+  4.1  Durchschnitt: 3                  (auf 2 Stellen gerundet)
+  4.2  Bestanden: 4, Durchgefallen: 1   (bestanden heißt Note 1-4)
+  4.3  Bester: Clara, Schlechtester: David
+
+  TEIL 5: Eingabe (Level 3)
+  ──────────────────────────────────
+  5.1  Frage "Neuen Schüler hinzufügen? (j/n)". Bei j frage nach
+       "Name", "Alter" und "Note", lege den Schüler an und gib
+       "<Name> wurde hinzugefügt." aus. Sonst
+       "Kein neuer Schüler.".
+
+  TEIL 6: Dateien (Level 8)
+  ──────────────────────────────────
+  6.1  Exportiere alle Schüler nach Ergebnisse/schueler.csv mit
+       den Spalten Name, Alter und Note.
+       Tipp: Export-Csv braucht Objekte, keine Hashtables --
+       [pscustomobject] macht aus dem einen das andere.
+  6.2  Schreibe Ergebnisse/bericht.txt mit sechs Zeilen:
+         Anzahl Schüler: 6
+         Notendurchschnitt: 3.5
+         Bestanden: 4
+         Durchgefallen: 2
+         Bester: Clara
+         Schlechtester: Finn
+       (die Zahlen gelten, wenn Finn, 16, Note 6 dazukam)
+  6.3  Lies den Bericht wieder ein und gib ihn als Letztes aus.
+
+  Der Prüfer ruft deine Funktionen einzeln auf und lässt das ganze
+  Skript laufen -- einmal mit j, Finn, 16 und 6, einmal mit n.
+
+  BONUS (wird nicht geprüft)
+  ──────────────────────────────────
+  Lass in einer do-while-Schleife beliebig viele Schüler
+  hinzufügen, bis n kommt.

@@ -1,0 +1,49 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 3: Benutzereingabe & einfache Berechnungen
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Du kannst Eingaben vom Benutzer abfragen,
+  in den richtigen Datentyp umwandeln und damit rechnen.
+
+
+  Read-Host
+  ────────────
+  Read-Host fragt den Benutzer nach einer Eingabe.
+  WICHTIG: Read-Host gibt IMMER einen String zurück!
+
+    $eingabe = Read-Host "Gib eine Zahl ein"
+    → $eingabe ist jetzt "42" (ein String), NICHT die Zahl 42!
+
+
+  Typ-Umwandlung (Casting)
+  ──────────────────────────
+  Um mit der Eingabe zu rechnen, musst du sie umwandeln:
+
+  Methode 1 – Direkt beim Speichern:
+    [int]$zahl = Read-Host "Zahl?"
+
+  Methode 2 – Nachträglich umwandeln:
+    $zahl = [int]$eingabe
+
+  Methode 3 – Sicher mit -as (kein Fehler bei "abc"):
+    $zahl = $eingabe -as [int]
+    → Gibt $null zurück statt einen Fehler zu werfen
+
+
+  Passwort-Eingabe (versteckt)
+  ──────────────────────────────
+    $pw = Read-Host "Passwort" -AsSecureString
+    → Die Eingabe wird mit *** versteckt angezeigt
+
+
+  Rechenoperatoren
+  ──────────────────
+  Operator    Beschreibung         Beispiel
+  ─────────── ──────────────────── ──────────────
+  +           Addition             5 + 3 = 8
+  -           Subtraktion          5 - 3 = 2
+  *           Multiplikation       5 * 3 = 15
+  /           Division             15 / 3 = 5
+  %           Modulo (Rest)        7 % 2 = 1
+  ++          Inkrement            $i++
+  --          Dekrement            $i--

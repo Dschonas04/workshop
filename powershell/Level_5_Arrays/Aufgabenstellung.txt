@@ -1,0 +1,47 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 5: Arrays & Hashtables -- AUFGABENSTELLUNG
+════════════════════════════════════════════════════════════════
+
+  Schreibe deine Lösung in uebung.ps1. Du fängst mit einer
+  leeren Datei an -- es gibt nichts auszufüllen, nur zu bauen.
+
+  Prüfen mit:  pwsh ../pruefen.ps1 5
+  Musterlösung danach:  ../Loesungen/Level_5_Arrays.ps1
+
+  AUFGABE 5.1
+  ──────────────────────────────────
+  Lege ein Array mit "Alien", "Brazil", "Casablanca", "Dune"
+  und "Fargo" an und gib aus:
+    Erster Film: Alien
+    Letzter Film: Fargo
+    Anzahl: 5
+
+  AUFGABE 5.2
+  ──────────────────────────────────
+  Lege eine Hashtable $ich an: Name "Ada", Alter 36,
+  Hobby "Schach", Essen "Pizza". Gib aus:
+    Ada ist 36 Jahre alt.
+    Hobby: Schach, Lieblingsessen: Pizza
+
+  AUFGABE 5.3
+  ──────────────────────────────────
+  Hänge "Gattaca" an das Film-Array und den Schlüssel Stadt
+  mit "Berlin" an die Hashtable an:
+    Jetzt: 6 Filme, zuletzt Gattaca
+    Stadt: Berlin
+
+  AUFGABE 5.4
+  ──────────────────────────────────
+  Ein Array aus drei Schüler-Hashtables: Anna Note 2,
+  Ben Note 4, Clara Note 1. Gib mit foreach aus:
+    Anna: Note 2
+    Ben: Note 4
+    Clara: Note 1
+
+  AUFGABE 5.5
+  ──────────────────────────────────
+  Berechne den Notendurchschnitt der drei, auf zwei Stellen
+  gerundet:
+    Durchschnitt: 2.33
+
+  Die Ausgaben müssen in dieser Reihenfolge kommen.

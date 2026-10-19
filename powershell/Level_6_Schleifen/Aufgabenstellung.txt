@@ -1,0 +1,44 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 6: Schleifen -- AUFGABENSTELLUNG
+════════════════════════════════════════════════════════════════
+
+  Schreibe deine Lösung in uebung.ps1. Du fängst mit einer
+  leeren Datei an -- es gibt nichts auszufüllen, nur zu bauen.
+
+  Prüfen mit:  pwsh ../pruefen.ps1 6
+  Musterlösung danach:  ../Loesungen/Level_6_Schleifen.ps1
+
+  AUFGABE 6.1
+  ──────────────────────────────────
+  Gib mit for die Zahlen 1 bis 10 aus und markiere sie:
+    [u] 1 (ungerade)
+    [g] 2 (gerade)
+    ...
+
+  AUFGABE 6.2
+  ──────────────────────────────────
+  Gib "Hund", "Katze", "Maus", "Pferd", "Igel" nummeriert mit
+  foreach aus:  1. Hund  …  5. Igel
+
+  AUFGABE 6.3
+  ──────────────────────────────────
+  Ein Countdown mit while von 10 bis 1, danach "Start!".
+
+  AUFGABE 6.4
+  ──────────────────────────────────
+  Ratespiel mit do-while: Die Geheimzahl ist 7. Frage mit
+  "Rate die Zahl (1-10)", bis die 7 kommt, und antworte mit
+  "Zu niedrig!" oder "Zu hoch!". Am Ende:
+    Richtig! Die Zahl war 7!
+
+  AUFGABE 6.5
+  ──────────────────────────────────
+  Das Einmaleins der 6:  6 x 1 = 6  …  6 x 10 = 60
+
+  AUFGABE 6.6
+  ──────────────────────────────────
+  FizzBuzz von 1 bis 15: Vielfache von 3 werden "Fizz",
+  von 5 "Buzz", von beiden "FizzBuzz", der Rest bleibt die Zahl.
+
+  Jede Zahl, jedes Tier und jeder Hinweis steht in einer eigenen
+  Zeile. Beim Ratespiel tippt der Prüfer 3, 9 und 7.

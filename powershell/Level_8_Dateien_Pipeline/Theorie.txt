@@ -1,0 +1,72 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 8: Dateien, Pipeline & praktische Cmdlets
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Du kannst Dateien verwalten und die PowerShell
+  Pipeline nutzen – DAS Herzstück von PowerShell!
+
+
+  Dateien & Ordner
+  ──────────────────
+  Cmdlet            Beschreibung                  Beispiel
+  ───────────────── ───────────────────────────── ─────────────────────────
+  New-Item          Datei/Ordner erstellen        New-Item -Path ".\test" -ItemType Directory
+  Get-Content       Datei lesen (Zeile für Zeile) Get-Content ".\log.txt"
+  Set-Content       Datei schreiben (überschreibt) "Text" | Set-Content ".\file.txt"
+  Add-Content       An Datei anhängen             "Mehr" | Add-Content ".\file.txt"
+  Out-File          Ausgabe in Datei umleiten     Get-Process | Out-File ".\procs.txt"
+  Get-ChildItem     Dateien auflisten (wie dir)   Get-ChildItem -Path "." -Recurse
+  Remove-Item       Datei/Ordner löschen          Remove-Item ".\test" -Recurse -Force
+  Test-Path         Prüfen ob Pfad existiert      Test-Path ".\file.txt"  → $true/$false
+  Copy-Item         Kopieren                      Copy-Item ".\a.txt" ".\b.txt"
+  Move-Item         Verschieben/Umbenennen        Move-Item ".\alt.txt" ".\neu.txt"
+
+
+  Die Pipeline ( | )
+  ────────────────────
+  Die Pipeline ist DAS Herzstück von PowerShell!
+  Sie leitet die Ausgabe eines Befehls als Eingabe an den nächsten:
+
+    Get-Process | Where-Object { $_.CPU -gt 10 } | Sort-Object CPU
+         ↑               ↑                              ↑
+    Alle Prozesse    Nur die mit CPU > 10    Sortiert nach CPU
+
+  $_ = Das aktuelle Objekt in der Pipeline ("Pipeline-Variable")
+
+
+  Wichtige Pipeline-Cmdlets
+  ───────────────────────────
+  Cmdlet              Kurzform   Beschreibung
+  ──────────────────── ──────── ──────────────────────────
+  Where-Object { }    ?         Filtern (nur bestimmte Objekte)
+  Select-Object       select    Spalten/Eigenschaften auswählen
+  Sort-Object         sort      Sortieren (aufsteigend/absteigend)
+  ForEach-Object { }  %         Etwas mit jedem Objekt machen
+  Measure-Object      measure   Zählen, Summe, Durchschnitt
+  Group-Object        group     Nach Eigenschaft gruppieren
+  Export-Csv          -         Als CSV-Datei exportieren
+  ConvertTo-Json      -         In JSON-Format umwandeln
+
+
+  Berechnete Eigenschaften
+  ─────────────────────────
+  Mit Select-Object kannst du eigene Spalten erstellen:
+
+    Get-Process | Select-Object Name, @{
+        N = "RAM_MB"
+        E = { [math]::Round($_.WorkingSet / 1MB, 1) }
+    }
+
+  N = Name der neuen Spalte
+  E = Expression (Berechnung)
+
+
+  Nützliche Cmdlets für den Alltag
+  ──────────────────────────────────
+  Get-Process         → Laufende Prozesse anzeigen
+  Get-Service         → Windows-Dienste anzeigen
+  Get-Date            → Aktuelles Datum/Uhrzeit
+  Get-ComputerInfo    → Systeminformationen
+  Get-EventLog        → Windows-Ereignisprotokoll
+  Test-Connection     → Ping (Netzwerk testen)
+  Invoke-WebRequest   → HTTP-Anfragen (wie curl)

@@ -1,0 +1,52 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 2: Variablen & Datentypen
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Du kannst Variablen erstellen, Werte zuweisen
+  und verstehst die verschiedenen Datentypen.
+
+  Variablen beginnen in PowerShell IMMER mit dem $-Zeichen.
+
+
+  Datentypen
+  ─────────────
+  Typ          Beispiel                Beschreibung
+  ──────────── ─────────────────────── ─────────────────────────
+  String       $name = "Max"           Text
+  Int32        $alter = 25             Ganzzahl
+  Double       $preis = 19.99          Dezimalzahl
+  Boolean      $aktiv = $true          Wahr oder Falsch
+  Null         $leer = $null           Kein Wert (leer)
+  DateTime     $jetzt = Get-Date       Datum und Uhrzeit
+  Array        $liste = @(1, 2, 3)     Liste von Werten
+
+
+  String-Interpolation
+  ───────────────────────
+  Doppelte Anführungszeichen ("..."):
+    → Variablen werden AUFGELÖST
+    → "Hallo $name"  ergibt  "Hallo Max"
+
+  Einfache Anführungszeichen ('...'):
+    → Text bleibt EXAKT so, wie er ist
+    → 'Hallo $name'  ergibt  'Hallo $name'
+
+  Für komplexe Ausdrücke: $(...) Subexpression
+    → "Es gibt $($liste.Count) Einträge"
+
+
+  Datentyp prüfen & erzwingen
+  ──────────────────────────────
+  Typ prüfen:
+    $alter.GetType()              → Zeigt den Typ (z.B. Int32)
+    $alter.GetType().Name         → Nur den Typ-Namen
+
+  Typ erzwingen (Casting):
+    [string]$zahl = 42            → Wird als String "42" gespeichert
+    [int]$text = "99"             → Wird als Ganzzahl 99 gespeichert
+    [double]$wert = "3.14"        → Wird als Dezimalzahl gespeichert
+
+  ⚠️ Vorsicht beim Rechnen mit Strings!
+     "10" + 20  = "1020"          (String + Zahl = String-Verkettung)
+     20 + "10"  = 30              (Zahl + String = Addition)
+     → PowerShell richtet sich nach dem LINKEN Operanden!

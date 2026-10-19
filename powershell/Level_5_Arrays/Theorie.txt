@@ -1,0 +1,54 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 5: Arrays & Hashtables
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Du kannst Sammlungen von Daten verwalten
+  und auf einzelne Elemente zugreifen.
+
+
+  Arrays (Listen)
+  ─────────────────
+  Ein Array speichert mehrere Werte in einer geordneten Liste.
+
+  Erstellen:
+    $farben = @("Rot", "Grün", "Blau")
+    $zahlen = @(1, 2, 3, 4, 5)
+    $leer = @()                          ← Leeres Array
+
+  Zugriff (Index beginnt bei 0!):
+    $farben[0]       → "Rot"            (erstes Element)
+    $farben[1]       → "Grün"           (zweites Element)
+    $farben[-1]      → "Blau"           (letztes Element)
+    $farben[0..1]    → "Rot", "Grün"    (Bereich)
+
+  Bearbeiten:
+    $farben += "Gelb"                    Element hinzufügen
+    $farben.Count                        Anzahl Elemente
+
+  ⚠️ Arrays haben eine feste Größe! += erstellt intern
+     ein neues Array. Für große Listen: [System.Collections.ArrayList]
+
+
+  Hashtables (Schlüssel-Wert-Paare)
+  ────────────────────────────────────
+  Eine Hashtable ist wie ein Wörterbuch: Jeder Schlüssel hat einen Wert.
+
+  Erstellen:
+    $person = @{
+        Name  = "Max"
+        Alter = 25
+        Stadt = "Berlin"
+    }
+
+  Zugriff:
+    $person["Name"]      → "Max"      (per Schlüssel)
+    $person.Alter        → 25         (per Punkt-Notation)
+
+  Bearbeiten:
+    $person["Email"] = "j@mail.de"    Neues Paar hinzufügen
+    $person.Remove("Stadt")           Paar entfernen
+
+  Nützliche Eigenschaften:
+    $person.Keys         → Alle Schlüssel
+    $person.Values       → Alle Werte
+    $person.Count        → Anzahl Paare

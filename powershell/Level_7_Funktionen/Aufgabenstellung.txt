@@ -1,0 +1,42 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 7: Funktionen -- AUFGABENSTELLUNG
+════════════════════════════════════════════════════════════════
+
+  Schreibe deine Lösung in uebung.ps1. Du fängst mit einer
+  leeren Datei an -- es gibt nichts auszufüllen, nur zu bauen.
+
+  Prüfen mit:  pwsh ../pruefen.ps1 7
+  Musterlösung danach:  ../Loesungen/Level_7_Funktionen.ps1
+
+  AUFGABE 7.1
+  ──────────────────────────────────
+  Get-Summe -a 15 -b 27 gibt 42 zurück -- als Zahl, nicht als
+  Text.
+
+  AUFGABE 7.2
+  ──────────────────────────────────
+  Get-Rechteck -Länge 5 -Breite 3 gibt ein Objekt mit den
+  Eigenschaften Fläche (15) und Umfang (16) zurück.
+  Tipp: [pscustomobject]@{ ... }
+
+  AUFGABE 7.3
+  ──────────────────────────────────
+  Test-GeradeZahl -Zahl 4 gibt $true zurück, bei 7 $false.
+
+  AUFGABE 7.4
+  ──────────────────────────────────
+  Get-Begrüßung gibt "Hallo, Welt!" zurück, mit -Name Max
+  "Hallo, Max!". Welt ist der Standardwert des Parameters.
+
+  AUFGABE 7.5
+  ──────────────────────────────────
+  Convert-Temperatur -Wert 100 rechnet Celsius in Fahrenheit
+  um (212). Mit -Von Fahrenheit geht es andersherum:
+  -Wert 212 -Von Fahrenheit ergibt 100.
+    F = C × 9/5 + 32        C = (F - 32) × 5/9
+
+  Der Prüfer lädt dein Skript und ruft die Funktionen selbst auf,
+  mit anderen Werten als hier. Die Funktionen müssen also genau
+  so heißen und ihre Ergebnisse zurückgeben (return), nicht nur
+  ausgeben. Was du im Skript zum Ausprobieren aufrufst, zählt
+  nicht mit.

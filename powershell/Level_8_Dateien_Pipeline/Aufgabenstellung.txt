@@ -1,0 +1,48 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 8: Dateien, Pipeline & Cmdlets -- AUFGABENSTELLUNG
+════════════════════════════════════════════════════════════════
+
+  Schreibe deine Lösung in uebung.ps1. Du fängst mit einer
+  leeren Datei an -- es gibt nichts auszufüllen, nur zu bauen.
+
+  Prüfen mit:  pwsh ../pruefen.ps1 8
+  Musterlösung danach:  ../Loesungen/Level_8_Dateien_Pipeline.ps1
+
+  AUFGABE 8.1
+  ──────────────────────────────────
+  Lege den Ordner "MeinTest" an und darin datei1.txt, datei2.txt
+  und datei3.txt mit dem Inhalt "Inhalt 1", "Inhalt 2" und
+  "Inhalt 3". Zähle die Dateien und gib aus:
+    Angelegt: 3 Dateien
+
+  AUFGABE 8.2
+  ──────────────────────────────────
+  Lies die Dateien über die Pipeline und gib für jede aus:
+    datei1.txt : Inhalt 1
+
+  AUFGABE 8.3
+  ──────────────────────────────────
+  Finde mit Where-Object die Dateien, deren Inhalt eine 3
+  enthält:
+    Gefunden: datei3.txt
+
+  AUFGABE 8.4
+  ──────────────────────────────────
+  Exportiere Name und Zeichenzahl des Inhalts jeder Datei als
+  "dateien.csv", lies sie mit Import-Csv wieder ein und gib aus:
+    CSV: 3 Zeilen, zusammen 24 Zeichen
+
+  AUFGABE 8.5
+  ──────────────────────────────────
+  Räum auf: lösche MeinTest und dateien.csv, aber nur, wenn sie
+  da sind (Test-Path).
+
+  Der Prüfer lässt dein Skript in einem leeren Ordner laufen, und
+  zwar zweimal. Beim zweiten Mal muss genau dasselbe herauskommen
+  -- ein Skript, das an seinen eigenen Resten stolpert, ist noch
+  nicht fertig.
+
+  BONUS (wird nicht geprüft)
+  ──────────────────────────────────
+  Finde alle .ps1-Dateien im Kurs und gib für jede die Anzahl
+  ihrer Zeilen aus.

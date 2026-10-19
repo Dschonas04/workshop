@@ -1,0 +1,161 @@
+════════════════════════════════════════════════════════════════
+  KLEINER VORTRAG: Was sind Skripte?
+════════════════════════════════════════════════════════════════
+
+  Idee für einen kurzen Vortrag (ca. 3 bis 5 Minuten)
+
+
+  1. Einstieg
+  ───────────
+  "Ein Skript ist eine Datei mit Befehlen, die ein Computer
+  nacheinander ausführt. Statt dieselben Befehle immer wieder
+  per Hand einzugeben, schreibt man sie einmal in eine Datei
+  und startet diese Datei dann erneut."
+
+  Ein Skript hilft also dabei:
+  - Arbeit zu automatisieren
+  - Zeit zu sparen
+  - Fehler zu vermeiden
+  - Aufgaben immer gleich auszuführen
+
+
+  2. Was ist ein Skript?
+  ─────────────────────
+  Ein Skript ist meist eine einfache Textdatei mit Code.
+  Beispiele sind:
+
+    PowerShell   -> .ps1
+    Batch        -> .bat
+    Bash / Shell -> .sh
+    Python       -> .py
+
+  Ein Skript kann zum Beispiel:
+  - Dateien umbenennen
+  - Ordner erstellen
+  - Informationen anzeigen
+  - Benutzer nach Eingaben fragen
+  - andere Programme starten
+
+
+  3. Was ist der Unterschied zwischen Skript und Programm?
+  ───────────────────────────────────────────────────────────
+  Ein Skript ist auch ein Programm, aber oft ein eher kleines
+  oder spezialisiertes Programm.
+
+  Typische Unterschiede:
+
+  Skript:
+  - oft kürzer und schneller geschrieben
+  - häufig für Automatisierung gedacht
+  - wird oft direkt durch eine Laufzeitumgebung ausgeführt
+    (z.B. PowerShell, Bash oder Python)
+  - ideal für wiederkehrende Aufgaben
+
+  Klassisches Programm:
+  - oft größer und umfangreicher
+  - häufig mit Benutzeroberfläche oder vielen Funktionen
+  - wird oft kompiliert oder als eigenständige Anwendung verteilt
+  - ideal für komplette Anwendungen
+
+  Wichtig:
+  Die Grenze ist nicht immer strikt. Ein großes Skript kann
+  sehr komplex sein, und kleine Programme können ebenfalls
+  einfach aufgebaut sein.
+
+
+  4. Unterschied zwischen Skripten und Programmiersprachen
+  ──────────────────────────────────────────────────────────
+  Genau genommen vergleicht man hier zwei verschiedene Dinge:
+
+  - Eine Programmiersprache ist die "Sprache", in der man Code schreibt.
+  - Ein Skript ist das konkrete Ergebnis, also eine Datei mit Befehlen.
+
+  Beispiel:
+  - PowerShell ist eine Sprache
+  - Ein Datei namens Start.ps1 ist ein Skript
+
+  Deshalb ist "Skript" nicht das Gegenteil von
+  "Programmiersprache".
+
+  Besser gesagt:
+  - Mit einer Programmiersprache schreibt man Code.
+  - Ein Skript ist eine Datei, in der dieser Code steht.
+
+  Manche Sprachen werden sehr oft für Skripte genutzt,
+  deshalb nennt man sie oft Skriptsprachen.
+
+
+  5. Was ist eine Skriptsprache?
+  ──────────────────────────────
+  Eine Skriptsprache ist eine Programmiersprache, die oft für
+  Automatisierung, schnelle Aufgaben und Systemsteuerung genutzt wird.
+
+  Bekannte Beispiele:
+  - PowerShell
+  - Bash
+  - JavaScript
+  - Python
+
+  Diese Sprachen eignen sich gut, um:
+  - Systeme zu verwalten
+  - Prozesse zu automatisieren
+  - Dateien zu bearbeiten
+  - kleine Tools schnell zu erstellen
+
+
+  6. Warum sind Skripte so nützlich?
+  ─────────────────────────────────
+  Ohne Skript:
+  - dieselben Befehle immer wieder von Hand eingeben
+  - höhere Fehlergefahr
+  - langsamer arbeiten
+
+  Mit Skript:
+  - einmal schreiben, oft benutzen
+  - gleiche Qualität bei jedem Durchlauf
+  - einfache Aufgaben können automatisiert werden
+  - sehr hilfreich in IT, Administration und Entwicklung
+
+
+  7. Einfaches Beispiel
+  ─────────────────────
+  PowerShell-Skript:
+
+    Write-Host "Hallo, willkommen zum Kurs!"
+    $name = Read-Host "Wie heißt du?"
+    Write-Host "Hallo $name"
+
+  Dieses Skript:
+  - gibt Text aus
+  - fragt nach einer Eingabe
+  - verwendet eine Variable
+  - reagiert auf den Benutzer
+
+  Daran sieht man:
+  Schon mit wenigen Zeilen kann ein Skript sinnvoll sein.
+
+
+  8. Merksatz für den Vortrag
+  ────────────────────────────
+  "Eine Programmiersprache ist das Werkzeug.
+   Ein Skript ist die Datei, die mit diesem Werkzeug geschrieben wurde.
+   Skripte werden oft genutzt, um Aufgaben schnell und automatisch
+   auszuführen."
+
+
+  9. Kurzes Fazit
+  ───────────────
+  - Skripte automatisieren Aufgaben
+  - sie bestehen aus normalem Code in einer Datei
+  - sie werden oft mit Skriptsprachen wie PowerShell oder Bash erstellt
+  - ein Skript ist nicht dasselbe wie eine Programmiersprache
+  - Programmiersprache = Sprache
+  - Skript = konkrete Datei mit Befehlen
+
+
+  10. Optionaler Schlusssatz
+  ──────────────────────────
+  "Gerade in der IT sind Skripte sehr wichtig, weil sie helfen,
+  wiederkehrende Aufgaben schnell, sauber und automatisch zu erledigen.
+  Deshalb ist PowerShell eine besonders praktische Sprache für
+  Administration und Automatisierung."

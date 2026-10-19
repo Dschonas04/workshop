@@ -1,0 +1,78 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 6: Schleifen (for / foreach / while / do-while)
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Du kannst Code wiederholt ausführen
+  und über Sammlungen iterieren.
+
+
+  for-Schleife (Zählschleife)
+  ─────────────────────────────
+  Wenn du weißt, WIE OFT etwas laufen soll.
+
+  Aufbau:  for (START; BEDINGUNG; SCHRITT) { ... }
+
+    for ($i = 1; $i -le 10; $i++) {
+        Write-Host $i
+    }
+    → Gibt 1 bis 10 aus
+
+
+  foreach-Schleife (am häufigsten!)
+  ────────────────────────────────────
+  Wenn du über eine SAMMLUNG iterieren willst.
+
+    $tiere = @("Hund", "Katze", "Fisch")
+    foreach ($tier in $tiere) {
+        Write-Host "Ich mag $tier"
+    }
+
+
+  while-Schleife
+  ────────────────
+  Läuft solange die Bedingung WAHR ist.
+  Prüft ZUERST, dann führt aus (kann 0 Mal laufen).
+
+    $i = 10
+    while ($i -ge 1) {
+        Write-Host $i
+        $i--
+    }
+
+
+  do-while / do-until
+  ─────────────────────
+  Läuft MINDESTENS einmal, prüft danach.
+
+  do-while (läuft solange Bedingung WAHR):
+    do {
+        $eingabe = Read-Host "Zahl?"
+    } while ($eingabe -ne "quit")
+
+  do-until (läuft bis Bedingung WAHR wird):
+    do {
+        $eingabe = Read-Host "Zahl?"
+    } until ($eingabe -eq "quit")
+
+
+  Schleifen-Kontrolle
+  ─────────────────────
+  break      → Schleife SOFORT beenden
+  continue   → Aktuellen Durchlauf überspringen, nächster startet
+
+    foreach ($zahl in 1..10) {
+        if ($zahl -eq 5) { continue }   ← 5 wird übersprungen
+        if ($zahl -eq 8) { break }      ← Schleife endet bei 8
+        Write-Host $zahl
+    }
+    → Gibt aus: 1, 2, 3, 4, 6, 7
+
+
+  Modulo-Operator (%)
+  ─────────────────────
+  Gibt den REST einer Division zurück.
+  Sehr nützlich um gerade/ungerade Zahlen zu erkennen!
+
+    7 % 2 = 1   (ungerade, weil Rest 1)
+    8 % 2 = 0   (gerade, weil Rest 0)
+    15 % 3 = 0  (durch 3 teilbar)

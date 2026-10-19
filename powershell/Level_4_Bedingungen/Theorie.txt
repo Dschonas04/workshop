@@ -1,0 +1,58 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 4: Bedingungen (if / elseif / else / switch)
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Du kannst Entscheidungen im Code treffen
+  und den Programmfluss steuern.
+
+
+  Vergleichsoperatoren
+  ───────────────────────
+  ACHTUNG: PowerShell verwendet NICHT < > == wie andere Sprachen!
+
+  Operator    Bedeutung                Beispiel
+  ─────────── ──────────────────────── ──────────────────────
+  -eq         gleich (equal)           5 -eq 5    → $true
+  -ne         ungleich (not equal)     5 -ne 3    → $true
+  -gt         größer (greater than)   5 -gt 3    → $true
+  -lt         kleiner (less than)      3 -lt 5    → $true
+  -ge         größer/gleich           5 -ge 5    → $true
+  -le         kleiner/gleich           3 -le 5    → $true
+
+  Für Strings:
+  -like       Wildcard-Vergleich       "Hallo" -like "H*"     → $true
+  -notlike    Wildcard negiert         "Hallo" -notlike "X*"   → $true
+  -match      Regex-Vergleich          "abc123" -match "\d+"   → $true
+  -contains   Array enthält Wert       @(1,2,3) -contains 2   → $true
+
+
+  Logische Operatoren
+  ─────────────────────
+  -and    UND     ($a -gt 0 -and $a -lt 100)
+  -or     ODER    ($a -eq 0 -or $a -eq 1)
+  -not    NICHT   (-not $istLeer)
+  !       NICHT   (!$istLeer)  ← Kurzform
+
+
+  if / elseif / else
+  ────────────────────
+  Aufbau:
+    if (BEDINGUNG) {
+        # Code wenn WAHR
+    } elseif (ANDERE BEDINGUNG) {
+        # Code wenn erste falsch, diese wahr
+    } else {
+        # Code wenn alles falsch
+    }
+
+
+  switch-Anweisung
+  ──────────────────
+  Für viele Fälle übersichtlicher als viele if/elseif:
+
+    switch ($wert) {
+        "A" { "Sehr gut" }
+        "B" { "Gut" }
+        "C" { "Befriedigend" }
+        default { "Unbekannt" }
+    }

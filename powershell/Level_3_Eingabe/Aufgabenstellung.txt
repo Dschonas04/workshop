@@ -1,0 +1,45 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 3: Eingabe & Berechnungen -- AUFGABENSTELLUNG
+════════════════════════════════════════════════════════════════
+
+  Schreibe deine Lösung in uebung.ps1. Du fängst mit einer
+  leeren Datei an -- es gibt nichts auszufüllen, nur zu bauen.
+
+  Prüfen mit:  pwsh ../pruefen.ps1 3
+  Musterlösung danach:  ../Loesungen/Level_3_Eingabe.ps1
+
+  AUFGABE 3.1
+  ──────────────────────────────────
+  Frage mit Read-Host "Wie heißt du" nach dem Namen und
+  begrüße: Hallo Max! Willkommen!
+
+  AUFGABE 3.2
+  ──────────────────────────────────
+  Frage nach "Erste Zahl" und "Zweite Zahl" und gib die Summe
+  aus, etwa: 7 + 3 = 10
+  Achtung: Read-Host liefert Text. Ohne [int] wird aus 7 + 3
+  die 73.
+
+  AUFGABE 3.3
+  ──────────────────────────────────
+  Gib für dieselben Zahlen aus:
+    Differenz: 4
+    Produkt: 21
+    Quotient: 2.33          (auf zwei Stellen gerundet)
+
+  AUFGABE 3.4
+  ──────────────────────────────────
+  Ein Taschenrechner: frage nach "Zahl 1", "Zahl 2" und
+  "Operator (+, -, *, /)" und gib das Ergebnis aus, etwa:
+    12 * 4 = 48
+
+  AUFGABE 3.5
+  ──────────────────────────────────
+  Frage nach "Eine ganze Zahl". Ist die Eingabe keine Zahl,
+  gib "Das ist keine Zahl." aus, sonst das Doppelte:
+    Doppelt: 82
+  Ohne Fehlermeldung -- -as [int] hilft.
+
+  Die Fragen müssen so anfangen wie oben angegeben, denn der
+  Prüfer erkennt sie daran. Er tippt dabei für dich: einmal
+  Max, 7, 3, 12, 4, * und abc, einmal andere Werte.

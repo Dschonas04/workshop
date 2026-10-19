@@ -1,0 +1,46 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 4: Bedingungen -- AUFGABENSTELLUNG
+════════════════════════════════════════════════════════════════
+
+  Schreibe deine Lösung in uebung.ps1. Du fängst mit einer
+  leeren Datei an -- es gibt nichts auszufüllen, nur zu bauen.
+
+  Prüfen mit:  pwsh ../pruefen.ps1 4
+  Musterlösung danach:  ../Loesungen/Level_4_Bedingungen.ps1
+
+  AUFGABE 4.1
+  ──────────────────────────────────
+  Gib je nach $Zahl aus:
+    7 ist positiv.  /  -5 ist negativ.  /  Die Zahl ist null.
+
+  AUFGABE 4.2
+  ──────────────────────────────────
+  Auto fahren darf, wer mindestens 18 ist UND $Fuehrerschein
+  "ja" ist:
+    Du darfst Auto fahren!  /  Du darfst leider nicht fahren.
+
+  AUFGABE 4.3
+  ──────────────────────────────────
+  Ein switch über $Tag:
+    Montag            → Wochenstart...
+    Freitag           → Fast Wochenende!
+    Samstag, Sonntag  → Wochenende!
+    alles andere      → Ein ganz normaler Tag.
+
+  AUFGABE 4.4
+  ──────────────────────────────────
+  Wandle $Punkte (0-100) in eine Note um und gib aus:
+    78 Punkte = Note 2
+  90+ = 1, 75+ = 2, 60+ = 3, 45+ = 4, 30+ = 5, darunter = 6
+
+  AUFGABE 4.5
+  ──────────────────────────────────
+  Gib die Altersgruppe zu $Alter aus:
+    Altersgruppe: Erwachsen
+  0-12 Kind, 13-17 Jugendlich, 18-64 Erwachsen, ab 65 Senior.
+  Verwende -and, um Bereiche zu prüfen.
+
+  Die Werte kommen als Parameter. Der param-Block steht schon in
+  uebung.ps1 -- lass ihn stehen. Der Prüfer ruft dein Skript
+  mehrmals mit anderen Werten auf, zum Beispiel:
+    pwsh ./uebung.ps1 -Zahl -5 -Alter 17 -Tag Samstag

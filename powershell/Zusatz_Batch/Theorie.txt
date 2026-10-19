@@ -1,0 +1,153 @@
+════════════════════════════════════════════════════════════════
+  ZUSATZ: Batch-Scripting (Windows CMD)
+════════════════════════════════════════════════════════════════
+
+  Was ist Batch?
+  ──────────────
+  Batch (.bat / .cmd) ist die älteste Skriptsprache von Windows.
+  Sie nutzt die Eingabeaufforderung (cmd.exe) und existiert seit
+  MS-DOS (1980er). Viele Admins nutzen sie noch heute für
+  einfache Automatisierungen.
+
+  PowerShell vs. Batch:
+  ─────────────────────
+  Eigenschaft         PowerShell              Batch
+  ──────────────────  ─────────────────────── ────────────────────
+  Dateiendung         .ps1                    .bat / .cmd
+  Variablen           $name                   %name%
+  Objekte             Ja (alles ist Objekt)   Nein (nur Text)
+  Pipeline            Objekt-Pipeline         Nur Text-Pipes
+  Modernität          Modern (2006+)          Alt (1980er)
+  Groß/Klein          Egal                    Egal
+
+
+  Grundstruktur einer Batch-Datei
+  ─────────────────────────────────
+  @echo off              ← Befehle nicht anzeigen
+  chcp 65001 >nul        ← UTF-8 Zeichensatz aktivieren
+  title Mein Skript      ← Fenstertitel setzen
+
+  :: Das ist ein Kommentar
+  REM Das ist auch ein Kommentar
+
+  echo Hallo Welt!       ← Ausgabe (wie Write-Host)
+  pause                  ← "Drücken Sie eine beliebige Taste..."
+
+
+  Variablen
+  ────────────
+  set name=Max                   ← Variable setzen (KEIN Leerzeichen um =)
+  echo %name%                    ← Variable ausgeben
+  set /a zahl=5+3                ← Rechnen mit /a
+  set /p eingabe=Dein Name:      ← Benutzereingabe (wie Read-Host)
+
+  Achtung: Variablen sind IMMER Strings!
+  set /a macht nur Integer-Berechnungen.
+
+
+  Bedingungen (IF / ELSE)
+  ─────────────────────────
+  if "%name%"=="Max" (
+      echo Hallo Max!
+  ) else (
+      echo Wer bist du?
+  )
+
+  Vergleiche:
+    ==        Gleich (Strings)
+    EQU       Gleich (Zahlen)
+    NEQ       Ungleich
+    LSS       Kleiner als
+    LEQ       Kleiner oder gleich
+    GTR       Größer als
+    GEQ       Größer oder gleich
+    EXIST     Datei/Ordner existiert
+    DEFINED   Variable existiert
+
+  if %zahl% GEQ 10 echo Zahl ist mindestens 10
+  if exist "datei.txt" echo Datei gefunden!
+  if defined name echo Variable name existiert
+
+
+  Schleifen (FOR)
+  ─────────────────
+  Batch hat nur FOR-Schleifen (kein while!):
+
+  :: Über eine Liste iterieren
+  for %%i in (Apfel Birne Kirsche) do echo %%i
+
+  :: Zählen (von 1 bis 10, Schritt 2)
+  for /l %%i in (1,2,10) do echo %%i
+
+  :: Über Dateien iterieren
+  for %%f in (*.txt) do echo %%f
+
+  :: Über Zeilen einer Datei
+  for /f "tokens=*" %%l in (datei.txt) do echo %%l
+
+  Achtung: In .bat-Dateien → %%i, in der Konsole → %i
+
+
+  Dateiverwaltung
+  ─────────────────
+  Befehl       Beschreibung                  PowerShell-Pendant
+  ──────────── ───────────────────────────── ────────────────────
+  dir          Dateien auflisten             Get-ChildItem
+  copy         Datei kopieren                Copy-Item
+  move         Datei verschieben             Move-Item
+  del          Datei löschen                 Remove-Item
+  mkdir        Ordner erstellen              New-Item -ItemType Dir
+  rmdir /s     Ordner löschen (rekursiv)     Remove-Item -Recurse
+  type         Datei anzeigen                Get-Content
+  ren          Umbenennen                    Rename-Item
+
+
+  GOTO & Labels
+  ───────────────
+  Batch nutzt GOTO für Sprünge (kein Funktionskonzept!):
+
+  goto :menü
+
+  :menü
+  echo Du bist im Menü
+  goto :eof              ← Skript beenden
+
+
+  Funktionen (simuliert mit CALL)
+  ──────────────────────────────────
+  call :MeineFunktion "Parameter1"
+  goto :eof
+
+  :MeineFunktion
+  echo Erhalten: %~1
+  goto :eof
+
+  %~1 = Erster Parameter (ohne Anführungszeichen)
+  %~2 = Zweiter Parameter, usw.
+
+
+  Nützliche Befehle
+  ───────────────────
+  cls              Bildschirm löschen
+  color 0A         Farbe ändern (Hintergrund/Vordergrund)
+  timeout /t 5     5 Sekunden warten
+  start notepad    Programm starten
+  tasklist         Prozesse anzeigen (wie Get-Process)
+  ipconfig         Netzwerk-Info
+  ping             Netzwerk-Test
+  whoami           Aktueller Benutzer
+  systeminfo       Systeminformationen
+
+
+  Fehlerbehandlung
+  ──────────────────
+  %errorlevel%     Rückgabewert des letzten Befehls (0 = OK)
+
+  if %errorlevel% neq 0 (
+      echo FEHLER aufgetreten!
+      exit /b 1
+  )
+
+  Oder kürzer:
+  copy datei.txt ziel.txt || echo Kopieren fehlgeschlagen!
+  copy datei.txt ziel.txt && echo Kopieren erfolgreich!
