@@ -1,0 +1,29 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 4: Compose -- AUFGABENSTELLUNG
+════════════════════════════════════════════════════════════════
+
+  Schreibe deine Lösung in uebung.compose.yaml.
+
+  Prüfen mit:  ./pruefen.sh 4
+  Musterlösung danach:  Loesungen/Level_4_Compose.compose.yaml
+
+  AUFGABE 4.1
+  ──────────────────────────────────
+  Der Dienst "api" wird aus dem Ordner ./api gebaut.
+
+  AUFGABE 4.2
+  ──────────────────────────────────
+  Setze die Umgebungsvariable GRUSS auf "moin".
+
+  AUFGABE 4.3
+  ──────────────────────────────────
+  Hänge das Volume "gemeinsam" nach /gemeinsam ein.
+
+  AUFGABE 4.4
+  ──────────────────────────────────
+  Der Dienst "pruefer" benutzt alpine:3.20, hängt dasselbe
+  Volume ein und darf erst NACH der api starten.
+
+  AUFGABE 4.5
+  ──────────────────────────────────
+  Erkläre das Volume "gemeinsam".

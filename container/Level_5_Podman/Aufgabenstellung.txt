@@ -1,0 +1,36 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 5: Podman -- AUFGABENSTELLUNG
+════════════════════════════════════════════════════════════════
+
+  Schreibe deine Lösung in uebung.sh.
+
+  Diese Aufgaben laufen mit beiden Werkzeugen. Wo Podman etwas
+  anders macht, erwartet der Prüfer auch eine andere Antwort.
+
+  Prüfen mit:  ./pruefen.sh 5
+  Musterlösung danach:  Loesungen/Level_5_Podman.sh
+
+  AUFGABE 5.1
+  ──────────────────────────────────
+  Gib aus, welches Werkzeug läuft -- nur "docker" oder "podman".
+
+  AUFGABE 5.2
+  ──────────────────────────────────
+  Zeige, unter welcher Kennung ein Container INNEN läuft.
+  Erwartet: root (auch bei rootless Podman -- innen ist er root,
+  auf dem Wirt bist es du).
+
+  AUFGABE 5.3
+  ──────────────────────────────────
+  Schreibe aus dem Container eine Datei in $ARBEIT und gib aus,
+  WEM sie auf dem Wirt gehört.
+  Bei Docker: root. Bei rootless Podman: deine Kennung.
+
+  AUFGABE 5.4
+  ──────────────────────────────────
+  Starte einen Container mit einem festen Namen im Hintergrund und
+  gib danach seinen Zustand aus (erwartet: running).
+
+  AUFGABE 5.5
+  ──────────────────────────────────
+  Halte ihn an und entferne ihn in EINEM Befehl.

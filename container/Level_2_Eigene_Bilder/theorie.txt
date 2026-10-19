@@ -1,0 +1,87 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 2: Eigene Bilder bauen
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Du schreibst ein Dockerfile, verstehst Schichten und
+  baust ein Bild, das klein ist und schnell neu baut.
+
+
+  Ein Dockerfile
+  ─────────────
+      FROM alpine:3.20
+      WORKDIR /app
+      COPY start.sh .
+      RUN chmod +x start.sh
+      ENV GRUSS=Hallo
+      CMD ["./start.sh"]
+
+  Gebaut mit:
+
+      docker build -t meinbild:1 .
+
+  Der Punkt ist der Kontext: alles darin wird an den Bauvorgang
+  geschickt. Ein Punkt im Heimatverzeichnis schickt das
+  Heimatverzeichnis.
+
+
+  Schichten
+  ─────────────
+  Jede Anweisung erzeugt eine Schicht. Ändert sich eine, werden sie
+  und ALLE darunter neu gebaut. Deshalb die Reihenfolge vom Seltenen
+  zum Häufigen:
+
+      COPY package.json .        ändert sich selten
+      RUN npm ci                 teuer, hängt nur an der Zeile davor
+      COPY . .                   ändert sich bei jedem Commit
+
+  Umgekehrt sortiert läuft npm ci bei jeder Änderung neu.
+
+
+  CMD und ENTRYPOINT
+  ─────────────
+  CMD          Vorgabe, überschreibbar beim run
+  ENTRYPOINT   das Programm selbst, Argumente kommen dazu
+
+      ENTRYPOINT ["/app/werkzeug"]
+      CMD ["--hilfe"]
+
+      docker run bild            → werkzeug --hilfe
+      docker run bild --version  → werkzeug --version
+
+  Beide in der Klammerform schreiben. In der Textform ("CMD ./x")
+  startet eine Shell dazwischen, und Signale kommen nicht an.
+
+
+  .dockerignore
+  ─────────────
+      node_modules
+      .git
+      *.log
+
+  Ohne das wandert bei jedem Bauen alles in den Kontext -- oft
+  hunderte Megabyte, und Geheimnisse aus .env gleich mit.
+
+
+  Mehrstufig
+  ─────────────
+      FROM golang:1.22 AS bau
+      WORKDIR /src
+      COPY . .
+      RUN go build -o /werkzeug
+
+      FROM alpine:3.20
+      COPY --from=bau /werkzeug /werkzeug
+      CMD ["/werkzeug"]
+
+  Das Ergebnis enthält den Übersetzer nicht mehr: aus 800 MB werden
+  15. Das ist der wichtigste Handgriff für kleine Bilder.
+
+
+  Nicht als root
+  ─────────────
+      RUN adduser -D dienst
+      USER dienst
+
+  Standardmäßig läuft alles als root im Container. Das ist nicht
+  root auf dem Wirt, aber die erste Verteidigungslinie kostet zwei
+  Zeilen.

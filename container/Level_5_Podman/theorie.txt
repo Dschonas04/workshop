@@ -1,0 +1,89 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 5: Podman
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Du weißt, was Podman anders macht als Docker -- und
+  warum das für einen Server oft die bessere Wahl ist.
+
+
+  Derselbe Befehl
+  ─────────────
+      podman run --rm alpine echo hallo
+      podman ps / images / build / exec / logs …
+
+  Podman spricht dieselbe Sprache. Wer Docker kann, kann Podman.
+  Viele setzen sogar:
+
+      alias docker=podman
+
+
+  Kein Daemon
+  ─────────────
+  Docker hat einen Dienst, der als root läuft; der Befehl docker ist
+  nur ein Klient dazu. Podman startet Container direkt als
+  Kindprozesse.
+
+  Folgen:
+  * Kein Dienst, der ausfallen kann und alles mitnimmt.
+  * Container erscheinen in der Prozessliste des Wirts.
+  * systemd kann einen Container wie jeden anderen Dienst führen.
+  * Wer in der Gruppe "docker" ist, ist faktisch root auf dem
+    Rechner. Bei Podman gilt das nicht.
+
+
+  Rootless
+  ─────────────
+  Podman läuft normalerweise unter deiner Kennung. Der Container
+  hält sich für root, ist auf dem Wirt aber du -- über
+  Nutzernamensräume.
+
+  Praktische Folgen:
+  * Ports unter 1024 gehen nicht ohne Weiteres. Nimm 8080 statt 80.
+  * Dateien aus einem Bind Mount gehören dir, nicht root.
+  * Läuft SELinux, braucht ein Bind Mount ein :Z --
+        podman run -v "$PWD":/app:Z alpine
+  * podman unshare hilft, wenn Rechte in Volumes zu richten sind.
+
+
+  Pods
+  ─────────────
+  Der Namensgeber. Ein Pod ist eine Gruppe von Containern, die sich
+  Netz und Ports teilen -- wie in Kubernetes:
+
+      podman pod create --name kurs -p 8080:80
+      podman run -d --pod kurs nginx:alpine
+      podman run -d --pod kurs alpine sleep 100
+
+  Beide sehen sich unter localhost. Docker kennt das so nicht.
+
+
+  Compose
+  ─────────────
+  * podman-compose (getrennt zu installieren) oder
+  * podman compose in neueren Fassungen, oder
+  * der Docker-Klient gegen den Podman-Dienst:
+
+        systemctl --user start podman.socket
+        export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
+
+
+  Als Dienst führen
+  ─────────────
+      podman generate systemd --new --name web > ~/.config/systemd/user/web.service
+
+  Neuer und empfohlen sind Quadlets: eine .container-Datei unter
+  ~/.config/containers/systemd/, die systemd selbst in einen Dienst
+  übersetzt.
+
+  Damit läuft ein Container nach dem Neustart wieder, ohne dass ein
+  Daemon dafür zuständig ist.
+
+
+  Wann was
+  ─────────────
+  Docker    verbreitet, Docker Desktop, viele Anleitungen setzen es
+            voraus, Compose ist ausgereift.
+  Podman    kein Daemon, rootless von Haus aus, Pods, systemd-nah --
+            auf einem Server das ruhigere Werkzeug.
+
+  Für diesen Kurs ist es egal: alle Aufgaben laufen mit beiden.

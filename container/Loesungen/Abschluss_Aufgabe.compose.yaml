@@ -1,0 +1,21 @@
+services:
+  zaehler:
+    build:
+      # Von Loesungen/ aus gesehen: der Bauordner liegt beim Level,
+      # das Dockerfile hier daneben.
+      context: ../Abschluss_Aufgabe/zaehler
+      dockerfile: ../../Loesungen/Abschluss_Aufgabe.Dockerfile
+    volumes:
+      - stand:/daten
+
+  leser:
+    image: alpine:3.20
+    depends_on:
+      - zaehler
+    volumes:
+      - stand:/daten
+    command: >
+      sh -c "sleep 2; cat /daten/stand"
+
+volumes:
+  stand:
