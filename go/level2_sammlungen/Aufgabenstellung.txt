@@ -1,0 +1,41 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 2: sammlungen -- AUFGABENSTELLUNG
+════════════════════════════════════════════════════════════════
+
+  Schreibe deine Lösung in uebung.go. Die Signaturen stehen
+  schon da -- die Tests rufen sie so auf. Alles darin ist deins.
+
+  Die Tests in uebung_test.go sind die Aufgabe. Ändere sie nicht:
+  sobald sie grün sind, stimmt deine Lösung.
+
+  Prüfen mit:  ./pruefen.sh 2
+  Musterlösung danach:  Loesungen/level2/
+
+  AUFGABE 2.1
+  ──────────────────────────────────
+  Summe addiert alle Zahlen. Eine leere Liste ergibt 0.
+
+  AUFGABE 2.2
+  ──────────────────────────────────
+  NurGerade gibt eine neue Liste mit den geraden Zahlen zurück,
+  in der ursprünglichen Reihenfolge. Die Eingabe bleibt unberührt.
+
+  AUFGABE 2.3
+  ──────────────────────────────────
+  Zaehle zählt, wie oft jedes Wort vorkommt.
+  Aus ["a","b","a"] wird {"a":2, "b":1}.
+
+  AUFGABE 2.4
+  ──────────────────────────────────
+  Aelteste gibt die älteste Person zurück und true.
+  Bei einer leeren Liste die Nullperson und false.
+
+  AUFGABE 2.5
+  ──────────────────────────────────
+  Geburtstag erhöht das Alter der Person um eins.
+  Achtung: das muss beim Aufrufer ankommen.
+
+  AUFGABE 2.6
+  ──────────────────────────────────
+  SortiertNachAlter gibt die Namen zurück, aufsteigend nach Alter.
+  Bei gleichem Alter alphabetisch nach Namen.

@@ -1,0 +1,85 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 1: Grundlagen -- Werte, Funktionen, Fehler
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Du schreibst Funktionen, die mehrere Werte zurückgeben,
+  und behandelst Fehler so, wie Go es vorsieht.
+
+
+  Variablen
+  ─────────────
+      var name string = "Max"
+      var alter = 25          Typ wird erschlossen
+      zaehler := 0            kurz, nur innerhalb von Funktionen
+
+  Ohne Zuweisung gilt der Nullwert: 0, "", false, nil. Es gibt kein
+  "nicht gesetzt" -- das ist Absicht und spart die halbe Fehlerklasse
+  anderer Sprachen.
+
+
+  Funktionen
+  ─────────────
+      func addiere(a, b int) int {
+          return a + b
+      }
+
+  Mehrere Rückgabewerte sind der Normalfall, kein Trick:
+
+      func teile(a, b float64) (float64, error) {
+          if b == 0 {
+              return 0, errors.New("Division durch null")
+          }
+          return a / b, nil
+      }
+
+
+  Fehler
+  ─────────────
+  Ein Fehler ist ein Wert, keine Ausnahme. Er wird zurückgegeben und
+  an der Aufrufstelle behandelt:
+
+      ergebnis, err := teile(10, 0)
+      if err != nil {
+          return fmt.Errorf("teilen: %w", err)
+      }
+
+  %w verpackt den ursprünglichen Fehler, sodass errors.Is ihn später
+  wiederfindet. %v würde nur den Text übernehmen.
+
+  Es gibt kein try/catch. Das macht den Code länger und den Ablauf
+  sichtbar -- man sieht an jeder Zeile, ob sie scheitern kann.
+
+
+  Sichtbarkeit
+  ─────────────
+  Großgeschrieben  = außerhalb des Pakets sichtbar (Addiere)
+  kleingeschrieben = nur im Paket (addiere)
+
+  Kein public/private, nur die Schreibweise.
+
+
+  Bedingungen und Schleifen
+  ─────────────
+      if x > 3 { ... } else { ... }
+
+      if wert, ok := karte["a"]; ok { ... }   Prüfung mit Vorlauf
+
+      for i := 0; i < 10; i++ { ... }
+      for i, v := range liste { ... }
+      for { ... }                             endlos
+      for bedingung { ... }                   das while von Go
+
+  Es gibt genau ein Schlüsselwort für Schleifen: for.
+
+
+  Tests
+  ─────────────
+  Eine Datei x_test.go neben dem Code:
+
+      func TestAddiere(t *testing.T) {
+          if got := Addiere(2, 3); got != 5 {
+              t.Errorf("Addiere(2,3) = %d, erwartet 5", got)
+          }
+      }
+
+  Laufen mit go test ./...

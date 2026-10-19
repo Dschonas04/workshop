@@ -1,0 +1,45 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 3: schnittstellen -- AUFGABENSTELLUNG
+════════════════════════════════════════════════════════════════
+
+  Schreibe deine Lösung in uebung.go. Die Signaturen stehen
+  schon da -- die Tests rufen sie so auf. Alles darin ist deins.
+
+  Die Tests in uebung_test.go sind die Aufgabe. Ändere sie nicht:
+  sobald sie grün sind, stimmt deine Lösung.
+
+  Am Anfang übersetzt das Paket nicht: Kreis und Rechteck erfüllen
+  Former noch nicht. Das ist Absicht -- der Übersetzer sagt dir,
+  was fehlt.
+
+  Prüfen mit:  ./pruefen.sh 3
+  Musterlösung danach:  Loesungen/level3/
+
+  AUFGABE 3.1
+  ──────────────────────────────────
+  Gib Kreis und Rechteck je eine Methode Flaeche, sodass beide
+  Former erfüllen. Für den Kreis: math.Pi * R * R.
+
+  AUFGABE 3.2
+  ──────────────────────────────────
+  Gesamtflaeche summiert die Flächen aller Formen.
+  Bei einer leeren Liste: 0 und ErrLeer.
+
+  AUFGABE 3.3
+  ──────────────────────────────────
+  Gib FeldFehler eine Error-Methode. Der Text lautet:
+  "Feld <Feld>: <Grund>"
+  Gib ihm außerdem eine Unwrap-Methode, die Grund zurückgibt --
+  nur dann findet errors.Is den verpackten Fehler.
+  ErrZuKurz meldet einen zu kurzen Wert.
+
+  AUFGABE 3.4
+  ──────────────────────────────────
+  Pruefe gibt nil zurück, wenn wert mindestens drei Zeichen hat.
+  Sonst einen *FeldFehler mit dem Feldnamen und ErrZuKurz als Grund.
+
+  AUFGABE 3.5
+  ──────────────────────────────────
+  FeldVonFehler gibt den Feldnamen zurück, wenn irgendwo in der
+  Fehlerkette ein *FeldFehler steckt -- auch wenn er verpackt ist.
+  Sonst "" und false. Nutze errors.As.

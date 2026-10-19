@@ -1,0 +1,35 @@
+════════════════════════════════════════════════════════════════
+  ABSCHLUSS: Wortzähler
+════════════════════════════════════════════════════════════════
+
+  Baue in uebung.go einen kleinen Wortzähler. Er bringt alles aus
+  den vier Leveln zusammen: Sammlungen, eigene Fehler,
+  Schnittstellen und Nebenläufigkeit.
+
+  Verlangt sind vier Dinge:
+
+  1. Zaehle(text string) map[string]int
+     Zählt Wörter, getrennt an Leerraum, Groß und Klein egal
+     ("Der" und "der" sind dasselbe Wort). Satzzeichen am Rand
+     eines Wortes fallen weg: aus "Haus." wird "haus".
+
+  2. Haeufigste(anzahl map[string]int, n int) []string
+     Die n häufigsten Wörter, absteigend nach Anzahl. Bei gleicher
+     Anzahl alphabetisch. Sind weniger Wörter da, kommen eben
+     weniger zurück.
+
+  3. ZaehleQuellen(ctx, quellen []Quelle) (map[string]int, error)
+     Zählt über mehrere Quellen NEBENLÄUFIG und führt die
+     Ergebnisse zusammen. Eine Quelle ist eine Schnittstelle mit
+     Text() (string, error).
+
+     Scheitert eine Quelle, kommt ein *QuellFehler zurück, der den
+     Namen der Quelle trägt und den ursprünglichen Fehler verpackt
+     (errors.Is muss ihn finden).
+
+     Läuft der Context ab, kommt ErrAbbruch zurück.
+
+  4. Der Prüfer läuft mit -race. Ein Wettlauf beim Zusammenführen
+     fällt damit auf.
+
+  Prüfen mit:  ./pruefen.sh

@@ -1,0 +1,37 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 1: grundlagen -- AUFGABENSTELLUNG
+════════════════════════════════════════════════════════════════
+
+  Schreibe deine Lösung in uebung.go. Die Signaturen stehen
+  schon da -- die Tests rufen sie so auf. Alles darin ist deins.
+
+  Die Tests in uebung_test.go sind die Aufgabe. Ändere sie nicht:
+  sobald sie grün sind, stimmt deine Lösung.
+
+  Prüfen mit:  ./pruefen.sh 1
+  Musterlösung danach:  Loesungen/level1/
+
+  AUFGABE 1.1
+  ──────────────────────────────────
+  Addiere gibt die Summe von a und b zurück.
+
+  AUFGABE 1.2
+  ──────────────────────────────────
+  Teile gibt a/b zurück. Ist b gleich 0, gibt es 0 und
+  ErrTeilenDurchNull zurück.
+
+  AUFGABE 1.3
+  ──────────────────────────────────
+  Groesster gibt den größten Wert der Liste zurück und true.
+  Bei einer leeren Liste gibt es 0 und false zurück.
+
+  AUFGABE 1.4
+  ──────────────────────────────────
+  Fizz gibt für Vielfache von 3 "Fizz", für Vielfache von 5 "Buzz",
+  für Vielfache von beidem "FizzBuzz" und sonst die Zahl als Text
+  zurück. Nutze strconv.Itoa für die Zahl.
+
+  AUFGABE 1.5
+  ──────────────────────────────────
+  Wiederhole hängt text n-mal aneinander. Bei n <= 0 ist das
+  Ergebnis leer. Nutze eine Schleife und einen strings.Builder.

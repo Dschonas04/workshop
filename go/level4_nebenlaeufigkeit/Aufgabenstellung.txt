@@ -1,0 +1,44 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 4: nebenlaeufigkeit -- AUFGABENSTELLUNG
+════════════════════════════════════════════════════════════════
+
+  Schreibe deine Lösung in uebung.go. Die Signaturen stehen
+  schon da -- die Tests rufen sie so auf. Alles darin ist deins.
+
+  Die Tests in uebung_test.go sind die Aufgabe. Ändere sie nicht:
+  sobald sie grün sind, stimmt deine Lösung.
+
+  Geprüft wird mit go test -race. Ein Wettlauf zwischen zwei
+  Goroutinen fällt damit auf, auch wenn die Zahlen zufällig stimmen.
+
+  Prüfen mit:  ./pruefen.sh 4
+  Musterlösung danach:  Loesungen/level4/
+
+  AUFGABE 4.1
+  ──────────────────────────────────
+  Parallel ruft f für jede Zahl in einer eigenen Goroutine auf und
+  gibt die Ergebnisse in der REIHENFOLGE DER EINGABE zurück.
+  Warte, bis alle fertig sind. Kein Wettlauf -- der Prüfer läuft
+  mit -race.
+
+  AUFGABE 4.2
+  ──────────────────────────────────
+  SummeAusKanal liest, bis der Kanal geschlossen wird, und gibt die
+  Summe zurück.
+
+  AUFGABE 4.3
+  ──────────────────────────────────
+  Erzeuge schickt die Zahlen 1..n in einen Kanal und schließt ihn
+  danach. Die Funktion darf NICHT blockieren -- sie gibt den Kanal
+  sofort zurück und füllt ihn nebenläufig.
+
+  AUFGABE 4.4
+  ──────────────────────────────────
+  MitFrist wartet auf das Ergebnis von f. Dauert es länger als der
+  Context erlaubt, gibt es 0 und ErrAbbruch zurück -- ohne auf f zu
+  warten.
+
+  AUFGABE 4.5
+  ──────────────────────────────────
+  Hoch erhöht den Zähler um eins, auch wenn viele Goroutinen es
+  gleichzeitig tun. Wert gibt den Stand zurück.

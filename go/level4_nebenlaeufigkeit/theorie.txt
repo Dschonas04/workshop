@@ -1,0 +1,100 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 4: Nebenläufigkeit
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Du startest Arbeit nebeneinander, sammelst Ergebnisse
+  ein und brichst ab, wenn es zu lange dauert.
+
+
+  Goroutine
+  ─────────────
+      go tuEtwas()
+
+  Ein nebenläufiger Ablauf, wenige Kilobyte groß. Zehntausende sind
+  normal.
+
+  Aber: das Programm wartet NICHT auf sie. Endet main, endet alles.
+
+
+  WaitGroup -- warten, bis alle fertig sind
+  ─────────────
+      var wg sync.WaitGroup
+      for _, a := range aufgaben {
+          wg.Add(1)
+          go func(a Aufgabe) {
+              defer wg.Done()
+              bearbeite(a)
+          }(a)
+      }
+      wg.Wait()
+
+  Add vor dem Start, Done per defer, Wait danach. Add innerhalb der
+  Goroutine ist ein Wettlauf.
+
+  Seit Go 1.22 hat jeder Schleifendurchlauf seine eigene Variable.
+  In älterem Code sieht man deshalb oft die Übergabe als Argument --
+  ohne sie sahen alle Goroutinen denselben letzten Wert.
+
+
+  Kanäle
+  ─────────────
+      c := make(chan int)        ohne Puffer: Übergabe im Gleichschritt
+      c := make(chan int, 10)    mit Puffer
+
+      c <- 5           hineinlegen
+      wert := <-c      herausnehmen
+      close(c)         schließen -- nur der Sender schließt
+
+      for wert := range c { ... }    läuft bis close
+
+  Ein Kanal ohne Puffer koppelt beide Seiten: der Sender wartet, bis
+  jemand nimmt. Das ist ein Werkzeug, kein Nachteil.
+
+
+  select
+  ─────────────
+      select {
+      case wert := <-c:
+          ...
+      case <-zeit.After(time.Second):
+          ...
+      case <-ctx.Done():
+          return ctx.Err()
+      }
+
+  Nimmt, was zuerst bereitsteht.
+
+
+  Context
+  ─────────────
+      ctx, abbrechen := context.WithTimeout(ctx, 2*time.Second)
+      defer abbrechen()
+
+  Ein Context reicht Abbruch und Frist nach unten durch. Er ist das
+  erste Argument, heißt ctx, und wird nicht in einem Struct
+  aufbewahrt.
+
+
+  Wettläufe
+  ─────────────
+  Zwei Goroutinen, die dieselbe Variable schreiben, sind ein Fehler,
+  auch wenn es meistens gutgeht. Entweder ein Kanal, oder:
+
+      var mu sync.Mutex
+      mu.Lock()
+      zaehler++
+      mu.Unlock()
+
+  Finden lässt sich das mit:
+
+      go test -race ./...
+
+  Der Prüfer dieses Levels läuft mit -race. Ein Wettlauf fällt damit
+  auf, statt drei Wochen später im Betrieb.
+
+
+  Die Regel dahinter
+  ─────────────
+  "Teile Speicher nicht, indem du kommunizierst -- kommuniziere,
+  indem du Speicher teilst" steht auf dem Kopf. Richtig ist:
+  kommuniziere über Kanäle, statt Speicher zu teilen.

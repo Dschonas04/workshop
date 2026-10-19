@@ -1,0 +1,89 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 3: Schnittstellen und Fehler
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Du beschreibst Verhalten statt Herkunft und baust
+  Fehler, die der Aufrufer auseinanderhalten kann.
+
+
+  Schnittstellen
+  ─────────────
+      type Former interface {
+          Flaeche() float64
+      }
+
+  Ein Typ erfüllt sie, sobald er die Methode hat. Es gibt kein
+  "implements": kein Vertrag im Voraus, keine Abhängigkeit vom
+  Paket der Schnittstelle.
+
+      type Kreis struct{ R float64 }
+      func (k Kreis) Flaeche() float64 { return math.Pi * k.R * k.R }
+
+      var f Former = Kreis{R: 2}      passt einfach
+
+  Kleine Schnittstellen sind die guten. io.Reader hat eine Methode
+  und trägt die halbe Standardbibliothek.
+
+
+  Schnittstelle am Aufrufer, nicht am Erzeuger
+  ─────────────
+  Wer eine Funktion schreibt, die etwas braucht, beschreibt dort,
+  was sie braucht -- nicht der, der den Typ liefert. Deshalb steht
+  eine Schnittstelle meist im Paket, das sie benutzt.
+
+
+  Der leere Wert
+  ─────────────
+  Eine Schnittstellenvariable ist nil, solange nichts drinsteht.
+  Achtung, klassische Falle:
+
+      var z *Kreis          nil
+      var f Former = z      NICHT nil -- Typ steht drin, Wert ist nil
+
+  Deshalb: gib nie einen nil-Zeiger als Fehler zurück, gib nil zurück.
+
+
+  Typprüfung
+  ─────────────
+      if k, ok := f.(Kreis); ok { ... }
+
+      switch v := f.(type) {
+      case Kreis:    ...
+      case Rechteck: ...
+      }
+
+  Braucht man das oft, ist die Schnittstelle falsch geschnitten.
+
+
+  Eigene Fehler
+  ─────────────
+      type PfadFehler struct {
+          Pfad string
+          Grund error
+      }
+
+      func (e *PfadFehler) Error() string {
+          return e.Pfad + ": " + e.Grund.Error()
+      }
+
+      func (e *PfadFehler) Unwrap() error { return e.Grund }
+
+  error ist selbst nur eine Schnittstelle mit einer Methode.
+
+
+  Fehler unterscheiden
+  ─────────────
+      errors.Is(err, ErrNichtGefunden)      ist es dieser Fehler?
+      errors.As(err, &pfadFehler)           steckt dieser Typ darin?
+
+  Beide sehen durch %w-Verpackungen hindurch. Ein Vergleich mit ==
+  oder auf den Text tut das nicht -- und geht kaputt, sobald jemand
+  den Fehler unterwegs verpackt.
+
+
+  Sentinel-Fehler
+  ─────────────
+      var ErrNichtGefunden = errors.New("nicht gefunden")
+
+  Ein fester Wert, den Aufrufer mit errors.Is abfragen. Er gehört
+  zur öffentlichen Schnittstelle des Pakets wie eine Funktion.

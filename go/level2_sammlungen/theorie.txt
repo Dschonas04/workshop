@@ -1,0 +1,82 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 2: Sammlungen -- Slices, Maps, Structs
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Du arbeitest mit Listen, Karten und eigenen Typen --
+  und weißt, wann Go kopiert und wann nicht.
+
+
+  Slices
+  ─────────────
+      var leer []int                nil, Länge 0, brauchbar
+      zahlen := []int{1, 2, 3}
+      zahlen = append(zahlen, 4)
+      teil := zahlen[1:3]           Elemente 1 und 2
+
+  Ein Slice ist ein Fenster auf ein Feld: Länge, Kapazität, Zeiger.
+  Ein Teil-Slice teilt sich den Speicher mit dem Original --
+  schreibst du hinein, ändert sich beides.
+
+  append kann ein neues Feld anlegen (wenn die Kapazität nicht
+  reicht) oder in das alte schreiben. Deshalb IMMER das Ergebnis
+  zuweisen: zahlen = append(zahlen, 4).
+
+
+  Maps
+  ─────────────
+      lager := map[string]int{"apfel": 3}
+      lager["birne"] = 5
+      anzahl, gefunden := lager["kiwi"]     0, false
+      delete(lager, "apfel")
+      len(lager)
+
+  Eine Map muss angelegt werden, bevor man hineinschreibt:
+  make(map[string]int) oder ein Literal. In eine nil-Map zu
+  schreiben, beendet das Programm.
+
+  Die Reihenfolge beim Durchlaufen ist zufällig, absichtlich. Wer
+  sie braucht, sortiert die Schlüssel.
+
+
+  Structs
+  ─────────────
+      type Person struct {
+          Name  string
+          Alter int
+      }
+
+      p := Person{Name: "Max", Alter: 25}
+      p.Alter++
+
+  Structs sind Werte. Eine Zuweisung kopiert:
+
+      q := p
+      q.Alter = 99     p.Alter bleibt 25
+
+
+  Methoden
+  ─────────────
+      func (p Person) Begruessung() string {     Kopie
+          return "Hallo, " + p.Name
+      }
+
+      func (p *Person) Geburtstag() {            Zeiger
+          p.Alter++
+      }
+
+  Wer den Wert ändern will, braucht einen Zeiger-Empfänger. Wer
+  einen großen Struct nicht kopieren will, ebenfalls.
+
+  Faustregel: entweder alle Methoden eines Typs mit Zeiger oder
+  keine. Mischen verwirrt.
+
+
+  Sortieren
+  ─────────────
+      sort.Ints(zahlen)
+      sort.Strings(namen)
+      sort.Slice(leute, func(i, j int) bool {
+          return leute[i].Alter < leute[j].Alter
+      })
+
+  Ab Go 1.21 auch: slices.Sort, slices.Contains, maps.Keys.
