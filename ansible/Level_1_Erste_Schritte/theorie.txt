@@ -22,7 +22,7 @@
         tasks:
           - name: Verzeichnis anlegen
             ansible.builtin.file:
-              path: /tmp/kurs
+              path: /tmp/workshop
               state: directory
 
   Ausgeführt mit:
@@ -38,7 +38,7 @@
 
   Das ist der Kern: ein Playbook zweimal laufen zu lassen, muss
   dasselbe Ergebnis haben wie einmal. Das nennt man idempotent.
-  Ein Skript mit "mkdir /tmp/kurs" ist es nicht -- beim zweiten Mal
+  Ein Skript mit "mkdir /tmp/workshop" ist es nicht -- beim zweiten Mal
   scheitert es.
 
 

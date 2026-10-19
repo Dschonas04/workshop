@@ -8,7 +8,7 @@ if [ -z "$COMPOSE" ]; then
 fi
 
 # Teil 1: das Bild allein.
-marke="kurs-abschluss:pruefung"
+marke="workshop-abschluss:pruefung"
 $W build -f "${grund}.Dockerfile" -t "$marke" "$ordner/zaehler" >/dev/null 2>&1
 gebaut=$?
 pruefe "Abschluss: Bild lässt sich bauen" "$gebaut" "0"
@@ -17,7 +17,7 @@ pruefe "Abschluss: Startbefehl und DIENST" "$lauf" "Lauf 1 fuer zaehler"
 
 # Teil 2: der Aufbau, zweimal gestartet -- der Stand muss steigen.
 datei="${grund}.compose.yaml"
-projekt="kursabschluss"
+projekt="workshopabschluss"
 $COMPOSE -f "$datei" -p "$projekt" down -v >/dev/null 2>&1
 erst="$($COMPOSE -f "$datei" -p "$projekt" up --build --abort-on-container-exit --exit-code-from leser 2>&1)"
 pruefe "Abschluss: erster Lauf zählt auf 1" "$(grep -c 'Lauf 1 fuer zaehler' <<<"$erst")" "1"

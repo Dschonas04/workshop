@@ -6,9 +6,9 @@
   leeren Gerüst an -- es gibt nichts auszufüllen, nur zu bauen.
 
   Alles läuft gegen den eigenen Rechner (connection=local) und
-  schreibt nach /tmp/ansible-kurs/level4.
+  schreibt nach /tmp/ansible-workshop/level4.
 
-  Die Tasks der Rolle stehen in rollen/kursdienst/tasks/main.yml.
+  Die Tasks der Rolle stehen in rollen/workshopdienst/tasks/main.yml.
   Dort ist der eine Teil der Aufgabe, in uebung.yml der andere.
 
   Prüfen mit:  ./pruefen.sh 4
@@ -16,11 +16,11 @@
 
   AUFGABE 4.4
   ──────────────────────────────────
-  Rufe die Rolle kursdienst auf und setze dabei den Port auf 9443
+  Rufe die Rolle workshopdienst auf und setze dabei den Port auf 9443
   sowie die Knoten auf [eins, zwei, drei] -- ohne defaults/main.yml
   zu ändern.
 
-  In der Rolle (rollen/kursdienst/tasks/main.yml):
+  In der Rolle (rollen/workshopdienst/tasks/main.yml):
 
   AUFGABE 4.1
   ──────────────────────────────────

@@ -1,0 +1,33 @@
+name: Ansible
+
+# Prüft bei jeder Änderung, dass alle Musterlösungen den Prüfer bestehen.
+# Damit ist sichergestellt, dass Aufgaben, Lösungen und Prüfungen
+# zusammenpassen.
+
+on:
+  push:
+    branches: [main]
+    paths: ['ansible/**', '.github/workflows/ansible.yml']
+  pull_request:
+    paths: ['ansible/**', '.github/workflows/ansible.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    working-directory: ansible
+
+jobs:
+  musterloesungen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+      - name: ansible-core installieren
+        run: pip install ansible-core
+      - name: Musterlösungen prüfen
+        run: ./pruefen.sh --loesung

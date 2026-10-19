@@ -121,7 +121,7 @@
   ─────────────────────
   PowerShell-Skript:
 
-    Write-Host "Hallo, willkommen zum Kurs!"
+    Write-Host "Hallo, willkommen zum Workshop!"
     $name = Read-Host "Wie heißt du?"
     Write-Host "Hallo $name"
 

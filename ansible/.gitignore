@@ -1,4 +1,4 @@
-# Nichts hier; der Kurs schreibt ausschließlich nach /tmp/ansible-kurs.
+# Nichts hier; der Workshop schreibt ausschließlich nach /tmp/ansible-workshop.
 *.retry
 
 # Betriebssystem und Editor

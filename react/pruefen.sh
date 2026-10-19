@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ================================================================
-#  Prüfer für den React-Kurs. Ruft vitest auf.
+#  Prüfer für den React-Workshop. Ruft vitest auf.
 #
 #    ./pruefen.sh             alle Level
 #    ./pruefen.sh 3           nur Level 3

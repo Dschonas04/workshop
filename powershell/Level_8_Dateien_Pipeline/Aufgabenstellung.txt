@@ -44,5 +44,5 @@
 
   BONUS (wird nicht geprüft)
   ──────────────────────────────────
-  Finde alle .ps1-Dateien im Kurs und gib für jede die Anzahl
+  Finde alle .ps1-Dateien im Workshop und gib für jede die Anzahl
   ihrer Zeilen aus.

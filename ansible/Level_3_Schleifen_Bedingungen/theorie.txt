@@ -10,7 +10,7 @@
   ─────────────
       - name: Mehrere Verzeichnisse
         ansible.builtin.file:
-          path: "/tmp/kurs/{{ item }}"
+          path: "/tmp/workshop/{{ item }}"
           state: directory
         loop:
           - eins
@@ -48,7 +48,7 @@
 
       when:
         - datei_da
-        - umgebung == "kurs"
+        - umgebung == "workshop"
 
   Ein übersprungener Task meldet skipped. Das ist kein Fehler.
 
@@ -57,12 +57,12 @@
   ─────────────
       - name: Nachsehen, ob es die Datei gibt
         ansible.builtin.stat:
-          path: /tmp/kurs/marke
+          path: /tmp/workshop/marke
         register: marke
 
       - name: Nur dann etwas tun
         ansible.builtin.copy:
-          dest: /tmp/kurs/folge.txt
+          dest: /tmp/workshop/folge.txt
           content: "war da\n"
         when: marke.stat.exists
 
@@ -78,14 +78,14 @@
       tasks:
         - name: Konfiguration schreiben
           ansible.builtin.copy:
-            dest: /tmp/kurs/dienst.conf
+            dest: /tmp/workshop/dienst.conf
             content: "port = 8080\n"
           notify: Dienst neu starten
 
       handlers:
         - name: Dienst neu starten
           ansible.builtin.copy:
-            dest: /tmp/kurs/neustart.marke
+            dest: /tmp/workshop/neustart.marke
             content: "neu gestartet\n"
 
   Benachrichtigt wird nur bei changed. Ändert sich die Konfiguration

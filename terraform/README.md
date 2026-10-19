@@ -1,13 +1,13 @@
-# Terraform-Kurs
+# Terraform-Workshop
 
-[![Prüfung](https://github.com/Dschonas04/Terraform-Kurs/actions/workflows/pruefen.yml/badge.svg)](https://github.com/Dschonas04/Terraform-Kurs/actions/workflows/pruefen.yml)
-[![Lizenz: CC BY-SA 4.0](https://img.shields.io/badge/Lizenz-CC%20BY--SA%204.0-lightgrey.svg)](LICENSE)
-[![Code: MIT](https://img.shields.io/badge/Code-MIT-blue.svg)](LICENSE-CODE)
+[![Prüfung](https://github.com/Dschonas04/workshop/actions/workflows/terraform.yml/badge.svg)](https://github.com/Dschonas04/workshop/actions/workflows/terraform.yml)
+[![Lizenz: CC BY-SA 4.0](https://img.shields.io/badge/Lizenz-CC%20BY--SA%204.0-lightgrey.svg)](../LICENSE)
+[![Code: MIT](https://img.shields.io/badge/Code-MIT-blue.svg)](../LICENSE-CODE)
 
 Terraform beziehungsweise OpenTofu in vier Leveln, mit einem Prüfer, der
 nach jeder Aufgabe sagt, ob sie stimmt.
 
-Der Kurs benutzt **nur die Anbieter `local` und `random`**. Es entsteht
+Der Workshop benutzt **nur die Anbieter `local` und `random`**. Es entsteht
 nichts in einer Cloud, es kostet nichts, und alles landet in einem
 Wegwerf-Verzeichnis.
 
@@ -25,7 +25,7 @@ neben der Aufgabe.
 
 Der Prüfer kopiert deine `aufgabe.tf` in ein frisches Verzeichnis, ruft
 `init` und `apply` auf und sieht sich an, was dabei herauskam. Dein
-Kursverzeichnis bleibt sauber, und ein misslungener Versuch hinterlässt
+Workshopverzeichnis bleibt sauber, und ein misslungener Versuch hinterlässt
 keinen kaputten Zustand.
 
 ## Los geht es
@@ -81,7 +81,7 @@ Fehler gefunden oder eine Idee für eine Aufgabe? Siehe
 
 ## Lizenz
 
-Die Kurstexte (Theorie, Aufgabenstellungen, README) stehen unter
-[CC BY-SA 4.0](LICENSE): frei nutzbar und veränderbar, mit Namensnennung
+Die Workshoptexte (Theorie, Aufgabenstellungen, README) stehen unter
+[CC BY-SA 4.0](../LICENSE): frei nutzbar und veränderbar, mit Namensnennung
 und unter gleichen Bedingungen. Der Code (Beispiele, Musterlösungen,
-Prüfer) steht unter der [MIT-Lizenz](LICENSE-CODE).
+Prüfer) steht unter der [MIT-Lizenz](../LICENSE-CODE).

@@ -6,7 +6,7 @@
   leeren Gerüst an -- es gibt nichts auszufüllen, nur zu bauen.
 
   Alles läuft gegen den eigenen Rechner (connection=local) und
-  schreibt nach /tmp/ansible-kurs/level3.
+  schreibt nach /tmp/ansible-workshop/level3.
 
   Prüfen mit:  ./pruefen.sh 3
   Musterlösung danach:  Loesungen/Level_3_Schleifen_Bedingungen.yml

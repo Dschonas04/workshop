@@ -3,12 +3,12 @@
 ════════════════════════════════════════════════════════════════
 
   Schreibe dein Playbook in uebung.yml, das unter
-  /tmp/ansible-kurs/abschluss eine kleine Auslieferung erzeugt.
+  /tmp/ansible-workshop/abschluss eine kleine Auslieferung erzeugt.
   Alles aus den vier Leveln kommt darin vor.
 
   Verlangt ist:
 
-  1. Das Verzeichnis /tmp/ansible-kurs/abschluss mit Rechten 0755.
+  1. Das Verzeichnis /tmp/ansible-workshop/abschluss mit Rechten 0755.
 
   2. Ein Unterverzeichnis je Dienst aus dieser Liste, mit EINEM Task:
 

@@ -1,13 +1,13 @@
-# Container-Kurs
+# Container-Workshop
 
-[![Prüfung](https://github.com/Dschonas04/Container-Kurs/actions/workflows/pruefen.yml/badge.svg)](https://github.com/Dschonas04/Container-Kurs/actions/workflows/pruefen.yml)
-[![Lizenz: CC BY-SA 4.0](https://img.shields.io/badge/Lizenz-CC%20BY--SA%204.0-lightgrey.svg)](LICENSE)
-[![Code: MIT](https://img.shields.io/badge/Code-MIT-blue.svg)](LICENSE-CODE)
+[![Prüfung](https://github.com/Dschonas04/workshop/actions/workflows/container.yml/badge.svg)](https://github.com/Dschonas04/workshop/actions/workflows/container.yml)
+[![Lizenz: CC BY-SA 4.0](https://img.shields.io/badge/Lizenz-CC%20BY--SA%204.0-lightgrey.svg)](../LICENSE)
+[![Code: MIT](https://img.shields.io/badge/Code-MIT-blue.svg)](../LICENSE-CODE)
 
 Docker, Compose und Podman in fünf Leveln, mit einem Prüfer, der nach
 jeder Aufgabe sagt, ob sie stimmt.
 
-Der Kurs läuft **mit Docker und mit Podman**. Der Prüfer nimmt, was da
+Der Workshop läuft **mit Docker und mit Podman**. Der Prüfer nimmt, was da
 ist. Dass beides fast gleich zu bedienen ist, gehört zum Lernstoff.
 
 ## Aufbau
@@ -79,7 +79,7 @@ Fehler gefunden oder eine Idee für eine Aufgabe? Siehe
 
 ## Lizenz
 
-Die Kurstexte (Theorie, Aufgabenstellungen, README) stehen unter
-[CC BY-SA 4.0](LICENSE): frei nutzbar und veränderbar, mit Namensnennung
+Die Workshoptexte (Theorie, Aufgabenstellungen, README) stehen unter
+[CC BY-SA 4.0](../LICENSE): frei nutzbar und veränderbar, mit Namensnennung
 und unter gleichen Bedingungen. Der Code (Beispiele, Musterlösungen,
-Prüfer) steht unter der [MIT-Lizenz](LICENSE-CODE).
+Prüfer) steht unter der [MIT-Lizenz](../LICENSE-CODE).

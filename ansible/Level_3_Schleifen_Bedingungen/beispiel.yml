@@ -4,7 +4,7 @@
   hosts: uebung
   gather_facts: true
   vars:
-    ordner: /tmp/ansible-kurs-beispiel3
+    ordner: /tmp/ansible-workshop-beispiel3
     dienste:
       - { name: web, port: 80 }
       - { name: api, port: 8080 }

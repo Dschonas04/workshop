@@ -1,0 +1,30 @@
+name: Shell
+
+# Prüft bei jeder Änderung, dass alle Musterlösungen den Prüfer bestehen.
+# Damit ist sichergestellt, dass Aufgaben, Lösungen und Prüfungen
+# zusammenpassen.
+
+on:
+  push:
+    branches: [main]
+    paths: ['shell/**', '.github/workflows/shell.yml']
+  pull_request:
+    paths: ['shell/**', '.github/workflows/shell.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    working-directory: shell
+
+jobs:
+  musterloesungen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Werkzeuge
+        run: sudo apt-get install -y --no-install-recommends bc gawk
+      - name: Musterlösungen prüfen
+        run: ./pruefen.sh --loesung

@@ -46,9 +46,9 @@
 
   Netzwerke
   ─────────────
-      docker network create kursnetz
-      docker run -d --name db --network kursnetz postgres
-      docker run --rm --network kursnetz alpine ping -c1 db
+      docker network create workshopnetz
+      docker run -d --name db --network workshopnetz postgres
+      docker run --rm --network workshopnetz alpine ping -c1 db
 
   Im selben Netz erreichen sich Container ÜBER IHREN NAMEN. Es gibt
   einen eingebauten Namensdienst.

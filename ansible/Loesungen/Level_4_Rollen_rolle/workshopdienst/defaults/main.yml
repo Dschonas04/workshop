@@ -1,0 +1,8 @@
+---
+# Vorgabewerte der Rolle. Alles hier lässt sich von außen überschreiben.
+workshopdienst_ordner: /tmp/ansible-workshop/level4
+workshopdienst_name: workshopdienst
+workshopdienst_port: 8080
+workshopdienst_knoten:
+  - alpha
+  - beta

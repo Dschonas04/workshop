@@ -18,6 +18,6 @@ pruefe "2.6 Ausgabewert praefix" \
   "$(cd "$arbeit" && tofu output -raw praefix 2>/dev/null)" "test-web"
 # Vorgabe greift, wenn nichts übergeben wird.
 (cd "$arbeit" && tofu apply -auto-approve -input=false >/dev/null 2>&1)
-pruefe "2.1 Vorgabe kurs greift ohne -var" \
-  "$(sed -n 's/^praefix = //p' "$arbeit/ausgabe/bericht.txt" 2>/dev/null)" "kurs-web"
+pruefe "2.1 Vorgabe workshop greift ohne -var" \
+  "$(sed -n 's/^praefix = //p' "$arbeit/ausgabe/bericht.txt" 2>/dev/null)" "workshop-web"
 rm -rf "$arbeit"

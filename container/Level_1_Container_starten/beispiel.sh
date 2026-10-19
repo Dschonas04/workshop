@@ -18,9 +18,9 @@ echo "--- Umgebungsvariablen ---"
 $W run --rm -e GRUSS=Moin alpine:3.20 sh -c 'echo "$GRUSS"'
 
 echo "--- Im Hintergrund, dann nachsehen ---"
-$W run -d --name kurs-beispiel alpine:3.20 sleep 20 >/dev/null
-$W ps --filter name=kurs-beispiel --format '{{.Names}} läuft mit {{.Command}}'
-$W exec kurs-beispiel sh -c 'echo "von innen: $(hostname)"'
-$W stop kurs-beispiel >/dev/null
-$W rm kurs-beispiel >/dev/null
+$W run -d --name workshop-beispiel alpine:3.20 sleep 20 >/dev/null
+$W ps --filter name=workshop-beispiel --format '{{.Names}} läuft mit {{.Command}}'
+$W exec workshop-beispiel sh -c 'echo "von innen: $(hostname)"'
+$W stop workshop-beispiel >/dev/null
+$W rm workshop-beispiel >/dev/null
 echo "wieder aufgeräumt"

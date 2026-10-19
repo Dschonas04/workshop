@@ -1,8 +1,8 @@
-# Shell-Kurs
+# Shell-Workshop
 
-[![Prüfung](https://github.com/Dschonas04/Shell-Kurs/actions/workflows/pruefen.yml/badge.svg)](https://github.com/Dschonas04/Shell-Kurs/actions/workflows/pruefen.yml)
-[![Lizenz: CC BY-SA 4.0](https://img.shields.io/badge/Lizenz-CC%20BY--SA%204.0-lightgrey.svg)](LICENSE)
-[![Code: MIT](https://img.shields.io/badge/Code-MIT-blue.svg)](LICENSE-CODE)
+[![Prüfung](https://github.com/Dschonas04/workshop/actions/workflows/shell.yml/badge.svg)](https://github.com/Dschonas04/workshop/actions/workflows/shell.yml)
+[![Lizenz: CC BY-SA 4.0](https://img.shields.io/badge/Lizenz-CC%20BY--SA%204.0-lightgrey.svg)](../LICENSE)
+[![Code: MIT](https://img.shields.io/badge/Code-MIT-blue.svg)](../LICENSE-CODE)
 
 Bash Schritt für Schritt in fünf Leveln, mit einem Prüfer, der dir sagt,
 ob deine Lösung stimmt.
@@ -28,7 +28,7 @@ Absicht: mit der Lösung im selben Ordner schaut man hin, bevor man denkt.
 ## Los geht es
 
 ```bash
-./Start_Kurs.sh          # Menü durch alle Level
+./Start_Workshop.sh          # Menü durch alle Level
 ./pruefen.sh             # alles prüfen
 ./pruefen.sh 3           # nur Level 3
 ./pruefen.sh --loesung   # prüft die Musterlösungen, muss grün sein
@@ -69,7 +69,7 @@ Fehler gefunden oder eine Idee für eine Aufgabe? Siehe
 
 ## Lizenz
 
-Die Kurstexte (Theorie, Aufgabenstellungen, README) stehen unter
-[CC BY-SA 4.0](LICENSE): frei nutzbar und veränderbar, mit Namensnennung
+Die Workshoptexte (Theorie, Aufgabenstellungen, README) stehen unter
+[CC BY-SA 4.0](../LICENSE): frei nutzbar und veränderbar, mit Namensnennung
 und unter gleichen Bedingungen. Der Code (Beispiele, Musterlösungen,
-Prüfer) steht unter der [MIT-Lizenz](LICENSE-CODE).
+Prüfer) steht unter der [MIT-Lizenz](../LICENSE-CODE).

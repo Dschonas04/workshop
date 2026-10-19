@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -u
 spiel="$1"
-ordner=/tmp/ansible-kurs/level1
-rm -rf /tmp/ansible-kurs
+ordner=/tmp/ansible-workshop/level1
+rm -rf /tmp/ansible-workshop
 mkdir -p "$ordner"; : > "$ordner/alt.txt"
 
 ausgabe="$(ansible-playbook "$spiel" 2>&1)"

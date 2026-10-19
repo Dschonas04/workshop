@@ -30,7 +30,7 @@
 
   AUFGABE 2.5
   ──────────────────────────────────
-  Setze die Umgebungsvariable NAME auf "kursbild".
+  Setze die Umgebungsvariable NAME auf "workshopbild".
   Jetzt der Wechsel zum Nutzer (siehe 2.3).
 
   AUFGABE 2.6

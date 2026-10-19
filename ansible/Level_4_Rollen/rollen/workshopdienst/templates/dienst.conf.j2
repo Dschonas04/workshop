@@ -1,0 +1,9 @@
+# erzeugt von der Rolle workshopdienst
+[dienst]
+name = {{ workshopdienst_name }}
+port = {{ workshopdienst_port }}
+
+[knoten]
+{% for k in workshopdienst_knoten %}
+{{ loop.index }} = {{ k }}
+{% endfor %}

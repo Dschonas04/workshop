@@ -6,7 +6,7 @@
   Gerüst an -- es gibt nichts auszufüllen, nur zu bauen.
 
   Der Prüfer kopiert deine Datei in ein frisches Verzeichnis und
-  ruft dort init und apply auf. Dein Kursordner bleibt sauber.
+  ruft dort init und apply auf. Dein Workshopordner bleibt sauber.
 
   Prüfen mit:  ./pruefen.sh 3
   Musterlösung danach:  Loesungen/Level_3_Mehrfach_Ausdruecke.tf

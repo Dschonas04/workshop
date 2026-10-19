@@ -8,7 +8,7 @@ title Batch-Beispiele
 
 :: --- Ausgabe ---
 echo ========================================
-echo   Willkommen zum Batch-Kurs!
+echo   Willkommen zum Batch-Workshop!
 echo ========================================
 echo.
 

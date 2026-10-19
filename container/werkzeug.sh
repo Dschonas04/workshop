@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Findet die vorhandene Container-Werkzeugkette. Der Kurs läuft mit
+# Findet die vorhandene Container-Werkzeugkette. Der Workshop läuft mit
 # Docker und mit Podman -- die Befehle sind zu 95 Prozent dieselben,
 # und genau das ist eine der Lektionen.
 werkzeug_finden() {

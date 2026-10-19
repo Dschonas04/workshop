@@ -3,15 +3,15 @@ set -u
 . "$(dirname "$0")/../werkzeug.sh"
 W="$(werkzeug_finden)"
 
-$W run --rm alpine:3.20 echo "hallo kurs"
+$W run --rm alpine:3.20 echo "hallo workshop"
 
-$W run --rm -e KURS=container alpine:3.20 sh -c 'echo "$KURS"'
+$W run --rm -e WORKSHOP=container alpine:3.20 sh -c 'echo "$WORKSHOP"'
 
-$W run -d --name kurs-1 alpine:3.20 sleep 30 >/dev/null
+$W run -d --name workshop-1 alpine:3.20 sleep 30 >/dev/null
 
-$W exec kurs-1 sh -c 'echo "von innen"'
+$W exec workshop-1 sh -c 'echo "von innen"'
 
-$W ps --filter name=kurs-1 --format '{{.Names}}'
+$W ps --filter name=workshop-1 --format '{{.Names}}'
 
-$W stop kurs-1 >/dev/null 2>&1
-$W rm kurs-1 >/dev/null 2>&1
+$W stop workshop-1 >/dev/null 2>&1
+$W rm workshop-1 >/dev/null 2>&1

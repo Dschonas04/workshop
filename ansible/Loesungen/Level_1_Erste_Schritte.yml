@@ -3,7 +3,7 @@
   hosts: uebung
   gather_facts: false
   vars:
-    ordner: /tmp/ansible-kurs/level1
+    ordner: /tmp/ansible-workshop/level1
 
   tasks:
     - name: Verzeichnis anlegen

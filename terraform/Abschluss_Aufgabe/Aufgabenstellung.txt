@@ -8,7 +8,7 @@
 
   Verlangt ist:
 
-  1. Eine Variable "umgebung" (string, Vorgabe "kurs").
+  1. Eine Variable "umgebung" (string, Vorgabe "workshop").
 
   2. Eine Variable "dienste" als Karte von Namen auf Objekte:
 
@@ -20,7 +20,7 @@
 
   3. Für jeden AKTIVEN Dienst eine Datei ausgabe/<name>.conf mit:
 
-         umgebung = kurs
+         umgebung = workshop
          name = web
          port = 80
 

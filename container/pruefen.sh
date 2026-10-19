@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ================================================================
-#  Prüfer für den Container-Kurs.
+#  Prüfer für den Container-Workshop.
 #
 #    ./pruefen.sh            alle Level
 #    ./pruefen.sh 3          nur Level 3
@@ -19,7 +19,7 @@ GRUEN=$'\e[32m'; ROT=$'\e[31m'; GRAU=$'\e[90m'; FETT=$'\e[1m'; AUS=$'\e[0m'
 W="$(werkzeug_finden)"
 if [ -z "$W" ]; then
   printf '%sWeder Docker noch Podman gefunden.%s\n\n' "$ROT" "$AUS"
-  printf 'Der Kurs braucht eines von beiden:\n'
+  printf 'Der Workshop braucht eines von beiden:\n'
   printf '  Debian/Ubuntu:  apt install podman   (kein Daemon, kein root)\n'
   printf '  oder Docker:    https://docs.docker.com/engine/install/\n'
   exit 1

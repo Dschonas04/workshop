@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ================================================================
-#  Prüfer für den Terraform-Kurs.
+#  Prüfer für den Terraform-Workshop.
 #
 #  Er sagt dir nach jeder Aufgabe, ob sie stimmt -- das ist der
 #  Unterschied zwischen "ich habe etwas hingeschrieben" und "ich

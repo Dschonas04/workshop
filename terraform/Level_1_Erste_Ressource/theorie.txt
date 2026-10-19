@@ -5,7 +5,7 @@
   Lernziel: Du verstehst den Kreis aus init, plan, apply und
   destroy -- und was der Zustand ist.
 
-  Der Kurs benutzt nur die Anbieter local und random. Es entsteht
+  Der Workshop benutzt nur die Anbieter local und random. Es entsteht
   nichts in einer Cloud, es kostet nichts, und alles landet im
   Unterordner ausgabe/.
 

@@ -1,0 +1,28 @@
+name: PowerShell
+
+# Prüft bei jeder Änderung, dass alle Musterlösungen den Prüfer bestehen.
+# Damit ist sichergestellt, dass Aufgaben, Lösungen und Prüfungen
+# zusammenpassen.
+
+on:
+  push:
+    branches: [main]
+    paths: ['powershell/**', '.github/workflows/powershell.yml']
+  pull_request:
+    paths: ['powershell/**', '.github/workflows/powershell.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    working-directory: powershell
+
+jobs:
+  musterloesungen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Musterlösungen prüfen
+        run: pwsh -NoProfile -File ./pruefen.ps1 -Loesung

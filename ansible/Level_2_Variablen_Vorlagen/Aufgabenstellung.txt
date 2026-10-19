@@ -6,7 +6,7 @@
   leeren Gerüst an -- es gibt nichts auszufüllen, nur zu bauen.
 
   Alles läuft gegen den eigenen Rechner (connection=local) und
-  schreibt nach /tmp/ansible-kurs/level2.
+  schreibt nach /tmp/ansible-workshop/level2.
 
   Prüfen mit:  ./pruefen.sh 2
   Musterlösung danach:  Loesungen/Level_2_Variablen_Vorlagen.yml

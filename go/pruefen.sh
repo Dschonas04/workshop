@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ================================================================
-#  Prüfer für den Go-Kurs.
+#  Prüfer für den Go-Workshop.
 #
 #    ./pruefen.sh            alle Level
 #    ./pruefen.sh 3          nur Level 3

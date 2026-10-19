@@ -1,12 +1,12 @@
 # Mitmachen
 
-Danke, dass du den Ansible-Kurs besser machen willst.
+Danke, dass du den Ansible-Workshop besser machen willst.
 
 ## Fehler melden
 
 Eine Aufgabe ist unklar, eine Musterlösung falsch oder der Prüfer meldet
 etwas, das nicht stimmt? Dann bitte ein
-[Issue](https://github.com/Dschonas04/Ansible-Kurs/issues/new/choose) mit:
+[Issue](https://github.com/Dschonas04/workshop/issues/new/choose) mit:
 
 - Level und Aufgabe, um die es geht,
 - was du erwartet hast und was passiert ist,
@@ -35,5 +35,5 @@ etwas, das nicht stimmt? Dann bitte ein
 ## Lizenz
 
 Mit einem Beitrag stimmst du zu, dass Texte unter
-[CC BY-SA 4.0](LICENSE) und Code unter der [MIT-Lizenz](LICENSE-CODE)
+[CC BY-SA 4.0](../LICENSE) und Code unter der [MIT-Lizenz](../LICENSE-CODE)
 veröffentlicht werden.

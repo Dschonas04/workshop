@@ -6,7 +6,7 @@ terraform {
 
 variable "umgebung" {
   type    = string
-  default = "kurs"
+  default = "workshop"
 }
 
 variable "dienst" {

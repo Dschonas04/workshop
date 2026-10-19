@@ -1,0 +1,35 @@
+name: React
+
+# Prüft bei jeder Änderung, dass alle Musterlösungen den Prüfer bestehen.
+# Damit ist sichergestellt, dass Aufgaben, Lösungen und Prüfungen
+# zusammenpassen.
+
+on:
+  push:
+    branches: [main]
+    paths: ['react/**', '.github/workflows/react.yml']
+  pull_request:
+    paths: ['react/**', '.github/workflows/react.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    working-directory: react
+
+jobs:
+  musterloesungen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: react/package-lock.json
+      - name: Abhängigkeiten
+        run: npm ci
+      - name: Musterlösungen prüfen
+        run: ./pruefen.sh --loesung

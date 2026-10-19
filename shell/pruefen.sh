@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ================================================================
-#  Prüfer für den Shell-Kurs.
+#  Prüfer für den Shell-Workshop.
 #
 #  Er sagt dir nach jeder Aufgabe, ob sie stimmt -- das ist der
 #  Unterschied zwischen "ich habe etwas hingeschrieben" und "ich

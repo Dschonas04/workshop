@@ -8,7 +8,7 @@ COPY start.sh .
 
 RUN chmod +x start.sh
 
-ENV NAME=kursbild
+ENV NAME=workshopbild
 
 USER dienst
 

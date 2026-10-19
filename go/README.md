@@ -1,8 +1,8 @@
-# Go-Kurs
+# Go-Workshop
 
-[![Prüfung](https://github.com/Dschonas04/Go-Kurs/actions/workflows/pruefen.yml/badge.svg)](https://github.com/Dschonas04/Go-Kurs/actions/workflows/pruefen.yml)
-[![Lizenz: CC BY-SA 4.0](https://img.shields.io/badge/Lizenz-CC%20BY--SA%204.0-lightgrey.svg)](LICENSE)
-[![Code: MIT](https://img.shields.io/badge/Code-MIT-blue.svg)](LICENSE-CODE)
+[![Prüfung](https://github.com/Dschonas04/workshop/actions/workflows/go.yml/badge.svg)](https://github.com/Dschonas04/workshop/actions/workflows/go.yml)
+[![Lizenz: CC BY-SA 4.0](https://img.shields.io/badge/Lizenz-CC%20BY--SA%204.0-lightgrey.svg)](../LICENSE)
+[![Code: MIT](https://img.shields.io/badge/Code-MIT-blue.svg)](../LICENSE-CODE)
 
 Go in vier Leveln, geprüft von `go test` -- also mit demselben Werkzeug,
 mit dem in Go wirklich gearbeitet wird.
@@ -76,7 +76,7 @@ Fehler gefunden oder eine Idee für eine Aufgabe? Siehe
 
 ## Lizenz
 
-Die Kurstexte (Theorie, Aufgabenstellungen, README) stehen unter
-[CC BY-SA 4.0](LICENSE): frei nutzbar und veränderbar, mit Namensnennung
+Die Workshoptexte (Theorie, Aufgabenstellungen, README) stehen unter
+[CC BY-SA 4.0](../LICENSE): frei nutzbar und veränderbar, mit Namensnennung
 und unter gleichen Bedingungen. Der Code (Beispiele, Musterlösungen,
-Prüfer) steht unter der [MIT-Lizenz](LICENSE-CODE).
+Prüfer) steht unter der [MIT-Lizenz](../LICENSE-CODE).

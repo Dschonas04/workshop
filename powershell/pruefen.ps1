@@ -1,5 +1,5 @@
 ﻿<#
-  Prüfer für den PowerShell-Kurs.
+  Prüfer für den PowerShell-Workshop.
 
   Er sagt dir nach jeder Aufgabe, ob sie stimmt -- das ist der
   Unterschied zwischen "ich habe etwas hingeschrieben" und "ich
@@ -141,7 +141,7 @@ foreach ($o in $ordner) {
         Write-Host "  · uebung.ps1 enthält noch nichts." -ForegroundColor DarkGray
     }
 
-    $script:Arbeit = Join-Path ([IO.Path]::GetTempPath()) ("ps-kurs-" + [guid]::NewGuid())
+    $script:Arbeit = Join-Path ([IO.Path]::GetTempPath()) ("ps-workshop-" + [guid]::NewGuid())
     New-Item -ItemType Directory -Path $script:Arbeit | Out-Null
     try {
         . (Join-Path $o.FullName 'pruefung.ps1')

@@ -50,9 +50,9 @@
   Der Namensgeber. Ein Pod ist eine Gruppe von Containern, die sich
   Netz und Ports teilen -- wie in Kubernetes:
 
-      podman pod create --name kurs -p 8080:80
-      podman run -d --pod kurs nginx:alpine
-      podman run -d --pod kurs alpine sleep 100
+      podman pod create --name workshop -p 8080:80
+      podman run -d --pod workshop nginx:alpine
+      podman run -d --pod workshop alpine sleep 100
 
   Beide sehen sich unter localhost. Docker kennt das so nicht.
 
@@ -86,4 +86,4 @@
   Podman    kein Daemon, rootless von Haus aus, Pods, systemd-nah --
             auf einem Server das ruhigere Werkzeug.
 
-  Für diesen Kurs ist es egal: alle Aufgaben laufen mit beiden.
+  Für diesen Workshop ist es egal: alle Aufgaben laufen mit beiden.

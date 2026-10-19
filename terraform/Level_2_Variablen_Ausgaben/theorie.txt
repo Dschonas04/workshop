@@ -9,9 +9,9 @@
   Eingabewerte
   ─────────────
       variable "umgebung" {
-        description = "kurs, test oder betrieb"
+        description = "workshop, test oder betrieb"
         type        = string
-        default     = "kurs"
+        default     = "workshop"
       }
 
   Ohne default MUSS ein Wert kommen, sonst fragt tofu nach.

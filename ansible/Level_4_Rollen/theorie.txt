@@ -16,7 +16,7 @@
   Aufbau
   ─────────────
       rollen/
-        kursdienst/
+        workshopdienst/
           tasks/main.yml        die Tasks (Pflicht)
           defaults/main.yml     Vorgabewerte, überschreibbar
           vars/main.yml         feste Werte, schwer überschreibbar
@@ -33,12 +33,12 @@
       - name: Spiel mit Rolle
         hosts: uebung
         roles:
-          - kursdienst
+          - workshopdienst
 
   Oder mit eigenen Werten:
 
       roles:
-        - role: kursdienst
+        - role: workshopdienst
           dienst_port: 9000
 
   Gesucht wird in roles/ neben dem Playbook, oder wo roles_path in
@@ -64,10 +64,10 @@
   In einer Rolle sind Pfade relativ zur Rolle:
 
       ansible.builtin.template:
-        src: dienst.conf.j2        → rollen/kursdienst/templates/dienst.conf.j2
+        src: dienst.conf.j2        → rollen/workshopdienst/templates/dienst.conf.j2
 
       ansible.builtin.copy:
-        src: liesmich.txt          → rollen/kursdienst/files/liesmich.txt
+        src: liesmich.txt          → rollen/workshopdienst/files/liesmich.txt
 
 
   Was eine gute Rolle ausmacht

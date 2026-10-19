@@ -9,7 +9,7 @@ function Get-Begrüßung {
         [string]$Name = "Welt",
         [string]$Tageszeit = "Tag"
     )
-    return "Guten $Tageszeit, $Name! Willkommen zum PowerShell Kurs!"
+    return "Guten $Tageszeit, $Name! Willkommen zum PowerShell Workshop!"
 }
 
 Write-Host (Get-Begrüßung)

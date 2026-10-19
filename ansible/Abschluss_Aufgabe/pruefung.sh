@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -u
-spiel="$1"; ordner=/tmp/ansible-kurs/abschluss
+spiel="$1"; ordner=/tmp/ansible-workshop/abschluss
 rm -rf "$ordner"
 ausgabe="$(ansible-playbook "$spiel" 2>&1)"
 pruefe "Abschluss: läuft ohne Fehler" "$(grep -c 'failed=[1-9]' <<<"$ausgabe")" "0"

@@ -19,10 +19,10 @@
 
   AUFGABE 3.3
   ──────────────────────────────────
-  Lege ein Volume namens kurs-daten an, schreibe hinein, entferne
+  Lege ein Volume namens workshop-daten an, schreibe hinein, entferne
   den Container und lies mit einem NEUEN Container wieder aus.
 
   AUFGABE 3.4
   ──────────────────────────────────
-  Lege ein Netz kursnetz an, starte darin einen Container "ziel"
+  Lege ein Netz workshopnetz an, starte darin einen Container "ziel"
   im Hintergrund und erreiche ihn aus einem zweiten ÜBER SEINEN NAMEN.

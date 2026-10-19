@@ -5,8 +5,8 @@
   hosts: uebung
   gather_facts: true
   vars:
-    ordner: /tmp/ansible-kurs-beispiel2
-    dienst_name: kursdienst
+    ordner: /tmp/ansible-workshop-beispiel2
+    dienst_name: workshopdienst
     dienst_port: 8080
     knoten:
       - alpha

@@ -17,9 +17,9 @@
 
   Interaktiv starten
   ──────────────────
-  Wenn du lieber mit einem Menü arbeitest, starte im Kursordner:
+  Wenn du lieber mit einem Menü arbeitest, starte im Workshopordner:
 
-    pwsh ./Start_Kurs_Interaktiv.ps1
+    pwsh ./Start_Workshop_Interaktiv.ps1
 
   Dort kannst du Level auswählen, Dateien direkt anzeigen und
   kleine Mini-Checks beantworten.
@@ -169,7 +169,7 @@
      Oder: Menü > Terminal > Neues Terminal
 
   4. Ordner öffnen:
-     Datei > Ordner öffnen > Kursordner auswählen
+     Datei > Ordner öffnen > Workshopordner auswählen
      So siehst du alle Level auf einen Blick.
 
 

@@ -1,0 +1,31 @@
+name: Terraform
+
+# Prüft bei jeder Änderung, dass alle Musterlösungen den Prüfer bestehen.
+# Damit ist sichergestellt, dass Aufgaben, Lösungen und Prüfungen
+# zusammenpassen.
+
+on:
+  push:
+    branches: [main]
+    paths: ['terraform/**', '.github/workflows/terraform.yml']
+  pull_request:
+    paths: ['terraform/**', '.github/workflows/terraform.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    working-directory: terraform
+
+jobs:
+  musterloesungen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: opentofu/setup-opentofu@v2
+        with:
+          tofu_wrapper: false
+      - name: Musterlösungen prüfen
+        run: ./pruefen.sh --loesung

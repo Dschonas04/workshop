@@ -8,7 +8,7 @@ if [ -z "$COMPOSE" ]; then
 fi
 
 datei="${grund}.compose.yaml"
-projekt="kurs4"
+projekt="workshop4"
 $COMPOSE -f "$datei" -p "$projekt" down -v >/dev/null 2>&1
 
 hoch="$($COMPOSE -f "$datei" -p "$projekt" up --build --abort-on-container-exit --exit-code-from pruefer 2>&1)"

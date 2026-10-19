@@ -1,8 +1,8 @@
-# PowerShell-Kurs
+# PowerShell-Workshop
 
-[![Prüfung](https://github.com/Dschonas04/Powershell-Kurs/actions/workflows/pruefen.yml/badge.svg)](https://github.com/Dschonas04/Powershell-Kurs/actions/workflows/pruefen.yml)
-[![Lizenz: CC BY-SA 4.0](https://img.shields.io/badge/Lizenz-CC%20BY--SA%204.0-lightgrey.svg)](LICENSE)
-[![Code: MIT](https://img.shields.io/badge/Code-MIT-blue.svg)](LICENSE-CODE)
+[![Prüfung](https://github.com/Dschonas04/workshop/actions/workflows/powershell.yml/badge.svg)](https://github.com/Dschonas04/workshop/actions/workflows/powershell.yml)
+[![Lizenz: CC BY-SA 4.0](https://img.shields.io/badge/Lizenz-CC%20BY--SA%204.0-lightgrey.svg)](../LICENSE)
+[![Code: MIT](https://img.shields.io/badge/Code-MIT-blue.svg)](../LICENSE-CODE)
 
 PowerShell in acht Leveln und einer Abschlussaufgabe, mit einem Prüfer,
 der nach jeder Aufgabe sagt, ob sie stimmt.
@@ -28,7 +28,7 @@ in [`Loesungen/`](Loesungen/). Wer sie sehen will, muss hingehen.
 ## Los geht es
 
 ```powershell
-pwsh ./Start_Kurs.ps1            # Menü durch alle Level, mit Prüfen
+pwsh ./Start_Workshop.ps1            # Menü durch alle Level, mit Prüfen
 pwsh ./pruefen.ps1               # alles prüfen
 pwsh ./pruefen.ps1 3             # nur Level 3
 pwsh ./pruefen.ps1 abschluss     # nur die Abschlussaufgabe
@@ -95,7 +95,7 @@ Zum Vergleichen, ohne Prüfer:
 | [Zusatz_Shell](Zusatz_Shell/) | Bash / Shell (Linux/macOS) | `.sh`    |
 
 Wer Bash richtig lernen will: dafür gibt es den
-[Shell-Kurs](https://github.com/Dschonas04/Shell-Kurs), mit Prüfer.
+[Shell-Workshop](../shell/), mit Prüfer.
 
 [`Vortrag_Skripte.txt`](Vortrag_Skripte.txt) ist die Vorlage für einen
 kurzen Vortrag, was Skripte sind und wofür man sie braucht.
@@ -122,7 +122,7 @@ Fehler gefunden oder eine Idee für eine Aufgabe? Siehe
 
 ## Lizenz
 
-Die Kurstexte (Theorie, Aufgabenstellungen, README) stehen unter
-[CC BY-SA 4.0](LICENSE): frei nutzbar und veränderbar, mit Namensnennung
+Die Workshoptexte (Theorie, Aufgabenstellungen, README) stehen unter
+[CC BY-SA 4.0](../LICENSE): frei nutzbar und veränderbar, mit Namensnennung
 und unter gleichen Bedingungen. Der Code (Beispiele, Musterlösungen,
-Prüfer) steht unter der [MIT-Lizenz](LICENSE-CODE).
+Prüfer) steht unter der [MIT-Lizenz](../LICENSE-CODE).
