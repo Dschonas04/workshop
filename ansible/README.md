@@ -1,0 +1,80 @@
+# Ansible-Kurs
+
+[![Prüfung](https://github.com/Dschonas04/Ansible-Kurs/actions/workflows/pruefen.yml/badge.svg)](https://github.com/Dschonas04/Ansible-Kurs/actions/workflows/pruefen.yml)
+[![Lizenz: CC BY-SA 4.0](https://img.shields.io/badge/Lizenz-CC%20BY--SA%204.0-lightgrey.svg)](LICENSE)
+[![Code: MIT](https://img.shields.io/badge/Code-MIT-blue.svg)](LICENSE-CODE)
+
+Ansible in vier Leveln, mit einem Prüfer, der nach jeder Aufgabe sagt,
+ob sie stimmt.
+
+Alles läuft **gegen den eigenen Rechner**. Es gibt keinen SSH-Zugriff auf
+fremde Maschinen, geschrieben wird ausschließlich unter `/tmp/ansible-kurs`.
+
+## Aufbau
+
+Jedes Level hat vier Dateien:
+
+| Datei                  | Zweck                                     |
+| ---------------------- | ----------------------------------------- |
+| `theorie.txt`          | Konzepte lesen und verstehen              |
+| `beispiel.yml`         | Lauffähiges Playbook zum Ausprobieren     |
+| `Aufgabenstellung.txt` | was zu tun ist, in Worten                 |
+| `uebung.yml`           | dein Playbook -- ein leeres Gerüst zum Anfangen |
+
+Die Musterlösungen liegen **nicht** neben der Aufgabe, sondern gesammelt
+in [`Loesungen/`](Loesungen/). Wer sie sehen will, muss hingehen.
+
+## Los geht es
+
+```bash
+./Start_Kurs.sh          # Menü durch alle Level
+./pruefen.sh             # alles prüfen
+./pruefen.sh 2           # nur Level 2
+./pruefen.sh --loesung   # prüft die Musterlösungen, muss grün sein
+```
+
+Ein Playbook von Hand ausführen:
+
+```bash
+ansible-playbook Level_1_Erste_Schritte/beispiel.yml
+ansible-playbook Level_1_Erste_Schritte/uebung.yml
+```
+
+## Level
+
+| Level                                          | Thema                                      |
+| ---------------------------------------------- | ------------------------------------------ |
+| [Level 1](Level_1_Erste_Schritte/)              | Playbook, Module, Idempotenz               |
+| [Level 2](Level_2_Variablen_Vorlagen/)          | Variablen, Fakten, Filter, Jinja2-Vorlagen |
+| [Level 3](Level_3_Schleifen_Bedingungen/)       | loop, when, register, Handler              |
+| [Level 4](Level_4_Rollen/)                      | Rollen, defaults, Struktur                 |
+| [Abschluss](Abschluss_Aufgabe/)                 | eine kleine Auslieferung, alles zusammen   |
+
+## Was der Prüfer zusätzlich prüft
+
+Bei mehreren Aufgaben läuft das Playbook **zweimal**. Der zweite Lauf muss
+`changed=0` melden. Das ist der Unterschied zwischen einem Playbook und
+einem Skript in YAML-Schreibweise: Ansible beschreibt einen Zustand, und
+wer denselben Zustand zweimal herstellt, hat beim zweiten Mal nichts zu tun.
+
+An derselben Stelle lernt man auch die Ausnahmen kennen -- `file` mit
+`state: touch` und jedes `command` melden immer `changed`, solange man es
+ihnen nicht abgewöhnt.
+
+## Voraussetzungen
+
+`ansible-core` 2.12 oder neuer. Prüfen mit `ansible --version`.
+Installieren etwa mit `pipx install ansible-core` oder aus der
+Paketverwaltung.
+
+## Mitmachen
+
+Fehler gefunden oder eine Idee für eine Aufgabe? Siehe
+[CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Lizenz
+
+Die Kurstexte (Theorie, Aufgabenstellungen, README) stehen unter
+[CC BY-SA 4.0](LICENSE): frei nutzbar und veränderbar, mit Namensnennung
+und unter gleichen Bedingungen. Der Code (Beispiele, Musterlösungen,
+Prüfer) steht unter der [MIT-Lizenz](LICENSE-CODE).
