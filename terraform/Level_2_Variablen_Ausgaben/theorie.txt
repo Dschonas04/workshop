@@ -1,0 +1,96 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 2: Variablen, Typen, Ausgaben
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Dein Code beschreibt nicht mehr einen Fall, sondern
+  eine Form, die man ausfüllt.
+
+
+  Eingabewerte
+  ─────────────
+      variable "umgebung" {
+        description = "kurs, test oder betrieb"
+        type        = string
+        default     = "kurs"
+      }
+
+  Ohne default MUSS ein Wert kommen, sonst fragt tofu nach.
+
+  Benutzt als var.umgebung.
+
+
+  Woher der Wert kommt
+  ─────────────
+  1. -var="umgebung=test"            auf der Kommandozeile
+  2. -var-file="test.tfvars"
+  3. terraform.tfvars                automatisch geladen
+  4. *.auto.tfvars                   automatisch geladen
+  5. TF_VAR_umgebung=test            aus der Umgebung
+  6. default im Code
+
+  Weiter oben schlägt weiter unten.
+
+
+  Typen
+  ─────────────
+  string, number, bool
+  list(string)          ["a", "b"]
+  set(string)           wie Liste, ohne Reihenfolge und Doppelte
+  map(string)           { a = "1", b = "2" }
+  object({...})         festes Gebilde mit benannten Feldern
+  any                   alles
+
+      variable "dienst" {
+        type = object({
+          name = string
+          port = number
+        })
+      }
+
+  Typen sind kein Selbstzweck: sie fangen den Tippfehler beim plan
+  ab statt beim apply.
+
+
+  Prüfen
+  ─────────────
+      variable "port" {
+        type = number
+        validation {
+          condition     = var.port > 1024 && var.port < 65536
+          error_message = "Port muss zwischen 1025 und 65535 liegen."
+        }
+      }
+
+
+  Örtliche Werte
+  ─────────────
+      locals {
+        praefix = "${var.umgebung}-${var.dienst.name}"
+      }
+
+  Benutzt als local.praefix. Für Ausdrücke, die mehrfach vorkommen.
+  Eine Variable ist eine Eingabe von außen, ein local eine Abkürzung
+  im Code.
+
+
+  Ausgaben
+  ─────────────
+      output "pfad" {
+        value       = local_file.notiz.filename
+        description = "Wo die Datei liegt"
+        sensitive   = false
+      }
+
+  Abrufen mit tofu output oder tofu output -raw pfad. Aus einem
+  Modul heraus sind Ausgaben die einzige Art, etwas nach außen zu
+  geben.
+
+
+  Nützliche Funktionen
+  ─────────────
+  upper("a")                    "A"
+  join(", ", ["a","b"])         "a, b"
+  length(["a","b"])             2
+  lookup(karte, "a", "leer")    Wert oder Vorgabe
+  format("%s-%02d", "x", 7)     "x-07"
+  jsonencode({a = 1})           JSON als Text

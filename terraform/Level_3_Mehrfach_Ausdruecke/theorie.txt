@@ -1,0 +1,84 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 3: Mehrfach und Ausdrücke
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Aus einer Liste werden viele Ressourcen -- und du
+  weißt, warum for_each fast immer besser ist als count.
+
+
+  count
+  ─────────────
+      resource "local_file" "n" {
+        count    = 3
+        filename = "${path.module}/ausgabe/datei-${count.index}.txt"
+        content  = "Nummer ${count.index}\n"
+      }
+
+  Angesprochen als local_file.n[0], local_file.n[1] …
+
+  Das Problem: die Adresse ist die Position. Entfernst du das erste
+  Element aus einer Liste, rutschen alle nach -- und Terraform will
+  jede Ressource löschen und neu anlegen, obwohl sich nur eine
+  geändert hat.
+
+
+  for_each
+  ─────────────
+      resource "local_file" "d" {
+        for_each = toset(["web", "api"])
+        filename = "${path.module}/ausgabe/${each.key}.txt"
+        content  = "Dienst ${each.key}\n"
+      }
+
+  Angesprochen als local_file.d["web"]. Die Adresse ist jetzt der
+  Name, nicht die Position. Fällt "api" weg, bleibt "web"
+  unangetastet.
+
+  Mit einer Karte bekommt man beides:
+
+      for_each = {
+        web = 80
+        api = 8080
+      }
+      content = "${each.key}:${each.value}"
+
+  count nur noch für "null oder eins":
+
+      count = var.aktiv ? 1 : 0
+
+
+  for-Ausdrücke
+  ─────────────
+      [for k in var.knoten : upper(k)]                 Liste → Liste
+      { for d in var.dienste : d.name => d.port }      Liste → Karte
+      [for d in var.dienste : d.name if d.aktiv]       mit Filter
+
+  Das ist keine Schleife im Ablauf, sondern ein Ausdruck: er
+  ergibt einen Wert.
+
+
+  Bedingungen
+  ─────────────
+      var.aktiv ? "an" : "aus"
+
+  Es gibt kein if als Anweisung. Alles ist ein Ausdruck.
+
+
+  Nützlich
+  ─────────────
+  toset(liste)                    Liste → Menge (für for_each)
+  merge(karte1, karte2)           zusammenführen
+  lookup(karte, "a", "leer")      mit Vorgabe lesen
+  try(ausdruck, ersatz)           Fehler abfangen
+  coalesce(a, b, c)               der erste nicht leere Wert
+  values(karte) / keys(karte)
+
+
+  Abhängigkeiten
+  ─────────────
+  Terraform erkennt sie an den Bezügen. Nur wenn es keinen gibt,
+  eine aber trotzdem besteht:
+
+      depends_on = [local_file.zuerst]
+
+  Wer depends_on oft braucht, hat meist einen Bezug übersehen.

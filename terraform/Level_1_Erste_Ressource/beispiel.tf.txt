@@ -1,0 +1,32 @@
+# Level 1: Beispiel zum Anschauen.
+# Zum Ausprobieren in ein leeres Verzeichnis kopieren als main.tf,
+# dann:  tofu init && tofu apply
+terraform {
+  required_providers {
+    local  = { source = "hashicorp/local", version = "~> 2.5" }
+    random = { source = "hashicorp/random", version = "~> 3.6" }
+  }
+}
+
+# Eine Datei mit festem Inhalt.
+resource "local_file" "notiz" {
+  filename = "${path.module}/ausgabe/notiz.txt"
+  content  = "Terraform beschreibt einen Zustand.\n"
+}
+
+# Ein Zufallswert. Er entsteht EINMAL und bleibt dann im Zustand
+# stehen -- deshalb ändert ein zweites apply nichts.
+resource "random_pet" "name" {
+  length = 2
+}
+
+# Eine Datei, die auf die andere Ressource zeigt. Der Bezug erzeugt
+# die Reihenfolge: erst der Zufallsname, dann diese Datei.
+resource "local_file" "gruss" {
+  filename = "${path.module}/ausgabe/gruss.txt"
+  content  = "Hallo, ${random_pet.name.id}\n"
+}
+
+output "zufallsname" {
+  value = random_pet.name.id
+}

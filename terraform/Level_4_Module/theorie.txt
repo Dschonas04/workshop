@@ -1,0 +1,84 @@
+════════════════════════════════════════════════════════════════
+  LEVEL 4: Module
+════════════════════════════════════════════════════════════════
+
+  Lernziel: Du packst eine Gruppe von Ressourcen in ein Modul und
+  benutzt sie mehrfach -- mit verschiedenen Werten.
+
+
+  Was ein Modul ist
+  ─────────────
+  Ein Verzeichnis mit .tf-Dateien. Mehr nicht. Auch dein
+  Hauptverzeichnis ist eines: das Wurzelmodul.
+
+      modul/dienst/
+        main.tf         die Ressourcen
+        variables.tf    was hineingeht
+        outputs.tf      was herauskommt
+
+
+  Benutzen
+  ─────────────
+      module "web" {
+        source = "./modul/dienst"
+
+        name = "web"
+        port = 80
+      }
+
+      module "api" {
+        source = "./modul/dienst"
+
+        name = "api"
+        port = 8080
+      }
+
+  Zweimal dasselbe Modul, zwei getrennte Ressourcengruppen. Nach
+  jeder Änderung an source muss tofu init erneut laufen.
+
+
+  Hinein und heraus
+  ─────────────
+  Hinein gehen ausschließlich die Variablen des Moduls. Ein Modul
+  kann NICHT auf Variablen des Aufrufers zugreifen -- das ist der
+  Sinn der Sache.
+
+  Heraus kommt ausschließlich, was das Modul als output erklärt:
+
+      module.web.pfad
+
+  Wer im Modul eine Ressource nicht als output herausgibt, für den
+  existiert sie draußen nicht.
+
+
+  Mehrfach mit for_each
+  ─────────────
+      module "dienst" {
+        for_each = { web = 80, api = 8080 }
+        source   = "./module/dienst"
+
+        name = each.key
+        port = each.value
+      }
+
+  Angesprochen als module.dienst["web"].pfad.
+
+
+  Woher Module kommen
+  ─────────────
+  ./pfad                          örtlich
+  registry.terraform.io/...       aus der Registry
+  git::https://...                aus einem Repository
+
+  Bei allem, was nicht örtlich ist, gehört eine Version dazu --
+  sonst ändert sich dein Aufbau, ohne dass du etwas getan hast.
+
+
+  Wann ein Modul
+  ─────────────
+  Nicht, weil es ordentlicher aussieht. Sondern wenn dieselbe
+  Gruppe von Ressourcen mehr als einmal vorkommt, oder wenn eine
+  Grenze entsteht, hinter der jemand anders arbeitet.
+
+  Ein Modul mit einer einzigen Ressource darin ist meistens eine
+  Hülle ohne Nutzen.

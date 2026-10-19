@@ -1,0 +1,40 @@
+════════════════════════════════════════════════════════════════
+  ABSCHLUSS: Eine kleine Auslieferung beschreiben
+════════════════════════════════════════════════════════════════
+
+  Schreibe deinen Aufbau in uebung.tf, der alles aus den vier
+  Leveln zusammenbringt. Es entsteht nichts außer Dateien unter
+  ausgabe/.
+
+  Verlangt ist:
+
+  1. Eine Variable "umgebung" (string, Vorgabe "kurs").
+
+  2. Eine Variable "dienste" als Karte von Namen auf Objekte:
+
+         default = {
+           web = { port = 80,   aktiv = true  }
+           api = { port = 8080, aktiv = true  }
+           alt = { port = 8081, aktiv = false }
+         }
+
+  3. Für jeden AKTIVEN Dienst eine Datei ausgabe/<name>.conf mit:
+
+         umgebung = kurs
+         name = web
+         port = 80
+
+     Benutze for_each, nicht count.
+
+  4. Eine Datei ausgabe/uebersicht.txt mit den Namen der aktiven
+     Dienste, sortiert, durch Komma und Leerzeichen getrennt:
+
+         api, web
+
+  5. Einen Ausgabewert "anzahl" mit der Zahl der aktiven Dienste
+     und einen Ausgabewert "pfade" mit der sortierten Liste der
+     erzeugten Dateinamen.
+
+  6. Der zweite plan darf nichts mehr vorhaben.
+
+  Prüfen mit:  ./pruefen.sh
