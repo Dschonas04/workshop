@@ -1,5 +1,5 @@
 ﻿# ================================================================
-#  Level 3: Benutzereingabe & Berechnungen – BEISPIELE
+#  Level 3: Benutzereingabe & Berechnungen, BEISPIELE
 #  HINWEIS: Read-Host Beispiele sind auskommentiert,
 #  damit das Skript durchlaufen kann. Entkommentiere zum Testen!
 # ================================================================

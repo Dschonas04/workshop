@@ -1,5 +1,5 @@
 ﻿# ================================================================
-#  Level 2: Variablen & Datentypen – BEISPIELE
+#  Level 2: Variablen & Datentypen, BEISPIELE
 #  Führe diese Datei aus (F5) oder markiere Teile (F8).
 # ================================================================
 

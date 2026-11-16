@@ -1,6 +1,6 @@
 #!/bin/bash
 # ================================================================
-#  Zusatz: Shell-Scripting (Bash) – AUFGABEN
+#  Zusatz: Shell-Scripting (Bash): AUFGABEN
 #  Ersetze ___ durch den richtigen Code.
 #  Entferne das # vor den Zeilen, um sie zu aktivieren.
 # ================================================================

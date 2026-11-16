@@ -1,5 +1,5 @@
 ﻿# ================================================================
-#  Level 5: Arrays & Hashtables – BEISPIELE
+#  Level 5: Arrays & Hashtables, BEISPIELE
 #  Führe diese Datei aus (F5) oder markiere Teile (F8).
 # ================================================================
 

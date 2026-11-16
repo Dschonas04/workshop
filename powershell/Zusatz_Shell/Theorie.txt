@@ -6,7 +6,7 @@
   ────────────────────────
   Die Shell (bash, zsh) ist die Standard-Kommandozeile auf
   Linux und macOS. Shell-Skripte (.sh) automatisieren Aufgaben
-  auf Unix-Systemen – DER Standard in der IT-Welt!
+  auf Unix-Systemen: DER Standard in der IT-Welt!
 
   PowerShell vs. Shell:
   ─────────────────────

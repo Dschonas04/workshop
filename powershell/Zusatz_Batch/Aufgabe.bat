@@ -2,7 +2,7 @@
 chcp 65001 >nul
 title Batch-Aufgaben
 :: ================================================================
-::  Zusatz: Batch-Scripting – AUFGABEN
+:  Zusatz: Batch-Scripting: AUFGABEN
 ::  Ersetze ___ durch den richtigen Code.
 ::  Entferne REM vor den Zeilen, um sie zu aktivieren.
 :: ================================================================

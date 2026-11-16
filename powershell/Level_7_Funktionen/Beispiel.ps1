@@ -1,5 +1,5 @@
 ﻿# ================================================================
-#  Level 7: Funktionen – BEISPIELE
+#  Level 7: Funktionen: BEISPIELE
 #  Führe diese Datei aus (F5) oder markiere Teile (F8).
 # ================================================================
 

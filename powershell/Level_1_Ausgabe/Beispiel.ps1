@@ -1,5 +1,5 @@
 ﻿# ================================================================
-#  Level 1: Ausgabe auf der Konsole – BEISPIELE
+#  Level 1: Ausgabe auf der Konsole, BEISPIELE
 #  Führe diese Datei aus (F5) oder markiere Teile (F8).
 # ================================================================
 

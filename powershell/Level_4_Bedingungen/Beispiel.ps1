@@ -1,5 +1,5 @@
 ﻿# ================================================================
-#  Level 4: Bedingungen – BEISPIELE
+#  Level 4: Bedingungen: BEISPIELE
 #  Führe diese Datei aus (F5) oder markiere Teile (F8).
 # ================================================================
 

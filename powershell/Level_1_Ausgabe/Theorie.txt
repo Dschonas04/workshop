@@ -24,7 +24,7 @@
   ───────────────
   • Schreibt Daten in die Pipeline (Standardausgabe).
   • Kann an andere Befehle weitergeleitet werden mit |
-  • Ist der Standard – wenn du einfach etwas ausgibst, passiert genau das.
+  • Ist der Standard: wenn du einfach etwas ausgibst, passiert genau das.
   • Nutze es für: Daten, die weiterverarbeitet werden sollen.
 
   Beispiel:

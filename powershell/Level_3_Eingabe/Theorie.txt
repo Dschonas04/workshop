@@ -19,13 +19,13 @@
   ──────────────────────────
   Um mit der Eingabe zu rechnen, musst du sie umwandeln:
 
-  Methode 1 – Direkt beim Speichern:
+  Methode 1: Direkt beim Speichern:
     [int]$zahl = Read-Host "Zahl?"
 
-  Methode 2 – Nachträglich umwandeln:
+  Methode 2: Nachträglich umwandeln:
     $zahl = [int]$eingabe
 
-  Methode 3 – Sicher mit -as (kein Fehler bei "abc"):
+  Methode 3: Sicher mit -as (kein Fehler bei "abc"):
     $zahl = $eingabe -as [int]
     → Gibt $null zurück statt einen Fehler zu werfen
 

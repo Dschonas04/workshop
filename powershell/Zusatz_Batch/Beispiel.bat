@@ -2,7 +2,7 @@
 chcp 65001 >nul
 title Batch-Beispiele
 :: ================================================================
-::  Zusatz: Batch-Scripting – BEISPIELE
+:  Zusatz: Batch-Scripting: BEISPIELE
 ::  Doppelklicke diese Datei oder führe sie in CMD aus.
 :: ================================================================
 

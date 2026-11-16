@@ -1,6 +1,6 @@
 #!/bin/bash
 # ================================================================
-#  Zusatz: Shell-Scripting (Bash) – BEISPIELE
+#  Zusatz: Shell-Scripting (Bash): BEISPIELE
 #  Ausführen: chmod +x Beispiel.sh && ./Beispiel.sh
 #  Oder:      bash Beispiel.sh
 # ================================================================

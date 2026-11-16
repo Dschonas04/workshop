@@ -3,7 +3,7 @@
 ════════════════════════════════════════════════════════════════
 
   Lernziel: Du kannst Dateien verwalten und die PowerShell
-  Pipeline nutzen – DAS Herzstück von PowerShell!
+  Pipeline nutzen: DAS Herzstück von PowerShell!
 
 
   Dateien & Ordner

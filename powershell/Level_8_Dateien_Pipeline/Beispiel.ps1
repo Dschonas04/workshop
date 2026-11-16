@@ -1,5 +1,5 @@
 ﻿# ================================================================
-#  Level 8: Dateien, Pipeline & Cmdlets – BEISPIELE
+#  Level 8: Dateien, Pipeline & Cmdlets, BEISPIELE
 #  Führe diese Datei aus (F5) oder markiere Teile (F8).
 # ================================================================
 

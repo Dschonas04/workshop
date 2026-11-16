@@ -1,5 +1,5 @@
 ﻿# ================================================================
-#  Level 6: Schleifen – BEISPIELE
+#  Level 6: Schleifen: BEISPIELE
 #  Führe diese Datei aus (F5) oder markiere Teile (F8).
 # ================================================================
 
